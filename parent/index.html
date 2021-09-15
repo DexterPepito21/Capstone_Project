@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>DASHBOARD | Parent</title>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="navigation">
+        <center>
+            <img src="bg.jpg" class="profile" alt="">
+        </center>
+        <ul>
+            <li>
+                <a href="index.html">
+                    <span class="icon"><i class="fa fa-home"></i></span>
+                    <span class="title">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="child.html">
+                    <span class="icon"><i class="fa fa-child"></i></span>
+                    <span class="title">Child Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="chart.html">
+                    <span class="icon"><i class="fas fa-chart-bar"></i></span>
+                    <span class="title">Vaccine Chart</span>
+                </a>
+            </li>
+            <li>
+                <a href="guide.html">
+                    <span class="icon"><i class="fa fa-book"></i></span>
+                    <span class="title">Nutrition Guide</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="toggle" onclick="toggleMenu()"></div>
+    <script type="text/javascript">
+         function toggleMenu(){
+             let navigation = document.querySelector('.navigation');
+             let toggle = document.querySelector('.toggle');
+             navigation.classList.toggle('active');
+             toggle.classList.toggle('active');
+         }
+    </script>
+    <!-- Table -->
+        <div class="main-content">
+            <div class="banner">
+                <center><h1>CHILD CARE SYSTEM</h1></center>
+            </div>
+            <div class="dashboard toShow">
+                <div class="title">
+                    <!-- <i class="fa fa-info-circle"></i> -->
+                    <h1>Vaccine Information</h1>
+                </div>
+                <table style="height: 300px;">
+                    <colgroup>
+                        <col span="1" style="background-color: #b7b8b8">
+                    </colgroup>
+                    <tr>
+                        <th style="width: 18%;">BCG</th>
+                        <th style="width: 100%;">(Information Here)</th>
+                    </tr>
+                    <tr>
+                        <td>HEPATITIS B</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>PENTAVALENT VACCINE</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>ORAL POLIO VACCINE</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>INACTIVATED POLIO VACCINE</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div><!-- Dashboard -->
+        </div><!-- Main Content -->
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</body>
+</html>
