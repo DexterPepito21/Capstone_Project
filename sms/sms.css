@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+/* Side MenuBar */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins' , sans-serif;
+}
+body{
+    min-height: 100vh;
+    background: white;
+}
+.main{
+    display: flex;
+}
+/* Main Content */
+.content .fa-question-circle{
+    font-size: 45px;
+    display: block;
+    float: right;
+    margin: 1rem;
+    cursor: pointer;
+}
+
+
+
+/* Nav-Bar */
+.navigation .profile{
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+    margin-top: 50px;   
+}
+.navigation{
+    position: fixed;
+    width: 60px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background: #edf6ff;
+    border-right: 1px solid #000000;
+    transition: 0.5s;
+    overflow: hidden;
+}
+.navigation:hover, .navigation.active{
+    width: 250px;
+}
+.navigation ul{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin-top: 250px;
+}
+.navigation ul li{
+    position: relative;
+    width: 100%;
+    list-style: none;
+}
+.navigation ul li:hover{
+    background: #ffffff;
+    border-bottom: 5px solid #437fc7;
+} 
+.navigation ul li a{
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: rgb(4, 10, 22);
+}
+.navigation ul li a .icon{
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+.navigation ul li a .icon .fa{
+    font-size: 24px;
+}
+.navigation ul li a .title{
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+}
+
+
+.content .sms-notification{
+    width: 400px;
+    height: 400px;
+    background-color: #edf6ff;
+    margin-left: 35%;
+    position: relative; 
+}
+.message{
+    display:block; 
+    float:left;
+}
+
+.content .sms-notification .my-form{
+    margin-right: 20px;
+    width: 350px;
+    height: 430px;
+    margin: auto;
+    position: absolute; 
+}
+.content .sms-notification .my-form textarea{
+    height: 150px;
+    width: 160px;
+    margin-left: 2rem;
+}
+.content .sms-notification .my-form .form-group{
+    margin: 10px 10px;
+    display: block;
+    float: right;
+}
+.content .sms-notification .my-form .form-group input{
+    margin-left: 1rem;
+}
+.content .sms-notification .my-form .form-group .date{
+    margin-left: 10;
+    margin-right: 30px;
+}
+.content .sms-notification .my-form .form-group input[type="submit"]{
+    width: 50px;
+    margin: 0 110px 0 0;
+    background-color: #6daffe;
+    color: white;
+}
+.sms-options{
+    margin-top: 5%;
+    margin-bottom: 50px;
+    margin-left: 20em;
+    background-color: #6daffe;
+}
+.content img{
+    height: 40px;
+    width: 40px;
+    display: block;
+    float: right;
+    margin: 1rem; 
+}
+
+@media (max-width: 700px){
+    .content .sms-options{
+    margin-top: 20%;
+    margin-bottom: 10%;
+    margin-left: 4em;
+    }
+
+    .content .sms-notification .my-form{
+     left: 0;
+     width: 300px;
+    }
+    .content .sms-notification{
+        margin-left: 15%; 
+        width: 315px;
+    }
+
+    /* Sidebar */
+    .navigation{
+        left: -60px;
+    }
+    .navigation.active{
+        left: 0;
+        width: 50%;
+    }
+    .toggle{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 55px;
+        height: 55px;
+        background: rgb(139, 219, 243);
+        cursor: pointer;
+    }
+    .toggle:active{
+        background: cyan;
+    }
+    .toggle:before{
+        content: '\f0c9';
+        font-family: fontAwesome;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        line-height: 60px;
+        text-align: center;
+        font-size: 24px;
+        color: rgb(14, 35, 39);
+    }
+    .toggle:active:before{
+        content: '\f00d';
+    }
+}
