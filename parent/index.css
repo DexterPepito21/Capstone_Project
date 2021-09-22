@@ -1,26 +1,179 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
-/* Side MenuBar */
+/* Nav */
 *{
-    margin: 0;
     padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
     box-sizing: border-box;
     font-family: 'Poppins' , sans-serif;
-}
-body{
-    min-height: 100vh;
+  }
+  nav{
     background: #ffffff;
-}
-/* Main Content */
-.banner{
-    margin-top: 40px;
-    margin-bottom: 50px;
+    height: 80px;
+    width: 100%;
+    border-bottom: 1px solid #77b7f6;
+  }
+  label.logo{
+    color: #000000;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 20px;
+    font-weight: bold;
+  }
+  label.logo:hover{
+    color: #77b7f6;
+  }
+  nav ul{
+    float: right;
+    margin-right: 20px;
+  }
+  nav ul li{
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+  }
+  nav ul li a{
+    color: #000000;
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 5px;
+    text-transform: uppercase;
+  }
+  #icon{
+      display: inline-block;
+      text-align: center;
+      margin: 0 5px;
+  }
+  a.active, a:hover{
+    background:#97c2ee;
+    border: 1px solid #6daffe;
+    transition: .3s;
+  }
+  .checkbtn{
     font-size: 30px;
-}
+    color: #000000;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+  }
+  #check{
+    display: none;
+  }
+  /* Dropdown */
+  .dropbtn {
+    border-radius: 50%;
+    background-color: #edf6ff;
+    width: 30px;
+    margin-top: 20px;
+    color: #000000;
+    padding: 0;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    font-size: 17px;
+    text-decoration: none;
+    display: block;
+  }
+  .dropdown-content a:hover {
+    background-color: #f1f1f1;
+  }
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  .dropdown:hover .dropbtn {
+    color: #000000;
+  }
+  
+  @media (max-width: 745px) {
+    label.logo{
+      font-size: 20px;
+      padding-left: 15px;
+    }
+    nav ul li a{
+      font-size: 16px;
+    }
+    .dropbtn{
+      display: none;
+    }
+    .dropdown-content{
+      display: block;
+      background: none;
+      border: none;
+      box-shadow: none;
+      margin-top: 5px;
+    }
+    .dropdown-content a{
+      margin-left: 50%;
+      width: 100%;
+    }
+    .dropdown-content:hover{
+      background: none;
+      border: none;
+      box-shadow: none;
+    }
+  }
+  @media (max-width: 700px){
+    .checkbtn{
+      display: block;
+      font-size: 25px;
+      margin-right: 20px;
+    }
+    ul{
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background: #97c2ee;
+      top: 80px;
+      left: -100%;
+      text-align: center;
+      transform: all .5s;
+      transition: all .5s;
+    }
+    nav ul li{
+      display: block;
+      margin: 50px 0;
+      line-height: 30px;
+    }
+    nav ul li a{
+      font-size: 15px;
+    }
+    a:hover,a.active{
+      background: none;
+      color: #f8f8f8;
+    }
+  }
+  #check:checked ~ ul{
+    left: 0;
+  }
+/* Main Content */
 .dashboard{
     width: 800px;
     height: 400px;
     background-color: #edf6ff;
-    margin-left: 20%;
+    margin-left: 25%;
+    margin-top: 10%;
 }
 .main-content .dashboard .title{
     display: flex;
@@ -35,87 +188,13 @@ table, th, td {
     border-collapse: collapse;
     text-align: center;
     margin: 0 1.5rem;
-    background-color: #6daffe;
+    background-color: #ffffff;
 }
 h1{
     text-align: center;
 }
 
-/* Nav-Bar */
-.navigation .profile{
-    width: 150px;
-    height: 150px;
-    border-radius: 100px;
-    margin-bottom: 20px;
-    margin-top: 50px;   
-}
-.navigation{
-    position: fixed;
-    width: 60px;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    background: #edf6ff;
-    border-right: 1px solid #000000;
-    transition: 0.5s;
-    overflow: hidden;
-}
-.navigation:hover, .navigation.active{
-    width: 250px;
-}
-.navigation ul{
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    margin-top: 250px;
-}
-.navigation ul li{
-    position: relative;
-    width: 100%;
-    list-style: none;
-}
-.navigation ul li:hover{
-    background: #ffffff;
-    border-bottom: 5px solid #437fc7;
-} 
-.navigation ul li a{
-    position: relative;
-    display: block;
-    width: 100%;
-    display: flex;
-    text-decoration: none;
-    color: rgb(4, 10, 22);
-}
-.navigation ul li a .icon{
-    position: relative;
-    display: block;
-    min-width: 60px;
-    height: 60px;
-    line-height: 60px;
-    text-align: center;
-}
-.navigation ul li a .icon .fa{
-    font-size: 24px;
-}
-.navigation ul li a .title{
-    position: relative;
-    display: block;
-    padding: 0 10px;
-    height: 60px;
-    line-height: 60px;
-    text-align: start;
-    white-space: nowrap;
-}
-
-
 @media (max-width: 700px){
-    .banner{
-        margin-top: 80px;
-        text-align: center; 
-        font-size: 20px;
-    }
     .dashboard{
         width: 65%;
         height: 65%;
@@ -135,37 +214,4 @@ h1{
         margin-top: 1.5rem;
         text-align: center;
     }
-        .navigation{
-            left: -60px;
-        }
-        .navigation.active{
-            left: 0;
-            width: 50%;
-        }
-        .toggle{
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 55px;
-            height: 55px;
-            background: rgb(139, 219, 243);
-            cursor: pointer;
-        }
-        .toggle:active{
-            background: cyan;
-        }
-        .toggle:before{
-            content: '\f0c9';
-            font-family: fontAwesome;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            line-height: 60px;
-            text-align: center;
-            font-size: 24px;
-            color: rgb(14, 35, 39);
-        }
-        .toggle:active:before{
-            content: '\f00d';
-        }
 }
