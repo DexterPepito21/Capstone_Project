@@ -148,7 +148,8 @@ a.active, a:hover{
     top: 80px;
     left: -100%;
     text-align: center;
-    transform: all .5ss;
+    transform: all .5s;
+    transition: all .5s;
   }
   nav ul li{
     display: block;
@@ -213,7 +214,6 @@ table th {
   
   /* Media screen */
   @media (max-width: 700px){
-
     /* Table */
     table {
       border: 0;
