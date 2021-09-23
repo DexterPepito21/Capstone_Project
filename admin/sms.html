@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Project</title>
+    <title>SMS Notification | Admin</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,54 +11,30 @@
     
 </head>
 <body>
-      <!-- Side MenuBar -->
-      <div class="navigation">
-        <center>
-            <img src="bg.jpg" class="profile" alt="">
-        </center>
+      <!-- Navigation Bar -->
+     <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+          <i class="fas fa-bars"></i>
+        </label>
+        <label class="logo">Child Care System</label>
         <ul>
-            <li>
-                <a href="index.html">
-                    <span class="icon"><i class="fa fa-home"></i></span>
-                    <span class="title">Dashboard</span>
-                </a>
-            </li>
-            <li>
-                <a href="child.html">
-                    <span class="icon"><i class="fa fa-child"></i></span>
-                    <span class="title">Child Profile</span>
-                </a>
-            </li>
-            <li>
-                <a href="chart.html">
-                    <span class="icon"><i class="fas fa-chart-bar"></i></span>
-                    <span class="title">Vaccine Chart</span>
-                </a>
-            </li>
-            <li>
-                <a href="guide.html">
-                    <span class="icon"><i class="fa fa-book"></i></span>
-                    <span class="title">Nutrition Guide</span>
-                </a>
-            </li>
-            <li>
-                <a href="sms.html">
-                    <span class="icon"><i class="fa fa-comment"></i></span>
-                    <span class="title">SMS Notification</span>
-                </a>
-            </li>
+          <li><a href="index.html"><i class="fas fa-home" id="icon"></i>Dashboard</a></li>
+          <li><a href="child.html"><i class="fas fa-child"  id="icon"></i>Child Profile</a></li>
+          <li><a href="chart.html"><i class="fa fa-chart-bar"  id="icon"></i>Vaccine Chart</a></li>
+          <li><a href="guide.html"><i class="fas fa-book"  id="icon"></i>Nutrition Guide</a></li>
+          <li><a href="sms.html" class="active"><i class="fas fa-comment"  id="icon"></i>SMS Notification</a></li>
+        
+          <div class="dropdown">
+            <button class="dropbtn"><i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-content">
+            <a href="#"><i class="fas fa-sign-out-alt" id="icon"></i>Logout</a>
+            </div>
+          </div>
         </ul>
-    </div>
-<div class="toggle" onclick="toggleMenu()"></div>
-<script type="text/javascript">
-     function toggleMenu(){
-         let navigation = document.querySelector('.navigation');
-         let toggle = document.querySelector('.toggle');
-         navigation.classList.toggle('active');
-         toggle.classList.toggle('active');
-     }
-</script>
-<div class="content">
+      </nav>
+
+<div class="content" style="overflow-x: auto;">
     <select class="sms-options toShow" name="status" id="status">
         <option value="1">Single or Multiple SMS</option>
         <option value="0">Scheduled SMS</option>
