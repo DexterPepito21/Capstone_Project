@@ -20,5 +20,16 @@ session_start();
 
 	<br>
 	Hello, <?php echo $user_data['user_name']; ?>
+	<?php echo $user_data['first_name']; ?>
+	<?php echo $user_data['last_name']; ?>
+	<?php echo $user_data['middle_name']; ?>
+	<?php echo $user_data['mother_name']; ?>
+	<?php echo $user_data['father_name']; ?>
+	<?php echo $user_data['birth_weight']; ?>
+	<?php echo $user_data['birth_height']; ?>
+	<?php echo $user_data['address']; ?>
+	<?php echo $user_data['place_of_birth']; ?>
+	<?php echo $user_data['gender']; ?>
+	
 </body>
 </html>
