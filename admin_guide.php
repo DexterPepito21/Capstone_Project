@@ -7,7 +7,7 @@
     <title>Nutrition Guide | Admin</title>
     <link rel= "stylesheet" href = "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.js"></script>
-    <link rel="stylesheet" href="guide.css">
+    <link rel="stylesheet" href="admin_guide.css">
     <!-- Datatables -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.0/css/dataTables.bootstrap4.min.css">
@@ -21,11 +21,11 @@
         </label>
         <label class="logo">Child Care System</label>
         <ul>
-          <li><a href="index.html"><i class="fas fa-home" id="icon"></i>Dashboard</a></li>
-          <li><a href="child.html"><i class="fas fa-child"  id="icon"></i>Child Profile</a></li>
-          <li><a href="chart.html"><i class="fa fa-chart-bar"  id="icon"></i>Vaccine Chart</a></li>
-          <li><a href="guide.html" class="active"><i class="fas fa-book"  id="icon"></i>Nutrition Guide</a></li>
-          <li><a href="sms.html"><i class="fas fa-comment"  id="icon"></i>SMS Notification</a></li>
+          <li><a href="admin_index.php"><i class="fas fa-home" id="icon"></i>Dashboard</a></li>
+          <li><a href="admin_child.php"><i class="fas fa-child"  id="icon"></i>Child Profile</a></li>
+          <li><a href="admin_chart.php"><i class="fa fa-chart-bar"  id="icon"></i>Vaccine Chart</a></li>
+          <li><a href="admin_guide.php" class="active"><i class="fas fa-book"  id="icon"></i>Nutrition Guide</a></li>
+          <li><a href="admin_sms.php"><i class="fas fa-comment"  id="icon"></i>SMS Notification</a></li>
         
           <div class="dropdown">
             <button class="dropbtn"><i class="fa fa-caret-down"></i></button>

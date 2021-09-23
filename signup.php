@@ -37,7 +37,6 @@ session_start();
 		{
 			echo "Please enter some valid information!";
 		}
-	}
 ?>
 
 
