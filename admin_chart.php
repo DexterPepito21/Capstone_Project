@@ -47,12 +47,14 @@
          <center><header><i class="fa fa-chart-bar"></i>Vaccine Chart</header></center>
          <div class="row">
              <div class="col">
-        <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:80%">
+        <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
             <thead>
                 <tr>
                     <th style="width: 5%;">Vaccine Name</th>
                     <th style="width: 10%;">Doses <br> (Recommended Age)</th>
-                    <th style="width: 10%;">Date of Vaccination</th>
+                    <th style="width: 20%;">Date of Vaccination</th>
+                    <th style="width: 10%;">Vaccinator's Name</th>
+                    <th style="width: 10%;">Health Center</th>
                 </tr>
             </thead>
             <tbody>
@@ -63,10 +65,15 @@
                       <form action="/action_page.php">
                       <label for="datetime"> 1st Dose: </label>
                       <input type="datetime-local" id="dtlocal" name="datetime">
-                      <input type="checkbox" id="chckbox" value="datetime">
-                      <br><br>
-                      <input type="submit" id="submit" name="Submit">
                       </form>
+                    </td>
+                    <td>
+                      <br>
+                      <input type="text" id="vname">
+                    </td>
+                    <td>
+                      <br>
+                      <input type="text" id="place">
                     </td>
                   </tr>
                   <tr>
@@ -76,10 +83,15 @@
                       <form action="/action_page.php">
                       <label for="datetime"> 1st Dose: </label>
                       <input type="datetime-local" id="dtlocal" name="datetime">
-                      <input type="checkbox" id="chckbox" value="datetime">
-                      <br><br>
-                      <input type="submit" id="submit" name="Submit">
                       </form>
+                      <td>
+                        <br>
+                      <input type="text" id="vname">
+                    </td>
+                    <td>
+                      <br>
+                      <input type="text" id="place">
+                    </td>
                     </td>
                   </tr>
                   <tr>
@@ -89,18 +101,29 @@
                       <form action="/action_page.php">
                       <label for="datetime"> 1st Dose: </label>
                       <input type="datetime-local" id="dtlocal" name="datetime">
-                      <input type="checkbox" id="chckbox" value="datetime">
                       <br>
                       <label for="datetime"> 2nd Dose: </label>
                       <input type="datetime-local" id="dtlocal" name="datetime">
-                      <input type="checkbox" id="chckbox" value="datetime">
                       <br>
                       <label for="datetime"> 3rd Dose: </label>
                       <input type="datetime-local" id="dtlocal" name="datetime">
-                      <input type="checkbox" id="chckbox" value="datetime">
-                      <br><br>
-                      <input type="submit" id="submit" name="Submit">
                       </form>
+                    </td>
+                    <td>
+                      <br><br>
+                      <input type="text" id="vname">
+                      <br><br>
+                      <input type="text" id="vname">
+                      <br><br>
+                      <input type="text" id="vname">
+                    </td>
+                    <td>
+                      <br><br>
+                      <input type="text" id="place">
+                      <br><br>
+                      <input type="text" id="place">
+                      <br><br>
+                      <input type="text" id="place">
                     </td>
                   </tr>
                   <tr>
@@ -110,18 +133,29 @@
                       <form action="/action_page.php">
                       <label for="datetime"> 1st Dose: </label>
                       <input type="datetime-local" id="dtlocal" name="datetime">
-                      <input type="checkbox" id="chckbox" value="datetime">
                       <br>
                       <label for="datetime"> 2nd Dose: </label>
                       <input type="datetime-local" id="dtlocal" name="datetime">
-                      <input type="checkbox" id="chckbox" value="datetime">
                       <br>
                       <label for="datetime"> 3rd Dose: </label>
                       <input type="datetime-local" id="dtlocal" name="datetime">
-                      <input type="checkbox" id="chckbox" value="datetime">
-                      <br><br>
-                      <input type="submit" id="submit" name="Submit">
                       </form>
+                    </td>
+                    <td>
+                      <br><br>
+                      <input type="text" id="vname">
+                      <br><br>
+                      <input type="text" id="vname">
+                      <br><br>
+                      <input type="text" id="vname">
+                    </td>
+                    <td>
+                      <br><br>
+                      <input type="text" id="place">
+                      <br><br>
+                      <input type="text" id="place">
+                      <br><br>
+                      <input type="text" id="place">
                     </td>
                   </tr>
                   <tr>
@@ -131,10 +165,15 @@
                       <form action="/action_page.php">
                       <label for="datetime"> 1st Dose: </label>
                       <input type="datetime-local" id="dtlocal" name="datetime">
-                      <input type="checkbox" id="chckbox" value="datetime">
-                      <br><br>
-                      <input type="submit" id="submit" name="Submit">
                       </form>
+                    </td><br>
+                    <td>
+                      <br>
+                      <input type="text" id="vname">
+                    </td>
+                    <td>
+                      <br>
+                      <input type="text" id="place">
                     </td>
                   </tr>
                   <tr>
@@ -144,18 +183,29 @@
                       <form action="/action_page.php">
                       <label for="datetime"> 1st Dose: </label>
                       <input type="datetime-local" id="dtlocal" name="datetime">
-                      <input type="checkbox" id="chckbox" value="datetime">
                       <br>
                       <label for="datetime"> 2nd Dose: </label>
                       <input type="datetime-local" id="dtlocal" name="datetime">
-                      <input type="checkbox" id="chckbox" value="datetime">
                       <br>
                       <label for="datetime"> 3rd Dose: </label>
                       <input type="datetime-local" id="dtlocal" name="datetime">
-                      <input type="checkbox" id="chckbox" value="datetime">
-                      <br><br>
-                      <input type="submit" id="submit" name="Submit">
                       </form>
+                    </td>
+                    <td>
+                      <br><br>
+                      <input type="text" id="vname">
+                      <br><br>
+                      <input type="text" id="vname">
+                      <br><br>
+                      <input type="text" id="vname">
+                    </td>
+                    <td>
+                      <br><br>
+                      <input type="text" id="place">
+                      <br><br>
+                      <input type="text" id="place">
+                      <br><br>
+                      <input type="text" id="place">
                     </td>
                   </tr>
                   <tr>
@@ -165,18 +215,28 @@
                       <form action="/action_page.php">
                       <label for="datetime"> 1st Dose: </label>
                       <input type="datetime-local" id="dtlocal" name="datetime">
-                      <input type="checkbox" id="chckbox" value="datetime">
                       <br>
                       <label for="datetime"> 2nd Dose: </label>
                       <input type="datetime-local" id="dtlocal" name="datetime">
-                      <input type="checkbox" id="chckbox" value="datetime">
-                      <br><br>
-                      <input type="submit" id="submit" name="Submit">
                       </form>
+                    </td>
+                    <td>
+                    <br><br>
+                      <input type="text" id="vname">
+                      <br><br>
+                      <input type="text" id="vname">
+                    </td>
+                    <td>
+                    <br><br>
+                      <input type="text" id="place">
+                      <br><br>
+                      <input type="text" id="place">
                     </td>
                   </tr>
                   <tr>
                     <td> OTHERS </td>
+                    <td> -- </td>
+                    <td> -- </td>
                     <td> -- </td>
                     <td> -- </td>
                   </tr>

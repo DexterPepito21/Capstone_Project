@@ -46,109 +46,70 @@
          <center><header><i class="fa fa-chart-bar"></i>Vaccine Chart</header></center>
          <div class="row">
              <div class="col">
-        <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:80%">
+        <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
             <thead>
                 <tr>
-                    <th style="width: 5%;">Vaccine Name</th>
+                <th style="width: 5%;">Vaccine Name</th>
                     <th style="width: 10%;">Doses <br> (Recommended Age)</th>
-                    <th style="width: 10%;">Date of Vaccination</th>
+                    <th style="width: 15%;">Date of Vaccination</th>
+                    <th style="width: 15%;">Vaccinator's Name</th>
+                    <th style="width: 10%;">Health Center</th>
                 </tr>
             </thead>
             <tbody>
                   <tr>
                     <td> BCG </td>
                     <td> 1 <br>(Birth) </td>
-                    <td>
-                      <form action="/action_page.php">
-                      <label for="datetime"> 1st Dose: </label>
-                      <input type="datetime-local" id="dtlocal" name="datetime">
-                      </form>
-                    </td>
+                    <td><br> --</td>
+                    <td><br> -- </td>
+                    <td><br> -- </td>
                   </tr>
                   <tr>
                     <td> HEPATITIS B </td>
                     <td> 1 <br>(Birth) </td>
-                    <td>
-                      <form action="/action_page.php">
-                        <label for="datetime"> 1st Dose: </label>
-                        <input type="datetime-local" id="dtlocal" name="datetime">
-                      </form>
-                    </td>
+                    <td><br> -- </td>
+                    <td><br> -- </td>
+                    <td><br> -- </td>
                   </tr>
                   <tr>
                     <td> PENTAVALENT VACCINE </td>
                     <td> 3 <br> (1 ½, 2 ½, 3 ½ months) </td>
-                    <td>
-                      <form action="/action_page.php">
-                        <label for="datetime"> 1st Dose: </label>
-                        <input type="datetime-local" id="dtlocal" name="datetime">
-                      <br>
-                      <label for="datetime"> 2nd Dose: </label>
-                      <input type="datetime-local" id="dtlocal" name="datetime">
-                      <br>
-                      <label for="datetime"> 3rd Dose: </label>
-                      <input type="datetime-local" id="dtlocal" name="datetime">
-                      </form>
-                    </td>
+                    <td><br> -- <br><br> -- <br><br> --</td>
+                    <td><br> -- <br><br> -- <br><br> --</td>
+                    <td><br> -- <br><br> -- <br><br> --</td>
                   </tr>
                   <tr>
                     <td> ORAL POLIO VACCINE (OPV) </td>
                     <td> 3 <br> (1 ½, 2 ½, 3 ½ months) </td>
-                    <td>
-                      <form action="/action_page.php">
-                        <label for="datetime"> 1st Dose: </label>
-                        <input type="datetime-local" id="dtlocal" name="datetime">
-                      <br>
-                      <label for="datetime"> 2nd Dose: </label>
-                      <input type="datetime-local" id="dtlocal" name="datetime">
-                      <br>
-                      <label for="datetime"> 3rd Dose: </label>
-                      <input type="datetime-local" id="dtlocal" name="datetime">
-                      </form>
-                    </td>
+                    <td><br> -- <br><br> -- <br><br> --</td>
+                    <td><br> -- <br><br> -- <br><br> --</td>
+                    <td><br> -- <br><br> -- <br><br> --</td>
                   </tr>
                   <tr>
                     <td> INACTIVATED POLIO VACCINE </td>
                     <td> 1 <br> (3 ½ months) </td>
-                    <td>
-                      <form action="/action_page.php">
-                        <label for="datetime"> 1st Dose: </label>
-                        <input type="datetime-local" id="dtlocal" name="datetime">
-                      </form>
-                    </td>
+                    <td><br> -- </td>
+                    <td><br> -- </td>
+                    <td><br> -- </td>
                   </tr>
                   <tr>
                     <td> PNEUMOCOCCAL CONJUGATE VACCINE </td>
                     <td> 3 <br> (1 ½, 2 ½, 3 ½ months) </td>
-                    <td>
-                      <form action="/action_page.php">
-                        <label for="datetime"> 1st Dose: </label>
-                        <input type="datetime-local" id="dtlocal" name="datetime">
-                      <br>
-                      <label for="datetime"> 2nd Dose: </label>
-                      <input type="datetime-local" id="dtlocal" name="datetime">
-                      <br>
-                      <label for="datetime"> 3rd Dose: </label>
-                      <input type="datetime-local" id="dtlocal" name="datetime">
-                      </form>
-                    </td>
+                    <td><br> -- <br><br> -- <br><br> --</td>
+                    <td><br> -- <br><br> -- <br><br> --</td>
+                    <td><br> -- <br><br> -- <br><br> --</td>
                   </tr>
                   <tr>
                     <td> MEASLES, MUMPS, RUBELLA (MMR) </td>
                     <td> 2 <br> (9 months, 1 year old) </td>
-                    <td>
-                      <form action="/action_page.php">
-                        <label for="datetime"> 1st Dose: </label>
-                        <input type="datetime-local" id="dtlocal" name="datetime">
-                      <br>
-                      <label for="datetime"> 2nd Dose: </label>
-                      <input type="datetime-local" id="dtlocal" name="datetime">
-                      <br>
-                      </form>
-                    </td>
+                    <td><br> -- <br><br> --</td>
+                    <td><br> -- <br><br> --</td>
+                    <td><br> -- <br><br> --</td>
                   </tr>
                   <tr>
                     <td> OTHERS </td>
+                    <td> -- </td>
+                    <td> -- </td>
                     <td> -- </td>
                     <td> -- </td>
                   </tr>
