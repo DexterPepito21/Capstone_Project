@@ -87,7 +87,7 @@ session_start();
 			<input id="text" type="password" name="password" placeholder="password" required><br><br>
 
 			<!-- edit starts here -->
-			<input id="text" type="text" name="first_name" placeholder="First name" required><br><br>
+			<!-- <input id="text" type="text" name="first_name" placeholder="First name" required><br><br>
 			<input id="text" type="text" name="last_name" placeholder="Last name"><br><br>
 			<input id="text" type="text" name="middle_name" placeholder="Middle name"><br><br>
 			<input id="text" type="text" name="place_of_birth" placeholder="Place of Birth"><br><br>
@@ -98,7 +98,7 @@ session_start();
 			<input id="text" type="text" name="birth_weight" placeholder="Birth weight"><br><br>
 			<input type="radio" name="gender" value="1">male <br>
 			<input type="radio" name="gender" value="2">female <br>
-			<input type="text" name="phone_number" placeholder="Phone number"> <br>
+			<input type="text" name="phone_number" placeholder="Phone number"> <br> -->
 
 			<input id="button" type="submit" value="Signup"><br><br>
 
