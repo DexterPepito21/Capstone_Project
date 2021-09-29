@@ -37,7 +37,6 @@ session_start();
 		{
 			echo "Please enter some valid information!";
 		}
-	}
 ?>
 
 
@@ -49,12 +48,14 @@ session_start();
 <body>
 
 	<style type="text/css">
-	
+	body{
+		background-color: #edf6ff;
+		font-family: 'Poppins' , sans-serif;
+	}
 	#text{
 
 		height: 25px;
-		border-radius: 5px;
-		padding: 4px;
+		padding: 1px;
 		border: solid thin #aaa;
 		width: 100%;
 	}
@@ -63,25 +64,29 @@ session_start();
 
 		padding: 10px;
 		width: 100px;
-		color: white;
+		color: #000000;
 		background-color: lightblue;
 		border: none;
 	}
 
 	#box{
-
-		background-color: grey;
-		margin: auto;
-		width: 300px;
+		background-color: #6daffe;
+		border: 1px solid #ccc;
+		box-shadow: 3px 3px 2px #ddd;
+		margin-top: 2%;
+		width: 25%;
 		padding: 20px;
 	}
-
+	a{
+		text-decoration: none;
+		color: #000000;
+		float: left;
+	}
 	</style>
 
-	<div id="box">
-		
+	<center><div id="box">
 		<form method="post">
-			<div style="font-size: 20px;margin: 10px;color: white;">Signup</div>
+			<div style="font-size: 30px;margin: 10px;color: #000000; text-align: center;">Signup</div>
 
 			<input id="text" type="text" name="user_name" placeholder="username" required><br><br>
 			<input id="text" type="password" name="password" placeholder="password" required><br><br>
@@ -90,20 +95,12 @@ session_start();
 			<!-- <input id="text" type="text" name="first_name" placeholder="First name" required><br><br>
 			<input id="text" type="text" name="last_name" placeholder="Last name"><br><br>
 			<input id="text" type="text" name="middle_name" placeholder="Middle name"><br><br>
-			<input id="text" type="text" name="place_of_birth" placeholder="Place of Birth"><br><br>
 			<input id="text" type="text" name="address" placeholder="address"><br><br>
-			<input id="text" type="text" name="mother_name" placeholder="Mothers name"><br><br>
-			<input id="text" type="text" name="father_name" placeholder="Fathers name"><br><br>
-			<input id="text" type="text" name="birth_height" placeholder="Birth height"><br><br>
-			<input id="text" type="text" name="birth_weight" placeholder="Birth weight"><br><br>
-			<input type="radio" name="gender" value="1">male <br>
-			<input type="radio" name="gender" value="2">female <br>
-			<input type="text" name="phone_number" placeholder="Phone number"> <br> -->
-
+			<input id="text" name="phone_number" placeholder="Phone number"> <br><br>
 			<input id="button" type="submit" value="Signup"><br><br>
 
-			<a href="login.php">Click to Login</a><br><br>
+			<a href="login.php">Already have an account? Login!</a><br>
 		</form>
-	</div>
+	</div></center>
 </body>
 </html>
