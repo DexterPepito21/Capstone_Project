@@ -92,7 +92,7 @@ session_start();
 			<input id="text" type="password" name="password" placeholder="password" required><br><br>
 
 			<!-- edit starts here -->
-			<input id="text" type="text" name="first_name" placeholder="First name" required><br><br>
+			<!-- <input id="text" type="text" name="first_name" placeholder="First name" required><br><br>
 			<input id="text" type="text" name="last_name" placeholder="Last name"><br><br>
 			<input id="text" type="text" name="middle_name" placeholder="Middle name"><br><br>
 			<input id="text" type="text" name="address" placeholder="address"><br><br>
