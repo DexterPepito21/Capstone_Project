@@ -98,9 +98,84 @@ session_start();
 			<input id="text" type="text" name="address" placeholder="address"><br><br>
 			<input id="text" name="phone_number" placeholder="Phone number"> <br><br>
 			<input id="button" type="submit" value="Signup"><br><br>
-
+-->
 			<a href="login.php">Already have an account? Login!</a><br>
 		</form>
 	</div></center>
 </body>
 </html>
+
+<?php
+include ("connection.php");
+if(isset($_POST['submit'])){
+	//edit
+	$first_name = $_POST['first_name'];
+	$last_name = $_POST['last_name'];
+	$middle_name = $_POST['middle_name'];
+	$mother_name = $_POST['mother_name'];
+	$father_name = $_POST['father_name'];
+	$birth_height = $_POST['birth_height'];
+	$birth_weight = $_POST['birth_weight'];
+	$address = $_POST['address'];
+	$place_of_birth = $_POST['place_of_birth'];
+	$gender = $_POST['gender'];
+
+	$sql = "insert into users (user_id,user_name,password,first_name,last_name,middle_name,mother_name,father_name,birth_height,birth_weight,address,place_of_birth,gender) values ('$user_id','$user_name','$password','$first_name','$last_name','$middle_name','$mother_name','$father_name','$birth_height','$birth_weight','$address','$place_of_birth','$gender')";
+	$result = mysqli_query($con, $sql);
+
+	if($result){
+		echo "Data inserted succesfull";
+	}else {
+		die(mysqli_error($con));
+	}
+
+	//table
+	$sql = "select * from login_sample_db";
+	$result = mysqli_query($con,$sql);
+	if($result) {
+		while($row = mysqli_fetch_assoc($result)) {
+			$first_name = $row['first_name'];
+			$last_name = $row['last_name'];
+			$middle_name = $row['middle_name'];
+			$mother_name = $row['mother_name'];
+			$father_name = $row['father_name'];
+			$birth_height = $row['birth_height'];
+			$birth_weight = $row['birth_weight'];
+			$address = $row['address'];
+			$place_of_birth = $row['place_of_birth'];
+			$gender = $row['gender'];
+
+			echo " 
+			<tr> 
+				<td>".$first_name."</td>
+			</tr>";
+
+			<button ><a href="delte.php?deleteid='.$id.'">Delete</a></button>
+		}
+	}
+	//delete.php
+	if(isset($_GET['deleteId'])) {
+		$id = $_GET['deleteId'];
+
+		$sql = "delte from 'users' where id=$id";
+		$result = mysqli_query($con,$sql);
+		if($result) {
+			echo "deleted succesfully";
+			header('location:display.php');
+		}else{
+			die(mysqli_error($con));
+		}
+	}
+	//update.php
+	$id = $_GET['updateId'];
+	$sql = "Select * from 'crud' where id=$id";
+	$result = mysqli_query($con,$sql);
+	$row = mysqli_fetch_assoc($result);
+	$name=$row['name'];
+	<td valea=<?php echo $name?>></td>
+	if() {
+		$sql = "update 'users' set id=$id,name='$id' where id=$id";
+	}
+	
+}
+?>
