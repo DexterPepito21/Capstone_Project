@@ -1,5 +1,6 @@
 <?php 
 include("../php/connection.php");
+
 if(isset($_POST['submit'])){
 	//edit
 	$first_name = $_POST['first_name'];
