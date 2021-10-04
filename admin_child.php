@@ -1,7 +1,7 @@
 <?php 
 
-	include("connection.php");
-	include("functions.php");
+	include("./php/connection.php");
+	include("./php/functions.php");
 
 ?>
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
     <title>Child Profile | Admin</title>
     <link rel= "stylesheet" href = "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.js"></script>
-    <link rel="stylesheet" href="admin_child.css">
+    <link rel="stylesheet" href="./css/admin_child.css">
     <!-- Datatables -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.0/css/dataTables.bootstrap4.min.css">
@@ -66,62 +66,39 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Pepito</td>
-                    <td>Dexter</td>
-                    <td>L.</td>
-                    <td>Male</td>
-                    <td>2011/04/25</td>
-                    <td>Tarlac City</td>
-                    <td>Tarlac City</td>
-                    <td></td>
-                    <td></td>
-                    <td>54</td>
-                    <td>165cm</td>
+            <?php
+                //table
+                $sql = "SELECT * FROM users";
+                $result = mysqli_query($con,$sql);
+                if($result) {
+                    while($row = mysqli_fetch_assoc($result)) {
+            ?>
+
+
+                        
+                        // echo " 
+                        // <tr> 
+                        //     <td>".$first_name."</td>
+                        // </tr>";
+
+                        // <button ><a href="delte.php?deleteid='.$id.'">Delete</a></button>
+                        <tr>
+                    <td><?php echo $row['id']; ?></td>
+                    <td><?php echo $row['last_name']; ?></td>
+                    <td><?php echo $row['first_name']; ?></td>
+                    <td><?php echo $row['middle_name']; ?></td>
+                    <td><?php echo $row['gender']; ?></td>
+                    <td><?php echo $row['date_of_birth']; ?></td>
+                    <td><?php echo $row['place_of_birth']; ?></td>
+                    <td><?php echo $row['address']; ?></td>
+                    <td><?php echo $row['mother_name']; ?></td>
+                    <td><?php echo $row['father_name']; ?></td>
+                    <td><?php echo $row['birth_height']; ?></td>
+                    <td><?php echo $row['birth_weight']; ?></td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Orduña</td>
-                    <td>Nicole Churchil</td>
-                    <td>S.</td>
-                    <td>Female</td>
-                    <td>2011/04/25</td>
-                    <td>Pangasinan</td>
-                    <td>Pangasinan</td>
-                    <td></td>
-                    <td></td>
-                    <td>60</td>
-                    <td>140cm</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Basilio</td>
-                    <td>Camelle Ann</td>
-                    <td>P.</td>
-                    <td>Female</td>
-                    <td>2011/04/25</td>
-                    <td>Pura</td>
-                    <td>Pura</td>
-                    <td></td>
-                    <td></td>
-                    <td>45</td>
-                    <td>159cm</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Perdido</td>
-                    <td>Patricia Anne</td>
-                    <td>P.</td>
-                    <td>Female</td>
-                    <td>2011/04/25</td>
-                    <td>Anao</td>
-                    <td>Anao</td>
-                    <td></td>
-                    <td></td>
-                    <td>50</td>
-                    <td>150cm</td>
-                </tr>
+                <?php } ?>
+            <?php } ?>            
+                
      </tbody>
      </table>
 </div>
