@@ -1,8 +1,6 @@
 <?php
-include("admin/php/connection.php");
-include("admin/php/functions.php");
+include ("./php/connection.php");
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
