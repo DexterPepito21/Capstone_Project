@@ -76,13 +76,13 @@
 
 
                         
-                        // echo " 
+                        <!-- // echo " 
                         // <tr> 
                         //     <td>".$first_name."</td>
                         // </tr>";
 
-                        // <button ><a href="delte.php?deleteid='.$id.'">Delete</a></button>
-                        <tr>
+                        // <button ><a href="delte.php?deleteid='.$id.'">Delete</a></button> -->
+                <tr>
                     <td><?php echo $row['id']; ?></td>
                     <td><?php echo $row['last_name']; ?></td>
                     <td><?php echo $row['first_name']; ?></td>
