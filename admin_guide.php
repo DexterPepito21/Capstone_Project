@@ -1,7 +1,7 @@
 <?php 
 
-	include("connection.php");
-	include("functions.php");
+include("admin/php/connection.php");
+include("admin/php/functions.php");
 
 ?>
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
     <title>Nutrition Guide | Admin</title>
     <link rel= "stylesheet" href = "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.js"></script>
-    <link rel="stylesheet" href="admin_guide.css">
+    <link rel="stylesheet" href="css/admin_guide.css">
     <!-- Datatables -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.0/css/dataTables.bootstrap4.min.css">
@@ -50,8 +50,8 @@
        <table id="example" class="table table-striped table-bordered dt-responsive nowrap" >
            <thead>
                <tr>
-                   <th style="width: 5%;">Vaccine Name</th>
-                   <th style="width: 5%;">Doses <br> (Recommended Age)</th>
+                   <th style="width: 5%;">Healthy Foods</th>
+                   <th style="width: 5%;">Disease to be Prevented</th>
                </tr>
            </thead>
            <tbody>

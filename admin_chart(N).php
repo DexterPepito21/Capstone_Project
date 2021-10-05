@@ -1,5 +1,6 @@
 <?php
-include 'dbcon.php'; //$con = mysqli_connect("localhost", "root", "", "js_sample");
+include("admin/php/connection.php");
+include("admin/php/functions.php");
 ?>
 
 <!DOCTYPE html>

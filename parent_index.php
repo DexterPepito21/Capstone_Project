@@ -1,7 +1,8 @@
 <?php 
 
-	include("connection.php");
-	include("functions.php");
+include("admin/php/connection.php");
+include("admin/php/functions.php");
+
 
 ?>
 <!DOCTYPE html>
@@ -10,7 +11,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="parent_index.css">
+    <link rel="stylesheet" href="css/parent_index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Dashboard | Parent</title>
 </head>
@@ -31,7 +32,7 @@
           <div class="dropdown">
             <button class="dropbtn"><i class="fa fa-caret-down"></i></button>
             <div class="dropdown-content">
-            <a href="#"><i class="fas fa-sign-out-alt" id="icon"></i>Logout</a>
+            <a href="logout.php"><i class="fas fa-sign-out-alt" id="icon"></i>Logout</a>
             </div>
           </div>
         </ul>

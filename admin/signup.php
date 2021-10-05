@@ -1,3 +1,9 @@
+<?php 
+
+	include("php/connection.php");
+	include("php/functions.php");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,7 +13,7 @@
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="login.css" />
+    <link rel="stylesheet" href="signup.css" />
     <title>Sign in & Sign up Form</title>
   </head>
   <body>
@@ -15,19 +21,6 @@
       <div class="forms-container">
         <div class="signin-signup">
           <form action="#" class="sign-in-form">
-            <h2 class="title">Sign in</h2>
-            <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
-            </div>
-            <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
-            </div>
-            <a href="forgotpassword.php">Forgot password?</a>
-            <input type="submit" value="Login" class="btn solid" />
-          </form>
-          <form action="#" class="sign-up-form">
             <h2 class="title">Sign up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
@@ -59,27 +52,41 @@
             </div>
             <input type="submit" class="btn" value="Sign up" />
           </form>
-          <a href="home.html" class="back"><i class="fas fa-arrow-circle-left"></i>Go back</a>
+          
+          <form action="#" class="sign-up-form">
+            <h2 class="title">Sign in</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Username" />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Password" />
+            </div>
+            <a href="forgotpassword.php">Forgot password?</a>
+            <input type="submit" value="Login" class="btn solid" />
+          </form>
+          <a href="home.php" class="back"><i class="fas fa-arrow-circle-left"></i>Go back</a>
         </div>
       </div>
-
+     
       <div class="panels-container">
         <div class="panel left-panel">
           <div class="content">
-            <h3>Don't have an account?</h3>
+            <h3>Already have an account?</h3>
             <br>
             <button class="btn transparent" id="sign-up-btn">
-              Sign up
+              Sign in
             </button>
           </div>
           <img src="b1.png" class="image" alt="" />
         </div>
         <div class="panel right-panel">
           <div class="content">
-            <h3>Already have an account?</h3>
+            <h3>Don't have an account?</h3>
             <br>
             <button class="btn transparent" id="sign-in-btn">
-              Sign in
+              Sign up
             </button>
           </div>
           <img src="b2.png" class="image" alt="" />

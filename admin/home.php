@@ -1,3 +1,9 @@
+<?php 
+
+	include("php/connection.php");
+	include("php/functions.php");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,11 +21,12 @@
             <div class="dropdown">
                 <li><button class="dropbtn"><i class="fas fa-sign-in-alt"></i>Login</button>
                 <div class="dropdown-content">
-                <a href="login.html"><i class="fas fa-sign-in-alt" id="icon"></i>Admin</a>
+                <a href="login.php"><i class="fas fa-sign-in-alt" id="icon"></i>Admin</a>
                 <a href="parent_login.php"><i class="fas fa-sign-in-alt" id="icon"></i>Parent</a>
                 </div>
-              </div></li>
-              <li><a href="signup.html">Sign up</a></li>
+                </li>
+              </div>
+              <li><a href="signup.php">Sign up</a></li>
          </ul>
         </div>
         <div class="text">
@@ -31,5 +38,12 @@
                  <img src="cc.png" class="b3">
         </div>
     </header>
+    <footer>
+        <div class="container">
+    <center>
+        <p>© 2021 Capstone Project | All Rights Reserved </p>
+    </center>
+    </div>
+    </footer>
 </body>
 </html>
