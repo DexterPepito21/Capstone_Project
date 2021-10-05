@@ -1,7 +1,7 @@
 <?php 
 
-	include("connection.php");
-	include("functions.php");
+	include("./php/connection.php");
+	include("./php/functions.php");
 
 ?>
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
     <title>Dashboard | Admin</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.js"></script>
-    <link rel="stylesheet" href="admin_index.css">
+    <link rel="stylesheet" href="./css/admin_index.css">
 </head>
 <body>
         <!-- Navigation Bar -->

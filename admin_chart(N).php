@@ -1,7 +1,6 @@
 <?php
-include 'dbcon.php'; //$con = mysqli_connect("localhost", "root", "", "js_sample");
+include ("./php/connection.php");
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

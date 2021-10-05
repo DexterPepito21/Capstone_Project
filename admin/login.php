@@ -1,3 +1,50 @@
+<?php 
+
+session_start();
+
+	include("../php/connection.php");
+	include("../php/functions.php");
+
+
+	if($_SERVER['REQUEST_METHOD'] == "POST")
+	{
+		//something was posted
+		$user_name = $_POST['user_name'];
+		$password = $_POST['password'];
+
+		if(!empty($user_name) && !empty($password) && !is_numeric($user_name))
+		{
+
+			//read from database
+			$query = "select * from users where user_name = '$user_name' limit 1";
+			$result = mysqli_query($con, $query);
+
+			if($result)
+			{
+				if($result && mysqli_num_rows($result) > 0)
+				{
+
+					$user_data = mysqli_fetch_assoc($result);
+					
+					if($user_data['password'] === $password)
+					{
+
+						$_SESSION['id'] = $user_data['id'];
+						header("Location: ../parent_index.php");
+						die;
+					}
+				}
+			}
+			
+			echo "wrong username or password!";
+		}else
+		{
+			echo "wrong username or password!";
+		}
+	}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,15 +61,15 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="#" class="sign-in-form">
+          <form method="post" class="sign-in-form">
             <h2 class="title">Sign in</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <input type="text" placeholder="Username" name="user_name"/>
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input type="password" placeholder="Password" name="password"/>
             </div>
             <a href="forgotpassword.php">Forgot password?</a>
             <input type="submit" value="Login" class="btn solid" />

@@ -1,8 +1,10 @@
 <?php 
+session_start();
 
-	include("connection.php");
-	include("functions.php");
+include("./php/connection.php");
+include("./php/functions.php");
 
+$user_data = check_login($con);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,12 +15,12 @@
     <title>Vaccine Chart | Parent</title>
     <link rel= "stylesheet" href = "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.js"></script>
-    <link rel="stylesheet" href="parent_chart.css">
+    <link rel="stylesheet" href="./css/parent_chart.css">
     <!-- Datatables -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.0/css/dataTables.bootstrap4.min.css">
 </head>
-<body>
+<body>Hello, <?php echo $user_data['id']; ?>
     <!-- Navigation Bar -->
     <nav>
       <input type="checkbox" id="check">
