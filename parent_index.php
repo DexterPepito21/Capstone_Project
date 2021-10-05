@@ -1,7 +1,10 @@
 <?php 
+session_start();
 
 	include("./php/connection.php");
 	include("./php/functions.php");
+
+	$user_data = check_login($con);
 
 ?>
 <!DOCTYPE html>
@@ -14,7 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Dashboard | Parent</title>
 </head>
-<body>
+<body>Hello, <?php echo $user_data['id']; ?>
     <!-- Navigation Bar -->
     <nav>
         <input type="checkbox" id="check">

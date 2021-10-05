@@ -2,8 +2,8 @@
 
 session_start();
 
-	include("./php/connection.php");
-	include("./php/functions.php");
+	include("../php/connection.php");
+	include("../php/functions.php");
 
 
 	if($_SERVER['REQUEST_METHOD'] == "POST")
@@ -29,8 +29,8 @@ session_start();
 					if($user_data['password'] === $password)
 					{
 
-						$_SESSION['user_id'] = $user_data['user_id'];
-						header("Location: index.php");
+						$_SESSION['id'] = $user_data['id'];
+						header("Location: ../parent_index.php");
 						die;
 					}
 				}
@@ -61,15 +61,15 @@ session_start();
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="#" class="sign-in-form">
+          <form method="post" class="sign-in-form">
             <h2 class="title">Sign in</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <input type="text" placeholder="Username" name="user_name"/>
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input type="password" placeholder="Password" name="password"/>
             </div>
             <a href="forgotpassword.php">Forgot password?</a>
             <input type="submit" value="Login" class="btn solid" />

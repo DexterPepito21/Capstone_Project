@@ -1,8 +1,10 @@
 <?php 
+session_start();
 
-	include("./php/connection.php");
-	include("./php/functions.php");
+include("./php/connection.php");
+include("./php/functions.php");
 
+$user_data = check_login($con);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +21,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.0/css/dataTables.bootstrap4.min.css">
 </head>
 <body>
+Hello, <?php echo $user_data['id']; ?>
     <!-- Navigation Bar -->
     <nav>
         <input type="checkbox" id="check">

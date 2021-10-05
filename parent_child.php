@@ -1,20 +1,10 @@
 <?php 
+session_start();
+
 include("./php/connection.php");
-$id=$_GET['update_id'];
-$sql="SELECT * FROM 'users' where id=$id";
-$result = mysqli_query($con,$sql);
-$$row = mysqli_fetch_assoc($result);
-$last_name = $row['last_name'];
-$first_name = $row['first_name'];
-$middle_name = $row['middle_name'];
-$gender = $row['gender'];
-$date_of_birth = $row['date_of_birth'];
-$place_of_birth = $row['place_of_birth'];
-$address = $row['address'];
-$mother_name = $row['mother_name'];
-$father_name = $row['father_name'];
-$birth_height = $row['birth_height'];
-$birth_weight = $row['birth_weight'];
+include("./php/functions.php");
+
+$user_data = check_login($con);
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +18,7 @@ $birth_weight = $row['birth_weight'];
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.js"></script>
     <link rel="stylesheet" href="./css/parent_child.css">
 </head>
-<body>
+<body>Hello, <?php echo $user_data['id']; ?>
   <!-- Navigation Bar -->
         <nav>
           <input type="checkbox" id="check">
@@ -56,28 +46,28 @@ $birth_weight = $row['birth_weight'];
 <form class="form-inline" action="/action_page.php"  style="border:1px solid #ccc">
   <div class="container">
       <label for="email" class="label">Child's Name:</label>
-      <input type="text" id="email"   name="email" value=<?php echo $row['first_name']; echo $row['middle_name']; echo $row['last_name'];  ?>>
+      <input type="text" id="email"   name="email" value=<?php echo $user_data['first_name']; echo $user_data['middle_name']; echo $user_data['last_name'];  ?>>
   <br>
     <label for="email" class="label">Date of Birth:</label>
-    <input type="text" id="email"   name="email" value=<?php echo $row['date_of_birth']; ?>>
+    <input type="text" id="email"   name="email" value=<?php echo $user_data['date_of_birth']; ?>>
 
     <label for="pwd" class="label">Place of Birth:</label>
-    <input type="text" id="pwd"  name="pswd" value=<?php echo $row['place_of_birth']; ?>>
+    <input type="text" id="pwd"  name="pswd" value=<?php echo $user_data['place_of_birth']; ?>>
   <br>
     <label for="email" class="label">Address:</label>
-    <input type="text" id="email"   name="email" value=<?php echo $row['address']; ?>>
+    <input type="text" id="email"   name="email" value=<?php echo $user_data['address']; ?>>
   <br>
     <label for="email" class="label">Mother's Name:</label>
-    <input type="text" id="email"   name="email" value=<?php echo $row['mother_name']; ?>> 
+    <input type="text" id="email"   name="email" value=<?php echo $user_data['mother_name']; ?>> 
 
     <label for="pwd" class="label">Father's Name:</label>
-    <input type="text" id="pwd"  name="pswd" value=<?php echo $row['father_name']; ?>>
+    <input type="text" id="pwd"  name="pswd" value=<?php echo $user_data['father_name']; ?>>
   <br>
     <label for="email" class="label">Birth Height:</label>
-    <input type="text" id="email"   name="email" value=<?php echo $row['birth_height']; ?>>
+    <input type="text" id="email"   name="email" value=<?php echo $user_data['birth_height']; ?>>
 
     <label for="pwd" class="label"> Birth Weight:</label>
-    <input type="text" id="pwd"  name="pswd" value=<?php echo $row['birth_weight']; ?>>
+    <input type="text" id="pwd"  name="pswd" value=<?php echo $user_data['birth_weight']; ?>>
   <br>
     <label for="email" class="label">Sex:</label>
     <input type="radio" id="email" name="email">Female
