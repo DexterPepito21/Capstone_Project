@@ -18,11 +18,11 @@ if(isset($_POST['submit'])){
   // $place_of_birth = $_POST['place_of_birth'];
 	// $gender = $_POST['gender'];
 
-	$sql = "insert into users (first_name,last_name,middle_name,address,phone_num,user_name,password) values ('$first_name','$last_name','$middle_name','$address','$phone_num','$user_name','$password')";
+	$sql = "INSERT INTO users (first_name,last_name,middle_name,address,phone_num,user_name,password) values ('$first_name','$last_name','$middle_name','$address','$phone_num','$user_name','$password')";
 	$result = mysqli_query($con, $sql);
 
 	if($result){
-		echo "Data inserted succesfull";
+		echo "Data inserted succesfully";
 	}else {
 		die(mysqli_error($con));
 	}
@@ -44,7 +44,7 @@ if(isset($_POST['submit'])){
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="#" class="sign-in-form">
+          <form action="signup.php" class="sign-in-form">
             <h2 class="title">Sign up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
