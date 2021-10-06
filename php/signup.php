@@ -1,34 +1,67 @@
+
 <?php 
-include("../php/connection.php");
+session_start();
 
-if(isset($_POST['submit'])){
-	//edit
-	$first_name = $_POST['first_name'];
-	$last_name = $_POST['last_name'];
-	$middle_name = $_POST['middle_name'];
-	$address = $_POST['address'];
-  $phone_num = $_POST['phone_num'];
-  $user_name = $_POST['user_name'];
-	$password = $_POST['password'];
+	include("connection.php");
+	include("functions.php");
 
-	// $mother_name = $_POST['mother_name'];
-	// $father_name = $_POST['father_name'];
-	// $birth_height = $_POST['birth_height'];
-	// $birth_weight = $_POST['birth_weight'];
-  // $place_of_birth = $_POST['place_of_birth'];
-	// $gender = $_POST['gender'];
 
-	$sql = "INSERT INTO users (first_name,last_name,middle_name,address,phone_num,user_name,password) values ('$first_name','$last_name','$middle_name','$address','$phone_num','$user_name','$password')";
-	$result = mysqli_query($con, $sql);
+	if($_SERVER['REQUEST_METHOD'] == "POST")
+	{
+		//something was posted
+		$first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $middle_name = $_POST['middle_name'];
+    $address = $_POST['address'];
+    $phone_num = $_POST['phone_num'];
+    $user_name = $_POST['user_name'];
+    $password = $_POST['password'];
 
-	if($result){
-		echo "Data inserted succesfully";
-	}else {
-		die(mysqli_error($con));
+		if(!empty($user_name) && !empty($password) && !is_numeric($user_name))
+		{
+
+			//save to database
+			$user_id = random_num(20);
+      $query = "insert into users (user_id,user_name,password) values ('$user_id','$user_name','$password')";
+			// $query = "insert into users (user_id,user_name,password,first_name,last_name,middle_name,address,phone_num) values ('$user_id','$user_name','$password','$first_name','$last_name','$middle_name','$address','$phone_num')";
+
+			mysqli_query($con, $query);
+
+			header("Location: ../home.html");
+			die;
+		}else
+		{
+			echo "Please enter some valid information!";
+		}
 	}
-}
 ?>
-<!DOCTYPE html>
+// include("connection.php");
+
+// if(isset($_POST['submit'])){
+// 	//edit
+	
+
+// 	// $mother_name = $_POST['mother_name'];
+// 	// $father_name = $_POST['father_name'];
+// 	// $birth_height = $_POST['birth_height'];
+// 	// $birth_weight = $_POST['birth_weight'];
+//   // $place_of_birth = $_POST['place_of_birth'];
+// 	// $gender = $_POST['gender'];
+
+// 	$sql = "insert into users (first_name,last_name,middle_name,address,phone_num,user_name,password) values ('$first_name','$last_name','$middle_name','$address','$phone_num','$user_name','$password')";
+// 	$result = mysqli_query($con, $sql);
+
+// 	if($result){
+// 		echo "Data inserted succesfull";
+// 	}else {
+// 		die(mysqli_error($con));
+// 	}
+// }
+
+
+
+
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -44,7 +77,7 @@ if(isset($_POST['submit'])){
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="signup.php" class="sign-in-form">
+          <form action="#" class="sign-in-form">
             <h2 class="title">Sign up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
@@ -90,7 +123,7 @@ if(isset($_POST['submit'])){
             <a href="forgotpassword.php">Forgot password?</a>
             <input type="submit" value="Login" class="btn solid" />
           </form>
-          <a href="home.php" class="back"><i class="fas fa-arrow-circle-left"></i>Go back</a>
+          <a href="home.html" class="back"><i class="fas fa-arrow-circle-left"></i>Go back</a>
         </div>
       </div>
      
@@ -120,4 +153,4 @@ if(isset($_POST['submit'])){
 
     <script src="style.js"></script>
   </body>
-</html>
+</html> -->
