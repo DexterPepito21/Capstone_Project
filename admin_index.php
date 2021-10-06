@@ -1,8 +1,10 @@
 <?php 
+session_start();
 
-	include("./php/connection.php");
-	include("./php/functions.php");
+include("./php/connection.php");
+include("./php/functions.php");
 
+$user_data = check_login($con);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.js"></script>
     <link rel="stylesheet" href="./css/admin_index.css">
 </head>
-<body>
+<body> Hello, <?php echo $user_data['id']; ?>
         <!-- Navigation Bar -->
         <nav>
           <input type="checkbox" id="check">
@@ -33,7 +35,7 @@
             <div class="dropdown">
               <button class="dropbtn"><i class="fa fa-caret-down"></i></button>
               <div class="dropdown-content">
-              <a href="#"><i class="fas fa-sign-out-alt" id="icon"></i>Logout</a>
+              <a href="./php/logout.php"><i class="fas fa-sign-out-alt" id="icon"></i>Logout</a>
               </div>
             </div>
           </ul>

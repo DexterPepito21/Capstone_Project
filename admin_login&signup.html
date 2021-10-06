@@ -1,50 +1,3 @@
-<?php 
-
-session_start();
-
-	include("../php/connection.php");
-	include("../php/functions.php");
-
-
-	if($_SERVER['REQUEST_METHOD'] == "POST")
-	{
-		//something was posted
-		$user_name = $_POST['user_name'];
-		$password = $_POST['password'];
-
-		if(!empty($user_name) && !empty($password) && !is_numeric($user_name))
-		{
-
-			//read from database
-			$query = "select * from users where user_name = '$user_name' limit 1";
-			$result = mysqli_query($con, $query);
-
-			if($result)
-			{
-				if($result && mysqli_num_rows($result) > 0)
-				{
-
-					$user_data = mysqli_fetch_assoc($result);
-					
-					if($user_data['password'] === $password)
-					{
-
-						$_SESSION['id'] = $user_data['id'];
-						header("Location: ../parent_index.php");
-						die;
-					}
-				}
-			}
-			
-			echo "wrong username or password!";
-		}else
-		{
-			echo "wrong username or password!";
-		}
-	}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -54,14 +7,14 @@ session_start();
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="login.css" />
+    <link rel="stylesheet" href="css/login.css" />
     <title>Sign in & Sign up Form</title>
   </head>
   <body>
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form method="post" class="sign-in-form">
+          <form method="post" action="php/admin_login.php" class="sign-in-form">
             <h2 class="title">Sign in</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
@@ -72,39 +25,39 @@ session_start();
               <input type="password" placeholder="Password" name="password"/>
             </div>
             <a href="forgotpassword.php">Forgot password?</a>
-            <input type="submit" value="Login" class="btn solid" />
+            <input type="submit" value="Login" class="btn solid"/>
           </form>
-          <form action="#" class="sign-up-form">
+          <form action="php/signup.php" class="sign-up-form" method="post">
             <h2 class="title">Sign up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="First Name" />
+              <input type="text" placeholder="First Name" name="first_name"/>
             </div>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Last Name" />
+              <input type="text" placeholder="Last Name" name="last_name"/>
             </div>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Middle Name" />
+              <input type="text" placeholder="Middle Name" name="middle_name"/>
             </div>
             <div class="input-field">
               <i class="fas fa-map-marker"></i>
-              <input type="text" placeholder="Address" />
+              <input type="text" placeholder="Address" name="address"/>
             </div>
             <div class="input-field">
               <i class="fas fa-phone"></i>
-              <input type="text" placeholder="Phone Number" />
+              <input type="text" placeholder="Phone Number" name="phone_num"/>
             </div>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <input type="text" placeholder="Username" name="user_name"/>
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input type="password" placeholder="Password" name="password"/>
             </div>
-            <input type="submit" class="btn" value="Sign up" />
+            <input type="submit" class="btn" value="Signup"/>
           </form>
           <a href="home.html" class="back"><i class="fas fa-arrow-circle-left"></i>Go back</a>
         </div>
@@ -119,7 +72,7 @@ session_start();
               Sign up
             </button>
           </div>
-          <img src="b1.png" class="image" alt="" />
+          <img src="admin/b1.png" class="image" alt="" />
         </div>
         <div class="panel right-panel">
           <div class="content">
@@ -129,11 +82,11 @@ session_start();
               Sign in
             </button>
           </div>
-          <img src="b2.png" class="image" alt="" />
+          <img src="admin/b2.png" class="image" alt="" />
         </div>
       </div>
     </div>
 
-    <script src="style.js"></script>
+    <script src="js/login&signup_style.js"></script>
   </body>
 </html>

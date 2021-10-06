@@ -34,7 +34,7 @@ session_start();
           <div class="dropdown">
             <button class="dropbtn"><i class="fa fa-caret-down"></i></button>
             <div class="dropdown-content">
-            <a href="#"><i class="fas fa-sign-out-alt" id="icon"></i>Logout</a>
+            <a href="./php/logout.php"><i class="fas fa-sign-out-alt" id="icon"></i>Logout</a>
             </div>
           </div>
         </ul>
