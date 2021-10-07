@@ -1,8 +1,8 @@
 <?php 
 session_start();
 
-include("./php/connection.php");
-include("./php/functions.php");
+include("php/connection.php");
+include("php/functions.php");
 
 $user_data = check_login($con);
 ?>
@@ -40,7 +40,7 @@ $user_data = check_login($con);
           <div class="dropdown">
             <button class="dropbtn"><i class="fa fa-caret-down"></i></button>
             <div class="dropdown-content">
-            <a href="./php/logout.php"><i class="fas fa-sign-out-alt" id="icon"></i>Logout</a>
+            <a href="php/logout.php"><i class="fas fa-sign-out-alt" id="icon"></i>Logout</a>
             </div>
           </div>
         </ul>

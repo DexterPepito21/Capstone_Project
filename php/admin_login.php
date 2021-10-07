@@ -30,7 +30,7 @@ session_start();
 					{
 
 						$_SESSION['id'] = $user_data['id'];
-						header("Location: ../parent_index.php");
+						header("Location: ../admin_index.php");
 						die;
 					}
 				}
