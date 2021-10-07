@@ -52,8 +52,8 @@ $user_data = check_login($con);
        <table id="example" class="table table-striped table-bordered dt-responsive nowrap" >
            <thead>
                <tr>
-                   <th style="width: 5%;">Vaccine Name</th>
-                   <th style="width: 5%;">Doses <br> (Recommended Age)</th>
+                   <th style="width: 5%;">Healthy Foods</th>
+                   <th style="width: 5%;">Disease to be Prevented</th>
                </tr>
            </thead>
            <tbody>

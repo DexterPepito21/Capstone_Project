@@ -1,3 +1,9 @@
+<?php 
+
+	include("php/connection.php");
+	include("php/functions.php");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,5 +37,12 @@
                  <img src="admin/cc.png" class="b3">
         </div>
     </header>
+    <footer>
+        <div class="container">
+    <center>
+        <p>© 2021 Capstone Project | All Rights Reserved </p>
+    </center>
+    </div>
+    </footer>
 </body>
 </html>

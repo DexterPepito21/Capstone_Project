@@ -47,7 +47,7 @@ $user_data = check_login($con);
       </nav>
 
      <!-- Table -->
-     <div class="container" style="overflow-x: auto;">
+     <div class="container">
          <center><header><i class="fa fa-child"></i>Children's Profile</header></center>
          <div class="row">
              <div class="col">
