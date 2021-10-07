@@ -49,9 +49,9 @@ $user_data = check_login($con);
                 Update
                 </button></td>
                 <td>
-                <form action="controller.php" method="POST">
+                <form action="php/delete.php" method="POST">
                     <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                    <button type="submit" name="deleteResident" class="btn btn-danger">Delete</button>
+                    <button type="submit" name="delete_btn" class="btn btn-danger"><a href="php/delete.php"></a>Delete</button>
                 </form>
                 </td>
             </tr>

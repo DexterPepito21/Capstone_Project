@@ -1,13 +1,17 @@
 <?php
-//delete.php
-if(isset($_GET['deleteId'])) {
-    $id = $_GET['deleteId'];
+session_start();
 
-    $sql = "delte from 'users' where id=$id";
+include("connection.php");
+include("functions.php");
+
+
+if(isset($_POST['delete_btn'])) {
+    $id = $_POST['id'];
+    $sql = "DELETE FROM users WHERE id='$id'";
     $result = mysqli_query($con,$sql);
     if($result) {
         echo "deleted succesfully";
-        header('location:display.php');
+        header('location:admin_chart.php');
     }else{
         die(mysqli_error($con));
     }
