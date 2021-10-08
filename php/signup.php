@@ -27,7 +27,7 @@ session_start();
 
 			mysqli_query($con, $query);
 
-			header("Location: ../home.html");
+			header("Location: ../home.php");
 			die;
 		}else
 		{
