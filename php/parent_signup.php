@@ -2,8 +2,8 @@
 <?php 
 session_start();
 
-	include("connection.php");
-	include("functions.php");
+   include("connection.php");
+   include("parent_functions.php");
 
 
 	if($_SERVER['REQUEST_METHOD'] == "POST")
@@ -22,12 +22,14 @@ session_start();
 
 			//save to database
 			$user_id = random_num(20);
-      $query = "insert into users (user_id,user_name,password) values ('$user_id','$user_name','$password')";
-			// $query = "insert into users (user_id,user_name,password,first_name,last_name,middle_name,address,phone_num) values ('$user_id','$user_name','$password','$first_name','$last_name','$middle_name','$address','$phone_num')";
+      $query = "INSERT INTO parent_tbl (first_name,last_name,middle_name,address,phone_num,user_name,password)
+      values ('$first_name','$last_name','$middle_name','$address','$phone_num','$user_name','$password')";
+			// // $query = "insert into users (user_id,user_name,password,first_name,last_name,middle_name,address,phone_num) 
+      // values ('$user_id','$user_name','$password','$first_name','$last_name','$middle_name','$address','$phone_num')";
 
 			mysqli_query($con, $query);
 
-			header("Location: ../home.php");
+			header("Location: ../parent_login&signup.php");
 			die;
 		}else
 		{
@@ -35,7 +37,7 @@ session_start();
 		}
 	}
 ?>
-// include("connection.php");
+<!-- // include("connection.php");
 
 // if(isset($_POST['submit'])){
 // 	//edit
@@ -56,7 +58,7 @@ session_start();
 // 	}else {
 // 		die(mysqli_error($con));
 // 	}
-// }
+// } -->
 
 
 
