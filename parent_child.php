@@ -43,7 +43,7 @@ $user_data = check_login($con);
 <!-- Forms -->
 <h2><i class="fa fa-child"></i>Profile</h2>
 <!--Step 1:Adding HTML-->
-<form class="form-inline" action="/action_page.php"  style="border:1px solid #ccc">
+<form class="form-inline" action="php/update.php"  style="border:1px solid #ccc">
   <div class="container">
       <label for="email" class="label">Child's Name:</label>
       <input type="text" id="email"   name="email" value=<?php echo $user_data['first_name']; echo $user_data['middle_name']; echo $user_data['last_name'];  ?>>

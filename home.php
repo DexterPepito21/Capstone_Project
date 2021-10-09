@@ -21,7 +21,7 @@
             <div class="dropdown">
                 <li><button class="dropbtn"><i class="fas fa-sign-in-alt"></i>Login</button>
                 <div class="dropdown-content">
-                <a href="admin_login&signup.html"><i class="fas fa-sign-in-alt" id="icon"></i>Admin</a>
+                <a href="admin_login&signup.php"><i class="fas fa-sign-in-alt" id="icon"></i>Admin</a>
                 <a href="parent_login&signup.html"><i class="fas fa-sign-in-alt" id="icon"></i>Parent</a>
                 </div>
               </div></li>

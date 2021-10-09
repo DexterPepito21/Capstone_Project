@@ -26,7 +26,7 @@ $user_data = check_login($con);
                 <th>Fullname</th>
                 <th>Username</th>
                 <th>Password</th>
-                <th>Email</th>
+                <!-- <th>Email</th> -->
                 <th>Update</th>
                 <th>Delete</th>
             </tr>
@@ -41,7 +41,7 @@ $user_data = check_login($con);
             ?>
             <tr>
                 <td><?php echo $row['id']; ?></td>
-                <td><?php echo $row['email']; ?></td>
+                <!-- <td><?php echo $row['email']; ?></td> -->
                 <td><?php echo $row['user_id']; ?></td>
                 <td><?php echo $row['user_name']; ?></td>
                 <td><?php echo $row['password']; ?></td>
@@ -79,7 +79,7 @@ $user_data = check_login($con);
       <div class="modal-body">
       
     <form action="controller.php" method="POST">
-      <!-- Table -->
+      <!-- Table -->Hello, <?php echo $user_data['id']; ?>
          <div class="row">
              <div class="col">
         <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
@@ -99,12 +99,12 @@ $user_data = check_login($con);
                     <td>
                       <form action="/action_page.php">
                       <label for="datetime"> 1st Dose: </label>
-                      <input type="datetime-local" id="dtlocal" name="datetime">
+                      <input type="datetime-local" id="dtlocal" name="bcg_1st">
                       </form>
                     </td>
                     <td>
                       <br>
-                      <input type="text" id="vname">
+                      <input type="text" id="vname" name="bcg_vaccinator_name">
                     </td>
                     <td>
                       <br>
@@ -117,11 +117,11 @@ $user_data = check_login($con);
                     <td>
                       <form action="/action_page.php">
                       <label for="datetime"> 1st Dose: </label>
-                      <input type="datetime-local" id="dtlocal" name="datetime">
+                      <input type="datetime-local" id="dtlocal" name="hepatitis">
                       </form>
                       <td>
                         <br>
-                      <input type="text" id="vname">
+                      <input type="text" id="vname" name="hepatitis_vaccinator_name">
                     </td>
                     <td>
                       <br>

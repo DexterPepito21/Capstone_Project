@@ -78,7 +78,7 @@ $user_data = check_login($con);
 </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="admin_sms.js"></script>
+<script src="js/admin_sms.js"></script>
 <div name="on" class="toggle" id="status" onclick="toggleMenu()"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.js"></script>
