@@ -32,6 +32,7 @@
             <div class="input-field">
               <i class="fas fa-user"></i>
               <input type="text" placeholder="First Name" name="first_name"/>
+              <p style="color:red;">errors</p>
             </div>
             <div class="input-field">
               <i class="fas fa-user"></i>

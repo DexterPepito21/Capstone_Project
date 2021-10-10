@@ -22,7 +22,9 @@ session_start();
 
 			//save to database
 			$user_id = random_num(20);
-      $query = "insert into users (user_id,user_name,password,address) values ('$user_id','$user_name','$password','$address')";
+      $query = "insert into users (user_id,user_name,password,first_name,last_name) 
+      values ('$user_id','$user_name','$password','$first_name','$last_name')";
+      
 			// $query = "insert into users (user_id,user_name,password,first_name,last_name,middle_name,address,phone_num) values ('$user_id','$user_name','$password','$first_name','$last_name','$middle_name','$address','$phone_num')";
 
 			mysqli_query($con, $query);

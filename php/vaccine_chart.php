@@ -4,6 +4,7 @@ session_start();
 
 include("connection.php");
 include("functions.php");
+$user_data = check_login($con);
 $id = $user_data['id'];
 
 if(isset($_POST['submit'])){
@@ -11,7 +12,7 @@ if(isset($_POST['submit'])){
     $bcg_vaccinator_name = $_POST['bcg_vaccinator_name'];
     $bcg_health_center = $_POST['bcg_health_center'];
 
-	$sql_bcg = "update 'bcg' set id=$id, bcg_1st='$bcg_1st', bcg_vaccinator_name='$bcg_vaccinator_name',bcg_health_center='$bcg_health_center', where id=$id";
+	$sql_bcg = "update bcg set id=$id, bcg_1st='$bcg_1st', bcg_vaccinator_name='$bcg_vaccinator_name',bcg_health_center='$bcg_health_center', where id=$id";
 	$result1 = mysqli_query($con, $sql_bcg);
 
 

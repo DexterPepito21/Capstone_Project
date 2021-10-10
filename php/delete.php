@@ -11,7 +11,7 @@ if(isset($_POST['delete_btn'])) {
     $result = mysqli_query($con,$sql);
     if($result) {
         echo "deleted succesfully";
-        header('location:admin_chart.php');
+        header('location:../admin_chart.php');
     }else{
         die(mysqli_error($con));
     }
