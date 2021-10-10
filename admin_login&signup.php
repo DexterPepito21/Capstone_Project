@@ -11,6 +11,7 @@
     <title>Sign in & Sign up Form</title>
     <style>
       .style{
+        width: 70%;
 				color: #000000;
 				border-bottom: 2px solid #8f1b1c;
         background: #fadadb;
@@ -57,9 +58,11 @@
           </form>
           <form action="php/admin_signup.php" class="sign-up-form" method="post">
             <h2 class="title">Sign up</h2>
+            <!-- INSERT CODE HERE FOR ERROR -->
+            <p style="color:red;"><?php echo 'hellooo';?></p>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="First Name" name="first_name"/>
+              <input type="text" placeholder="First Name" name="first_name" required/>
             </div>
             <div class="input-field">
               <i class="fas fa-user"></i>
