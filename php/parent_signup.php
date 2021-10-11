@@ -2,8 +2,8 @@
 <?php 
 session_start();
 
-	include("connection.php");
-	include("functions.php");
+   include("connection.php");
+   include("parent_functions.php");
 
 
 	if($_SERVER['REQUEST_METHOD'] == "POST")
@@ -22,23 +22,43 @@ session_start();
 
 			//save to database
 			$user_id = random_num(20);
-      $query = "insert into users (user_id,user_name,password,first_name,last_name) 
-      values ('$user_id','$user_name','$password','$first_name','$last_name')";
-      
-			// $query = "insert into users (user_id,user_name,password,first_name,last_name,middle_name,address,phone_num) values ('$user_id','$user_name','$password','$first_name','$last_name','$middle_name','$address','$phone_num')";
+      $query = "INSERT INTO parent_tbl (first_name,last_name,middle_name,address,phone_num,user_name,password)
+      values ('$first_name','$last_name','$middle_name','$address','$phone_num','$user_name','$password')";
+			// // $query = "insert into users (user_id,user_name,password,first_name,last_name,middle_name,address,phone_num) 
+      // values ('$user_id','$user_name','$password','$first_name','$last_name','$middle_name','$address','$phone_num')";
 
 			mysqli_query($con, $query);
 
-			header("Location: ../home.php");
+			header("Location: ../parent_login&signup.php");
 			die;
 		}else
 		{
 			echo "Please enter some valid information!";
 		}
-	  }
+	}
 ?>
+<!-- // include("connection.php");
 
+// if(isset($_POST['submit'])){
+// 	//edit
+	
 
+// 	// $mother_name = $_POST['mother_name'];
+// 	// $father_name = $_POST['father_name'];
+// 	// $birth_height = $_POST['birth_height'];
+// 	// $birth_weight = $_POST['birth_weight'];
+//   // $place_of_birth = $_POST['place_of_birth'];
+// 	// $gender = $_POST['gender'];
+
+// 	$sql = "insert into users (first_name,last_name,middle_name,address,phone_num,user_name,password) values ('$first_name','$last_name','$middle_name','$address','$phone_num','$user_name','$password')";
+// 	$result = mysqli_query($con, $sql);
+
+// 	if($result){
+// 		echo "Data inserted succesfull";
+// 	}else {
+// 		die(mysqli_error($con));
+// 	}
+// } -->
 
 
 

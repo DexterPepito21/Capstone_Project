@@ -1,7 +1,7 @@
 <?php 
 
-	include("php/connection.php");
-	include("php/functions.php");
+include("php/connection.php");
+include("php/parent_functions.php");
 
 ?>
 <!DOCTYPE html>
@@ -25,7 +25,6 @@
                 <a href="parent_login&signup.php"><i class="fas fa-sign-in-alt" id="icon"></i>Parent</a>
                 </div>
               </div></li>
-              <li><a href="php/signup.php">Sign up</a></li>
          </ul>
         </div>
         <div class="text">

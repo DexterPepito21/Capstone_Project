@@ -2,7 +2,7 @@
 session_start();
 
 include("php/connection.php");
-include("php/functions.php");
+include("php/admin_functions.php");
 
 $user_data = check_login($con);
 ?>
@@ -17,7 +17,7 @@ $user_data = check_login($con);
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.js"></script>
     <link rel="stylesheet" href="./css/admin_index.css">
 </head>
-<body> Hello, <?php echo $user_data['id']; ?>
+<body> Hello, <?php echo $user_data['first_name']; ?>
         <!-- Navigation Bar -->
         <nav>
           <input type="checkbox" id="check">
