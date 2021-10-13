@@ -210,6 +210,9 @@
   </div>
   </div>
   </div></center>
+  <div class="clearfix">
+    <button type="submit" class="signupbtn" name="submit">Update</button>
+</div>
         </form>
 </body>
 </html>

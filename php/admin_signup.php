@@ -22,7 +22,7 @@ session_start();
 
 			//save to database
 			$user_id = random_num(20);
-      $query = "INSERT INTO admin_tbl (first_name,last_name,middle_name,address,phone_num,user_name,password)
+      $query = "INSERT INTO users (first_name,last_name,middle_name,address,phone_num,user_name,password)
       values ('$first_name','$last_name','$middle_name','$address','$phone_num','$user_name','$password')";
 			// // $query = "insert into users (user_id,user_name,password,first_name,last_name,middle_name,address,phone_num) 
       // values ('$user_id','$user_name','$password','$first_name','$last_name','$middle_name','$address','$phone_num')";

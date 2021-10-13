@@ -12,7 +12,9 @@ if(isset($_POST['submit'])){
     $bcg_vaccinator_name = $_POST['bcg_vaccinator_name'];
     $bcg_health_center = $_POST['bcg_health_center'];
 
-	$sql_bcg = "update bcg set id=$id, bcg_1st='$bcg_1st', bcg_vaccinator_name='$bcg_vaccinator_name',bcg_health_center='$bcg_health_center', where id=$id";
+	$sql = "INSERT INTO users (id,bcg_1st,bcg_vaccinator_name,bcg_health_center)
+	values ('$id','$bcg_1st','$bcg_vaccinator_name','$bcg_health_center') 
+	ON DUPLICATE KEY UPDATE bcg_1st='$bcg_1st', bcg_vaccinator_name='$bcg_vaccinator_name',bcg_health_center='$bcg_health_center'";
 	$result1 = mysqli_query($con, $sql_bcg);
 
 

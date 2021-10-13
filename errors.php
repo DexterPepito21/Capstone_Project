@@ -32,10 +32,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
       $errors['fn'] = "Username Requires";
     }
     if (empty($first_name)) {
-      $errors['fn'] = "Username Requires";
-
-
-      
+      $errors['fn'] = "Username Requires";      
     }
 }
 

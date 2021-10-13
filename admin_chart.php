@@ -78,7 +78,6 @@ $user_data = check_login($con);
       </div>
       <div class="modal-body">
       
-<<<<<<< HEAD
     <form action="controller.php" method="POST">
       <!-- Table -->Hello, <?php echo $user_data['id']; ?>
          <div class="row">
@@ -282,12 +281,6 @@ $user_data = check_login($con);
 </div>
 </div></center>
       </form>
-=======
-   
-      <!-- removed table -->
-
-
->>>>>>> upstream/main
       <div class="modal-footer">
         <input type="hidden" value="<?php echo $row['id']; ?>" name="id">
         <button type="submit" name="updateResident" class="btn btn-secondary">Save Changes</button>

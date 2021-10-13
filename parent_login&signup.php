@@ -22,28 +22,10 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form method="post" class="sign-in-form">
+
+        
+          <form  method="post" action="php/parent_login.php"  class="sign-in-form">
             <h2 class="title">Sign in</h2>
-            <?php
-	include("php/connection.php");
-    if(!empty($_POST['login']))
-    {
-      $user_name=$_POST['user_name'];
-      $password=$_POST['password'];
-      $query="SELECT * FROM parent_tbl WHERE user_name='$user_name' AND password='$password'";
-      $result=mysqli_query($con,$query);
-      $count=mysqli_num_rows($result);
-      if($count>0)
-      {
-        echo "Login Successful!";
-        header("Location: ./admin_index.php");
-      }
-      else
-      {
-        echo "<p class='style'>Wrong username or password!";
-      }
-    }
-?>
             <div class="input-field">
               <i class="fas fa-user"></i>
               <input type="text" placeholder="Username" name="user_name"/>
@@ -54,6 +36,8 @@
             </div>
             <a href="forgotpassword.php">Forgot password?</a>
             <input type="submit" name="login" value="Login" class="btn solid" />
+           
+
           </form>
           <form action="php/parent_signup.php" class="sign-up-form" method="post">
             <h2 class="title">Sign up</h2>

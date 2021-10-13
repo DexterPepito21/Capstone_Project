@@ -5,6 +5,14 @@ include("php/connection.php");
 include("php/functions.php");
 
 $user_data = check_login($con);
+
+$id = $user_data['id'];
+		$query = "SELECT * FROM bcg where id = '$id' limit 1";
+
+		$result = mysqli_query($con,$query);
+		
+			$bcg_data = mysqli_fetch_assoc($result);
+			
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,9 +70,9 @@ $user_data = check_login($con);
                   <tr>
                     <td> BCG </td>
                     <td> 1 <br>(Birth) </td>
-                    <td><br> --</td>
-                    <td><br> -- </td>
-                    <td><br> -- </td>
+                    <td><br> <p style="color:red;"><?php echo $bcg_data['date_of_vaccination'];   ?></td>
+                    <td><br> <p style="color:red;"><?php echo $bcg_data['bcg_vaccinator_name'];   ?></td>
+                    <td><br> <p style="color:red;"><?php echo $bcg_data['bcg_health_center'];   ?></td>
                   </tr>
                   <tr>
                     <td> HEPATITIS B </td>

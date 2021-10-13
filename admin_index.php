@@ -2,9 +2,18 @@
 session_start();
 
 include("php/connection.php");
-include("php/admin_functions.php");
+include("php/functions.php");
 
 $user_data = check_login($con);
+
+$id = $user_data['id'];
+$sql = "SELECT * FROM users";
+$result=mysqli_query($con,$sql);
+$rowcount=mysqli_num_rows($result);
+$sql2 = "SELECT first_name FROM users where first_name='dex'";
+$result2=mysqli_query($con,$sql2);
+$rowcount2=mysqli_num_rows($result2);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,8 +71,8 @@ $user_data = check_login($con);
             <tbody>
               <tr>
                 <td data-label="Types of Vaccine">BCG</td>
-                <td data-label="No. of Children">50</td>
-                <td data-label="No. of Vaccinated">45</td>
+                <td data-label="No. of Children"><?php echo $rowcount  ?></td>
+                <td data-label="No. of Vaccinated"><?php echo $rowcount2  ?></td>
               </tr>
               <tr>
                 <td scope="row" data-label="Types of Vaccine">HEPATITIS B</td>

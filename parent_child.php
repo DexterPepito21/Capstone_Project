@@ -8,10 +8,7 @@ include("php/functions.php");
 $user_data = check_login($con);
 
 $id = $user_data['id'];
-$user_id = $user_data['user_id'];
-$user_name = $user_data['user_name'];
-$password = $user_data['password'];
-
+$user_id_foreign = $user_data['user_id'];
 if(isset($_POST['submit'])){
 
   $first_name = $_POST['first_name'];
@@ -26,16 +23,28 @@ if(isset($_POST['submit'])){
   $gender = $_POST['gender'];
   $date_of_birth = $_POST['date_of_birth'];
 
-  // $query = "insert into users (user_id,user_name,password,first_name,last_name,last_name,middle_name,mother_name,father_name,birth_height,birth_weight,address,place_of_birth,gender) values ('$user_id','$user_name','$password','$first_name','$last_name','$middle_name','$mother_name','$father_name','$birth_height','$birth_weight','$address','$place_of_birth',$gender)";
+  $date_of_vaccination = $_POST['date_of_vaccination'];
+  $bcg_vaccinator_name =$_POST['bcg_vaccinator_name'];
+  $bcg_health_center = $_POST['bcg_health_center'];
 
-	$sql = "UPDATE users SET first_name='$first_name', last_name='$last_name', middle_name='$middle_name', mother_name='$mother_name',father_name='$father_name', birth_height='$birth_height', birth_weight='$birth_weight', address='$address', place_of_birth='$place_of_birth', gender='$gender', date_of_birth='$date_of_birth' where id=$id";
-	$result = mysqli_query($con, $sql);
+	$sql_bcg = "INSERT INTO bcg (id,date_of_vaccination, bcg_vaccinator_name, bcg_health_center)
+	values ('$id','$date_of_vaccination','$bcg_vaccinator_name','$bcg_health_center') 
+	ON DUPLICATE KEY UPDATE date_of_vaccination='$date_of_vaccination', bcg_vaccinator_name='$bcg_vaccinator_name', bcg_health_center='$bcg_health_center'";
+	$result1 = mysqli_query($con, $sql_bcg);
 
-	if($result){
+  $sql = "INSERT INTO users (id,first_name,last_name,middle_name,address,mother_name,father_name,birth_height,birth_weight,place_of_birth,gender,date_of_birth)
+  values ('$id','$first_name','$last_name','$middle_name','$address','$mother_name','$father_name','$birth_height','$birth_weight','$place_of_birth','$gender','$date_of_birth') 
+  ON DUPLICATE KEY UPDATE first_name='$first_name', last_name='$last_name', middle_name='$middle_name', mother_name='$mother_name',father_name='$father_name', birth_height='$birth_height', birth_weight='$birth_weight', address='$address', place_of_birth='$place_of_birth', gender='$gender', date_of_birth='$date_of_birth'";
+
+  $result = mysqli_query($con, $sql);
+
+	if($result1){
 		echo "alert('data updated')";
 	}else {
 		die(mysqli_error($con));
 	}
+
+
 }
 ?>
 
@@ -77,13 +86,19 @@ if(isset($_POST['submit'])){
 <!--Step 1:Adding HTML-->
 <form class="form-inline" action="#" method="post"  style="border:1px solid #ccc">
   <div class="container">
-      <label for="email" class="label">Child's Name:</label>
-      <input type="text" id="email"   name="first_name" value=<?php echo $user_data['first_name'];   ?>>
-      <input type="text" id="email"   name="middle_name" value=<?php echo $user_data['middle_name']; ?>>
+      <label for="email" class="label">Child's Name:</label><br>
+      <input type="datetime-local" id="dtlocal" name="date_of_vaccination"><br>
+      <input type="text" id="vname" name="bcg_vaccinator_name"><br>
+      <input type="text" id="place" name="bcg_health_center"><br>
+      <label for="email" class="label">First Name:</label>
+      <input type="text" id="email"   name="first_name" value=<?php echo $user_data['first_name'];   ?>><br>
+      <label for="email" class="label">Middle Name:</label>
+      <input type="text" id="email"   name="middle_name" value=<?php echo $user_data['middle_name']; ?>><br>
+      <label for="email" class="label">Last Name:</label>
       <input type="text" id="email"   name="last_name" value=<?php echo $user_data['last_name']; ?>>
   <br>
     <label for="email" class="label">Date of Birth:</label>
-    <input type="text" id="email"   name="date_of_birth" value=<?php echo $user_data['date_of_birth']; ?>>
+    <input type="text" id="email"   name="date_of_birth" value=<?php echo $user_data['date_of_birth']; ?>><br>
 
     <label for="pwd" class="label">Place of Birth:</label>
     <input type="text" id="pwd"  name="place_of_birth" value=<?php echo $user_data['place_of_birth']; ?>>
@@ -92,13 +107,13 @@ if(isset($_POST['submit'])){
     <input type="text" id="email"   name="address" value=<?php echo $user_data['address']; ?>>
   <br>
     <label for="email" class="label">Mother's Name:</label>
-    <input type="text" id="email"   name="mother_name" value=<?php echo $user_data['mother_name']; ?>> 
+    <input type="text" id="email"   name="mother_name" value=<?php echo $user_data['mother_name']; ?>> <br>
 
     <label for="pwd" class="label">Father's Name:</label>
     <input type="text" id="pwd"  name="father_name" value=<?php echo $user_data['father_name']; ?>>
   <br>
     <label for="email" class="label">Birth Height:</label>
-    <input type="text" id="email"   name="birth_height" value=<?php echo $user_data['birth_height']; ?>>
+    <input type="text" id="email"   name="birth_height" value=<?php echo $user_data['birth_height']; ?>><br>
 
     <label for="pwd" class="label"> Birth Weight:</label>
     <input type="text" id="pwd"  name="birth_weight" value=<?php echo $user_data['birth_weight']; ?>>

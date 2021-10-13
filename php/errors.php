@@ -40,4 +40,4 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 }
 
 ?>
- <p style="color:red;"><?php if(issset($errors['fn'])) echo $errors['fn'];?></p>
+ 
