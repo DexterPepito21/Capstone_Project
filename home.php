@@ -21,8 +21,8 @@ include("php/parent_functions.php");
             <div class="dropdown">
                 <li><button class="dropbtn"><i class="fas fa-sign-in-alt"></i>Login</button>
                 <div class="dropdown-content">
-                <a href="admin_login&signup.php"><i class="fas fa-sign-in-alt" id="icon"></i>Admin</a>
-                <a href="parent_login&signup.php"><i class="fas fa-sign-in-alt" id="icon"></i>Parent</a>
+                <a href="login.php"><i class="fas fa-sign-in-alt" id="icon"></i>login</a>
+                <a href="signup.php"><i class="fas fa-sign-in-alt" id="icon"></i>signup</a>
                 </div>
               </div></li>
          </ul>

@@ -1,10 +1,5 @@
 <?php 
-session_start();
-
 include("php/connection.php");
-include("php/functions.php");
-
-$user_data = check_login($con);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,21 +7,161 @@ $user_data = check_login($con);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vaccine Chart</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.3.1/jszip-2.5.0/dt-1.10.22/b-1.6.5/b-colvis-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/datatables.min.css"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+   
 </head>
 <body>
-    <hr>
+  <!-- Navigation Bar -->
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+          <i class="fas fa-bars"></i>
+        </label>
+        <label class="logo">Child Care System</label>
+        <ul>
+          <li><a href="admin_index.php"><i class="fas fa-home" id="icon"></i>Dashboard</a></li>
+          <li><a href="admin_child.php" class="active"><i class="fas fa-child"  id="icon"></i>Child Profile</a></li>
+          <li><a href="admin_chart.php"><i class="fa fa-chart-bar"  id="icon"></i>Vaccine Chart</a></li>
+          <li><a href="admin_guide.php"><i class="fas fa-book"  id="icon"></i>Nutrition Guide</a></li>
+          <li><a href="admin_sms.php"><i class="fas fa-comment"  id="icon"></i>SMS Notification</a></li>
+        
+          <div class="dropdown">
+            <button class="dropbtn"><i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-content">
+            <a href="php/logout.php"><i class="fas fa-sign-out-alt" id="icon"></i>Logout</a>
+            </div>
+          </div>
+        </ul>
+      </nav>
     <div class="container">
-    <hr>
-    <table id="example" class="display nowrap" style="width:100%">
+    <!-- Add user Modal -->
+    <div class="modal fade" id="addUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <form action="php/adduser.php" class="sign-up-form" method="post">
+       
+            <h2 class="title">Sign up</h2>
+            <!-- INSERT CODE HERE FOR ERROR -->
+            
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="First Name" name="first_name"/>
+            </div>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Last Name" name="last_name"/>
+            </div>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Middle Name" name="middle_name"/>
+            </div>
+            <div class="input-field">
+              <i class="fas fa-map-marker"></i>
+              <input type="text" placeholder="Address" name="address"/>
+            </div>
+            <div class="input-field">
+              <i class="fas fa-phone"></i>
+              <input type="text" placeholder="Phone Number" name="phone_num"/>
+            </div>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Username" name="user_name"/>
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Password" name="password"/>
+            </div>
+            <div class="modal-footer">
+            <button type="submit" name="insertdata" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+            </form>
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="edituser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <form action="php/updateuser.php" class="sign-up-form" method="post">
+       
+            <h2 class="title">Sign up</h2>
+            <!-- INSERT CODE HERE FOR ERROR -->
+            <input type="hidden" name="id" id="id">
+            <input type="hidden" name="user_id" id="user_id">
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="First Name" name="first_name"  id="first_name"/>
+            </div>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Last Name" name="last_name" id="last_name"/>
+            </div>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Middle Name" name="middle_name" id="middle_name"/>
+            </div>
+            <div class="input-field">
+              <i class="fas fa-map-marker"></i>
+              <input type="text" placeholder="Address" name="address"/>
+            </div>
+            <div class="input-field">
+              <i class="fas fa-phone"></i>
+              <input type="text" placeholder="Phone Number" name="phone_num"/>
+            </div>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Username" name="user_name" id="user_name"/>
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Password" name="password" id="password"/>
+            </div>
+            <div class="modal-footer">
+            <button type="submit" name="update" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+            </form>
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="container">
+       <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUser">
+      Add new User
+    </button>
+    <table id="example" class="table table-dark" style="width:100%">
         <thead>
             <tr>
                 <th>User ID</th>
                 <th>Fullname</th>
                 <th>Username</th>
                 <th>Password</th>
-                <!-- <th>Email</th> -->
+                <th>first_name</th>
+                <th>last_name</th>
+                <th>middle_name</th>
                 <th>Update</th>
                 <th>Delete</th>
             </tr>
@@ -41,11 +176,13 @@ $user_data = check_login($con);
             ?>
             <tr>
                 <td><?php echo $row['id']; ?></td>
-                <!-- <td><?php echo $row['email']; ?></td> -->
                 <td><?php echo $row['user_id']; ?></td>
                 <td><?php echo $row['user_name']; ?></td>
                 <td><?php echo $row['password']; ?></td>
-                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter<?php echo $row['id']; ?>Unique">
+                <td><?php echo $row['first_name']; ?></td>
+                <td><?php echo $row['last_name']; ?></td>
+                <td><?php echo $row['middle_name']; ?></td>
+                <td><button type="button" class="btn btn-primary editbtn">
                 Update
                 </button></td>
                 <td>
@@ -95,7 +232,7 @@ $user_data = check_login($con);
             <tbody>
                   <tr>
                     <td> BCG </td>
-                    <td> 1 <br>(Birth) </td>
+                    <td> 1 <br>(Birth) </td>
                     <td>
                       <form action="/action_page.php">
                       <label for="datetime"> 1st Dose: </label>
@@ -113,7 +250,7 @@ $user_data = check_login($con);
                   </tr>
                   <tr>
                     <td> HEPATITIS B </td>
-                    <td> 1 <br>(Birth) </td>
+                    <td> 1 <br>(Birth) </td>
                     <td>
                       <form action="/action_page.php">
                       <label for="datetime"> 1st Dose: </label>
@@ -291,20 +428,33 @@ $user_data = check_login($con);
             <?php } ?>
 <!-- Modal -->
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/jszip-2.5.0/dt-1.10.22/b-1.6.5/b-colvis-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/datatables.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script text="text/javascript">
-$(document).ready(function() {
-    $('#example').DataTable( {
-        dom: 'Blfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    } );
-} );
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+$(document).ready(function(){
+  $('.editbtn').on('click', function(){
+
+      $('#edituser').modal('show');
+      
+        $tr = $(this).closest('tr');
+        var data = $tr.children('td').map(function(){
+          return $(this).text();
+        }).get();
+
+        console.log(data);
+
+        $('#id').val(data[0]);
+        $('#user_id').val(data[1]);
+        $('#user_name').val(data[2]);
+        $('#password').val(data[3]);
+        $('#first_name').val(data[4]);
+        $('#last_name').val(data[5]);
+        $('#middle_name').val(data[6]);
+        
+        
+  });
+});
 </script>
 
 </body>

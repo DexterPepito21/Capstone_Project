@@ -6,7 +6,6 @@ include("php/functions.php");
 
 $user_data = check_login($con);
 
-$id = $user_data['id'];
 $sql = "SELECT * FROM users";
 $result=mysqli_query($con,$sql);
 $rowcount=mysqli_num_rows($result);
@@ -26,7 +25,7 @@ $rowcount2=mysqli_num_rows($result2);
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.js"></script>
     <link rel="stylesheet" href="./css/admin_index.css">
 </head>
-<body> Hello, <?php echo $user_data['first_name']; ?>
+<body>
         <!-- Navigation Bar -->
         <nav>
           <input type="checkbox" id="check">

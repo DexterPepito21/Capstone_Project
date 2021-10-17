@@ -87,9 +87,7 @@ if(isset($_POST['submit'])){
 <form class="form-inline" action="#" method="post"  style="border:1px solid #ccc">
   <div class="container">
       <label for="email" class="label">Child's Name:</label><br>
-      <input type="datetime-local" id="dtlocal" name="date_of_vaccination"><br>
-      <input type="text" id="vname" name="bcg_vaccinator_name"><br>
-      <input type="text" id="place" name="bcg_health_center"><br>
+      
       <label for="email" class="label">First Name:</label>
       <input type="text" id="email"   name="first_name" value=<?php echo $user_data['first_name'];   ?>><br>
       <label for="email" class="label">Middle Name:</label>
