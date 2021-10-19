@@ -6,39 +6,33 @@ include("php/connection.php");
 include("php/functions.php");
 
 $user_data = check_login($con);
+$child_data = child($con);
 
-$id = $user_data['id'];
-$user_id_foreign = $user_data['user_id'];
+$parent_id = $user_data['parent_id'];
+
+
 if(isset($_POST['submit'])){
-
-  $first_name = $_POST['first_name'];
-  $last_name = $_POST['last_name'];
-  $middle_name = $_POST['middle_name'];
+  $child_id = $child_data['child_id'];
+  $firstname = $_POST['firstname'];
+  $lastname = $_POST['lastname'];
+  $middlename = $_POST['middlename'];
+  $dateofbirth = $_POST['dateofbirth'];
+  $placeofbirth = $_POST['placeofbirth'];
   $address = $_POST['address'];
-  $mother_name = $_POST['mother_name'];
-  $father_name = $_POST['father_name'];
-  $birth_height = $_POST['birth_height'];
-  $birth_weight = $_POST['birth_weight'];
-  $place_of_birth = $_POST['place_of_birth'];
-  $gender = $_POST['gender'];
-  $date_of_birth = $_POST['date_of_birth'];
+  $fathername = $_POST['fathername'];
+  $mothername = $_POST['mothername'];
+  $birthheight = $_POST['birthheight'];
+  $birthweight = $_POST['birthweight'];
+  $sex = $_POST['sex'];
 
-  $date_of_vaccination = $_POST['date_of_vaccination'];
-  $bcg_vaccinator_name =$_POST['bcg_vaccinator_name'];
-  $bcg_health_center = $_POST['bcg_health_center'];
-
-	$sql_bcg = "INSERT INTO bcg (id,date_of_vaccination, bcg_vaccinator_name, bcg_health_center)
-	values ('$id','$date_of_vaccination','$bcg_vaccinator_name','$bcg_health_center') 
-	ON DUPLICATE KEY UPDATE date_of_vaccination='$date_of_vaccination', bcg_vaccinator_name='$bcg_vaccinator_name', bcg_health_center='$bcg_health_center'";
-	$result1 = mysqli_query($con, $sql_bcg);
-
-  $sql = "INSERT INTO users (id,first_name,last_name,middle_name,address,mother_name,father_name,birth_height,birth_weight,place_of_birth,gender,date_of_birth)
-  values ('$id','$first_name','$last_name','$middle_name','$address','$mother_name','$father_name','$birth_height','$birth_weight','$place_of_birth','$gender','$date_of_birth') 
-  ON DUPLICATE KEY UPDATE first_name='$first_name', last_name='$last_name', middle_name='$middle_name', mother_name='$mother_name',father_name='$father_name', birth_height='$birth_height', birth_weight='$birth_weight', address='$address', place_of_birth='$place_of_birth', gender='$gender', date_of_birth='$date_of_birth'";
+  $sql = "INSERT INTO child_tbl (child_id,parent_id,firstname,lastname,middlename,dateofbirth,placeofbirth,address,fathername,mothername,birthheight,birthweight,sex)
+  values ('$child_id','$parent_id','$firstname','$lastname','$middlename','$dateofbirth','$placeofbirth','$address','$fathername','$mothername','$birthheight','$birthweight','$sex') 
+  ON DUPLICATE KEY UPDATE firstname='$firstname', lastname='$lastname', middlename='$middlename', dateofbirth='$dateofbirth', placeofbirth='$placeofbirth', address='$address',fathername='$fathername', mothername='$mothername', birthheight='$birthheight', birthweight='$birthweight', sex='$sex'";
 
   $result = mysqli_query($con, $sql);
 
-	if($result1){
+	if($result){
+    $_SESSION['child_id'] = $child_data['child_id'];
 		echo "alert('data updated')";
 	}else {
 		die(mysqli_error($con));
@@ -59,7 +53,9 @@ if(isset($_POST['submit'])){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.js"></script>
     <link rel="stylesheet" href="./css/parent_child.css">
 </head>
-<body>Hello, <?php echo $user_data['id']; ?>
+<body>parent id, <?php echo $user_data['parent_id']; ?>
+Hello, <?php echo $child_data['child_id']; ?>
+
   <!-- Navigation Bar -->
         <nav>
           <input type="checkbox" id="check">
@@ -89,35 +85,35 @@ if(isset($_POST['submit'])){
       <label for="email" class="label">Child's Name:</label><br>
       
       <label for="email" class="label">First Name:</label>
-      <input type="text" id="email"   name="first_name" value=<?php echo $user_data['first_name'];   ?>><br>
+      <input type="text" id="email"   name="firstname" value=<?php if(isset($child_data['firstname'])) echo $child_data['firstname']; ?>><br>
       <label for="email" class="label">Middle Name:</label>
-      <input type="text" id="email"   name="middle_name" value=<?php echo $user_data['middle_name']; ?>><br>
+      <input type="text" id="email"   name="middlename" value=<?php if(isset($child_data['middlename'])) echo $child_data['middlename']; ?>><br>
       <label for="email" class="label">Last Name:</label>
-      <input type="text" id="email"   name="last_name" value=<?php echo $user_data['last_name']; ?>>
+      <input type="text" id="email"   name="lastname" value=<?php if(isset($child_data['lastname'])) echo $child_data['lastname']; ?>>
   <br>
     <label for="email" class="label">Date of Birth:</label>
-    <input type="text" id="email"   name="date_of_birth" value=<?php echo $user_data['date_of_birth']; ?>><br>
+    <input type="text" id="email"   name="dateofbirth" value=<?php if(isset($child_data['dateofbirth'])) echo $child_data['dateofbirth']; ?>><br>
 
     <label for="pwd" class="label">Place of Birth:</label>
-    <input type="text" id="pwd"  name="place_of_birth" value=<?php echo $user_data['place_of_birth']; ?>>
+    <input type="text" id="pwd"  name="placeofbirth" value=<?php if(isset($child_data['placeofbirth'])) echo $child_data['placeofbirth']; ?>>
   <br>
     <label for="email" class="label">Address:</label>
-    <input type="text" id="email"   name="address" value=<?php echo $user_data['address']; ?>>
+    <input type="text" id="email"   name="address" value=<?php if(isset($child_data['address'])) echo $child_data['address']; ?>>
   <br>
     <label for="email" class="label">Mother's Name:</label>
-    <input type="text" id="email"   name="mother_name" value=<?php echo $user_data['mother_name']; ?>> <br>
+    <input type="text" id="email"   name="mothername" value=<?php if(isset($child_data['mothername'])) echo $child_data['mothername']; ?>> <br>
 
     <label for="pwd" class="label">Father's Name:</label>
-    <input type="text" id="pwd"  name="father_name" value=<?php echo $user_data['father_name']; ?>>
+    <input type="text" id="pwd"  name="fathername" value=<?php if(isset($child_data['fathername'])) echo $child_data['fathername']; ?>>
   <br>
     <label for="email" class="label">Birth Height:</label>
-    <input type="text" id="email"   name="birth_height" value=<?php echo $user_data['birth_height']; ?>><br>
+    <input type="text" id="email"   name="birthheight" value=<?php if(isset($child_data['birthheight'])) echo $child_data['birthheight']; ?>><br>
 
     <label for="pwd" class="label"> Birth Weight:</label>
-    <input type="text" id="pwd"  name="birth_weight" value=<?php echo $user_data['birth_weight']; ?>>
+    <input type="text" id="pwd"  name="birthweight" value=<?php if(isset($child_data['birthweight'])) echo $child_data['birthweight']; ?>>
   <br>
     <label for="email" class="label">Sex:</label>
-    <select name="gender" id="gender">
+    <select name="sex" id="sex">
     <option value="male">male</option>
     <option value="female">female</option>
     </select>

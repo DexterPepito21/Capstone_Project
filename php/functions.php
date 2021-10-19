@@ -4,11 +4,11 @@ include("connection.php");
 function check_login($con)
 {
 
-	if(isset($_SESSION['id']))
+	if(isset($_SESSION['parent_id']))
 	{
 
-		$id = $_SESSION['id'];
-		$query = "SELECT * FROM users where id = '$id' limit 1";
+		$parent_id = $_SESSION['parent_id'];
+		$query = "SELECT * FROM parent_tbl where parent_id = '$parent_id' limit 1";
 
 		$result = mysqli_query($con,$query);
 		if($result && mysqli_num_rows($result) > 0)
@@ -18,10 +18,31 @@ function check_login($con)
 			return $user_data;
 		}
 	}
+	
+	
 
 	//redirect to login
 	// header("Location: ../admin_login&signup.php");
 	// die;
+
+}
+function child($con)
+{
+
+	if(isset($_SESSION['parent_id']))
+	{
+
+		$parent_id = $_SESSION['parent_id'];
+		$query = "SELECT * FROM child_tbl where parent_id = '$parent_id' limit 1";
+
+		$result = mysqli_query($con,$query);
+		if($result && mysqli_num_rows($result) > 0)
+		{
+
+			$child_data = mysqli_fetch_assoc($result);
+			return $child_data;
+		}
+	}
 
 }
 

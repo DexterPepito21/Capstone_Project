@@ -1,7 +1,7 @@
 <?php 
 
 include("php/connection.php");
-include("php/parent_functions.php");
+include("php/functions.php");
 
 ?>
 <!DOCTYPE html>

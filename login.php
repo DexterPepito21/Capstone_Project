@@ -4,19 +4,19 @@ include("php/connection.php");
 include("php/functions.php");
 if($_SERVER['REQUEST_METHOD'] == "POST") {
 
-    $user_name = $_POST['user_name'];
+    $username = $_POST['username'];
     $password = $_POST['password'];
    
-    $user_nameErr = "SELECT user_name FROM users WHERE user_name='$user_name'";
-    $user_nameErrResult = mysqli_query($con,$user_nameErr);
+    $usernameErr = "SELECT username FROM users WHERE username='$username'";
+    $usernameErrResult = mysqli_query($con,$usernameErr);
 
-    $passwordErr = "SELECT user_name FROM users WHERE password='$password'";
-    $passwordErrResult = mysqli_query($con,$user_nameErr);
+    $passwordErr = "SELECT username FROM users WHERE password='$password'";
+    $passwordErrResult = mysqli_query($con,$usernameErr);
 
 
     $errors = array();
 
-    if (empty($user_name)) {
+    if (empty($username)) {
         $errors['u'] = 'no username';
     }
     
@@ -25,7 +25,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     }
     
     if(count($errors)==0){
-      $query = "SELECT * FROM users where user_name = '$user_name' limit 1";
+      $query = "SELECT * FROM parent_tbl where username = '$username' limit 1";
 			$result = mysqli_query($con, $query);
 
 			if($result)
@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 					if($user_data['password'] === $password)
 					{
             
-						$_SESSION['id'] = $user_data['id'];
+						$_SESSION['parent_id'] = $user_data['parent_id'];
 						header("Location: parent_index.php");
 						die;
 					}
@@ -87,7 +87,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     <!-- Login Form -->
     <form action="#"  method="POST">
       <p style="color:red;"><?php if(isset($errors['up'])) echo $errors['up']; ?><br>
-      <i class="fas fa-user"></i><input type="text" id="login" class="fadeIn second" name="user_name" placeholder="Username"/>
+      <i class="fas fa-user"></i><input type="text" id="login" class="fadeIn second" name="username" placeholder="Username"/>
       <p style="color:red;">  <?php if(isset($errors['u'])) echo $errors['u']; ?><br>
       <i class="fas fa-lock"></i><input type="password" id="password" class="fadeIn third" name="password" placeholder="Password"/>
       <p style="color:red;"><?php if(isset($errors['p'])) echo $errors['p']; ?><br>

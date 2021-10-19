@@ -6,7 +6,7 @@ include("php/functions.php");
 
 $user_data = check_login($con);
 
-$id = $user_data['id'];
+$id = $user_data['parent_id'];
 		$query = "SELECT * FROM bcg where id = '$id' limit 1";
 
 		$result = mysqli_query($con,$query);
@@ -14,6 +14,7 @@ $id = $user_data['id'];
 			$bcg_data = mysqli_fetch_assoc($result);
 			
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,6 +29,8 @@ $id = $user_data['id'];
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.0/css/dataTables.bootstrap4.min.css">
 </head>
+
+
 <body>Hello, <?php echo $user_data['id']; ?>
     <!-- Navigation Bar -->
     <nav>

@@ -11,6 +11,7 @@ include("php/connection.php");
    
 </head>
 <body>
+
   <!-- Navigation Bar -->
     <nav>
         <input type="checkbox" id="check">
@@ -88,8 +89,8 @@ include("php/connection.php");
         </div>
       </div>
     </div>
-
-
+    
+  
     <div class="modal fade" id="edituser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -109,6 +110,19 @@ include("php/connection.php");
               <i class="fas fa-user"></i>
               <input type="text" placeholder="First Name" name="first_name"  id="first_name"/>
             </div>
+            <div> <!-- Dropdown -->
+            <select name="user_name">
+        <?php 
+        $query = "SELECT user_name FROM users";
+        $result = mysqli_query($con,$query);
+        while($rows=mysqli_fetch_assoc($result)){
+          $get_data = $rows['user_name'];
+          echo "<option value='$get_data'>$get_data</option>";
+        } 
+        ?>
+
+        </select>	
+                    </div>
             <div class="input-field">
               <i class="fas fa-user"></i>
               <input type="text" placeholder="Last Name" name="last_name" id="last_name"/>
