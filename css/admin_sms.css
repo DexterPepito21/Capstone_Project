@@ -181,7 +181,7 @@
     cursor: pointer;
 }
 
-.content .sms-notification{
+.container{
     width: 400px;
     height: 400px;
     background-color: #edf6ff;
