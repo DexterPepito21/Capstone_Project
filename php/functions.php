@@ -46,22 +46,20 @@ function child($con)
 
 }
 
-function random_num($length)
+function healthcenter($con)
 {
 
-	$text = "";
-	if($length < 5)
-	{
-		$length = 5;
-	}
+	
+	
+		$query = "SELECT * FROM healthcenter_tbl";
 
-	$len = rand(4,$length);
+		$result = mysqli_query($con,$query);
+		if($result && mysqli_num_rows($result) > 0)
+		{
 
-	for ($i=0; $i < $len; $i++) { 
-		# code...
+			$hcdata = mysqli_fetch_assoc($result);
+			return $hcdata;
+		}
+	
 
-		$text .= rand(0,9);
-	}
-
-	return $text;
 }
