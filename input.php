@@ -6,17 +6,29 @@ include("php/functions.php");
 
 if(isset($_POST['submit'])){
 
-	$vaccinatorname = $_POST['vaccinatorname'];
-
   $healthcenter = $_POST['healthcenter'];
+  $vaccinename = $_POST['vaccinename'];
+  $doses = $_POST['doses'];
 
-  $query = "INSERT INTO healthcare_info (vaccinatorname)
-  values ('$vaccinatorname')";
-  mysqli_query($con, $query);
+  
   
   $query1 = "INSERT INTO healthcenter_tbl (healthcenter)
   values ('$healthcenter')";
   mysqli_query($con, $query1);
+
+  $query2 = "INSERT INTO vaccine (vaccinename,doses)
+  values ('$vaccinename','$doses')";
+  mysqli_query($con, $query2);
+  $child_id = 1;
+  $bcgvaccine_id = 1;
+    $bcg1st = $_POST['bcg1st'];
+    $bcgvaccinatorname = $_POST['bcgvaccinatorname'];
+    $bcghealthcenter = $_POST['bcghealthcenter'];
+
+	$sqlbcg = "INSERT INTO chart (child_id,vaccine_id,healthcare_id,dateofvaccination,healthcenter_id)
+	values ('$child_id','$bcgvaccine_id','$bcgvaccinatorname','$bcg1st','$bcghealthcenter') 
+	ON DUPLICATE KEY UPDATE  healthcare_id='$bcgvaccinatorname', dateofvaccination='$bcg1st',healthcenter_id='$bcghealthcenter'";
+	$result1 = mysqli_query($con, $sqlbcg);
 }
 
 ?>
@@ -31,33 +43,49 @@ if(isset($_POST['submit'])){
 <body>
 
 <form action="#"  method="POST">
-  <i class="fas fa-user"></i><input type="text"  name="vaccinatorname" placeholder="vaccinatorname"/>
-  <i class="fas fa-lock"></i><input type="text"  name="healthcenter" placeholder="healthcenter"/>
-  <input type="submit" name="submit" value="Log In">
-    </form>
+ 
+  
+                      <label for="datetime"> 1st Dose: </label>
+                      <input type="datetime-local" id="dtlocal" name="bcg1st"><br>
+                   
+                      
+                    <label for="datetime">vaccinatorname </label><br>
+                    
+                    
+                    <label for="datetime">health center </label><br>
+                    <div> <!-- Dropdown -->
+                      <select name="bcghealthcenter">
+                      <?php  
+                      $query = "SELECT * FROM healthcenter_tbl";
+                      $result = mysqli_query($con,$query);                    
+                      while($rows=mysqli_fetch_assoc($result)){
+                        $healthcenter_id = $rows['healthcenter_id'];
+                        $healthcenter = $rows['healthcenter'];
+                        echo "<option value='$healthcenter_id'>$healthcenter_id</option>";
+                      } 
+                      ?>
+                      </select>	
 
-  <select name="bcgvaccinatorname">
-    <?php 
-    $query = "SELECT * FROM healthcare_info";
-    $result = mysqli_query($con,$query);
-    while( $rows=mysqli_fetch_assoc($result)){
-      $healthcare_id = $rows['healthcare_id'];
-      $vaccinatorname = $rows['vaccinatorname'];
-      echo "<option value='$healthcare_id'>$vaccinatorname</option>";
-    } 
-    ?>
+                      <select name="bcgvaccinatorname">
+                      <?php 
+                      $query = "SELECT * FROM healthcare_info";
+                      $result = mysqli_query($con,$query);
+                      while( $rows=mysqli_fetch_assoc($result)){
+                        $healthcare_id = $rows['healthcare_id'];
+                        $vaccinatorname = $rows['vaccinatorname'];
+                        echo "<option value='$healthcare_id'>$healthcare_id</option>";
+                      } 
+                      ?>
+                    </select>	
+                      <input type="submit" name="submit" value="Log In">
+</form>
+
   </select>	
-  <select name="bcghealthcenter_id">
-    <?php  
-    $query = "SELECT * FROM healthcenter_tbl";
-    $result = mysqli_query($con,$query);                    
-    while($rows=mysqli_fetch_assoc($result)){
-      $healthcenter_id = $rows['healthcenter_id'];
-      $healthcenter = $rows['healthcenter'];
-      echo "<option value='$healthcenter_id'>$healthcenter</option>";
-    } 
-    ?>
-  </select>	
+  <i class="fas fa-user"></i><input type="text"  name="wew" placeholder="wew"/>
+  <i class="fas fa-user"></i><input type="text"  name="healthcenter" placeholder="healthcenter"/>
+  <i class="fas fa-lock"></i><input type="text"  name="healthcenter" placeholder="healthcenter"/>
+  <i class="fas fa-lock"></i><input type="text"  name="vaccinename" placeholder="vaccinename"/>
+  <i class="fas fa-lock"></i><input type="text"  name="doses" placeholder="doses"/>
   
 </body>
 </html>

@@ -15,6 +15,9 @@ $result1 = mysqli_query($con,$query1);
 </head>
 <body>
 
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addchart">
+    Add new User
+  </button>
   <!-- Navigation Bar -->
     <nav>
         <input type="checkbox" id="check">
@@ -152,14 +155,8 @@ $result1 = mysqli_query($con,$query1);
     </table>
 </div>
 
-<?php 
-            $sql = "SELECT * FROM child_tbl";
-            $stmt = $con->prepare($sql);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            while($row = $result->fetch_assoc()){
-            ?>
-<div class="modal fade" id="vaccinechart" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+<div class="modal fade" id="addchart" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -170,7 +167,7 @@ $result1 = mysqli_query($con,$query1);
       </div>
       <div class="modal-body">
       
-    <form action="controller.php" method="POST">
+    <form action="php/vaccine_chart.php" method="POST">
       <div class="row">
         <div class="col">
           <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
@@ -188,10 +185,10 @@ $result1 = mysqli_query($con,$query1);
                     <td> BCG </td>
                     <td> 1 <br>(Birth) </td>
                     <td>
-                      <form action="/action_page.php">
+                      
                       <label for="datetime"> 1st Dose: </label>
-                      <input type="datetime-local" id="dtlocal" name="bcg_1st">
-                      </form>
+                      <input type="datetime-local" id="dtlocal" name="bcg1st">
+                      
                     </td>
                     <td>
                     <select name="bcgvaccinatorname">
@@ -208,7 +205,7 @@ $result1 = mysqli_query($con,$query1);
                     </td>
                     <td>
                     <div> <!-- Dropdown -->
-                      <select name="bcghealthcenter_id">
+                      <select name="bcghealthcenter">
                       <?php  
                       $query = "SELECT * FROM healthcenter_tbl";
                       $result = mysqli_query($con,$query);                    
@@ -225,12 +222,12 @@ $result1 = mysqli_query($con,$query1);
                     <td> HEPATITIS B </td>
                     <td> 1 <br>(Birth) </td>
                     <td>
-                      <form action="/action_page.php">
+                      
                       <label for="datetime"> 1st Dose: </label>
-                      <input type="datetime-local" id="dtlocal" name="hepatitis">
-                      </form>
+                      <input type="datetime-local" id="dtlocal" name="hepatitis1st">
+                      
                     <td>
-                    <select name="vaccinatorname">
+                    <select name="hepatitisvaccinatorname">
                       <?php 
                       $query = "SELECT * FROM healthcare_info";
                       $result = mysqli_query($con,$query);
@@ -243,7 +240,7 @@ $result1 = mysqli_query($con,$query1);
                     </select>	
                     </td>
                     <td>
-                    <select name="bcghealthcenter_id">
+                    <select name="hepatitishealthcenter">
                       <?php  
                       $query = "SELECT * FROM healthcenter_tbl";
                       $result = mysqli_query($con,$query);                    
@@ -261,19 +258,19 @@ $result1 = mysqli_query($con,$query1);
                     <td> PENTAVALENT VACCINE </td>
                     <td> 3 <br> (1 ½, 2 ½, 3 ½ months) </td>
                     <td>
-                      <form action="/action_page.php">
+                      
                       <label for="datetime"> 1st Dose: </label>
-                      <input type="datetime-local" id="dtlocal" name="datetime">
+                      <input type="datetime-local" id="dtlocal" name="pentavalent1st1st">
                       <br>
                       <label for="datetime"> 2nd Dose: </label>
-                      <input type="datetime-local" id="dtlocal" name="datetime">
+                      <input type="datetime-local" id="dtlocal" name="pentavalent1st2nd">
                       <br>
                       <label for="datetime"> 3rd Dose: </label>
-                      <input type="datetime-local" id="dtlocal" name="datetime">
-                      </form>
+                      <input type="datetime-local" id="dtlocal" name="pentavalent1st3rd">
+                      
                     </td>
                     <td>
-                    <select name="vaccinatorname">
+                    <select name="pentavalentvaccinatorname1st">
                       <?php 
                       $query = "SELECT * FROM healthcare_info";
                       $result = mysqli_query($con,$query);
@@ -285,7 +282,7 @@ $result1 = mysqli_query($con,$query1);
                       ?>
                     </select>	
                     <br><br>
-                    <select name="vaccinatorname">
+                    <select name="pentavalentvaccinatorname2nd">
                       <?php 
                       $query = "SELECT * FROM healthcare_info";
                       $result = mysqli_query($con,$query);
@@ -297,7 +294,7 @@ $result1 = mysqli_query($con,$query1);
                       ?>
                     </select>	
                     <br><br>
-                    <select name="vaccinatorname">
+                    <select name="pentavalentvaccinatorname3rd">
                       <?php 
                       $query = "SELECT * FROM healthcare_info";
                       $result = mysqli_query($con,$query);
@@ -310,7 +307,7 @@ $result1 = mysqli_query($con,$query1);
                     </select>	
                     </td>
                     <td>
-                    <select name="healthcenter_id">
+                    <select name="pentavalenthealthcenter1st">
                       <?php    
                       $query = "SELECT * FROM healthcenter_tbl";
                       $result = mysqli_query($con,$query);                  
@@ -322,7 +319,7 @@ $result1 = mysqli_query($con,$query1);
                       ?>
                       </select>	
                       <br><br>
-                      <select name="healthcenter_id">
+                      <select name="pentavalenthealthcenter2nd">
                       <?php    
                       $query = "SELECT * FROM healthcenter_tbl";
                       $result = mysqli_query($con,$query);                  
@@ -334,7 +331,7 @@ $result1 = mysqli_query($con,$query1);
                       ?>
                       </select>	
                       <br><br>
-                      <select name="healthcenter_id">
+                      <select name="pentavalenthealthcenter3rd">
                       <?php    
                       $query = "SELECT * FROM healthcenter_tbl";
                       $result = mysqli_query($con,$query);                  
@@ -351,20 +348,20 @@ $result1 = mysqli_query($con,$query1);
                     <td> ORAL POLIO VACCINE (OPV) </td>
                     <td> 3 <br> (1 ½, 2 ½, 3 ½ months) </td>
                     <td>
-                      <form action="/action_page.php">
+                     
                       <label for="datetime"> 1st Dose: </label>
-                      <input type="datetime-local" id="dtlocal" name="datetime">
+                      <input type="datetime-local" id="dtlocal" name="opv1st">
                       <br>
                       <label for="datetime"> 2nd Dose: </label>
-                      <input type="datetime-local" id="dtlocal" name="datetime">
+                      <input type="datetime-local" id="dtlocal" name="opv2nd">
                       <br>
                       <label for="datetime"> 3rd Dose: </label>
-                      <input type="datetime-local" id="dtlocal" name="datetime">
-                      </form>
+                      <input type="datetime-local" id="dtlocal" name="opv3rd">
+                    
                     </td>
                     <td>
                       <br><br>
-                      <select name="vaccinatorname">
+                      <select name="opvvaccinatorname1st">
                       <?php 
                       $query = "SELECT * FROM healthcare_info";
                       $result = mysqli_query($con,$query);
@@ -376,7 +373,7 @@ $result1 = mysqli_query($con,$query1);
                       ?>
                     </select>
                       <br><br>
-                      <select name="vaccinatorname">
+                      <select name="opvvaccinatorname2nd">
                       <?php 
                       $query = "SELECT * FROM healthcare_info";
                       $result = mysqli_query($con,$query);
@@ -388,7 +385,7 @@ $result1 = mysqli_query($con,$query1);
                       ?>
                     </select>
                       <br><br>
-                      <select name="vaccinatorname">
+                      <select name="opvvaccinatorname3rd">
                       <?php 
                       $query = "SELECT * FROM healthcare_info";
                       $result = mysqli_query($con,$query);
@@ -402,7 +399,7 @@ $result1 = mysqli_query($con,$query1);
                     </td>
                     <td>
                       <br><br>
-                      <select name="healthcenter_id">
+                      <select name="opvhealthcenter1st">
                       <?php    
                       $query = "SELECT * FROM healthcenter_tbl";
                       $result = mysqli_query($con,$query);                  
@@ -414,7 +411,7 @@ $result1 = mysqli_query($con,$query1);
                       ?>
                       </select>	
                       <br><br>
-                      <select name="healthcenter_id">
+                      <select name="opvhealthcenter2nd">
                       <?php    
                       $query = "SELECT * FROM healthcenter_tbl";
                       $result = mysqli_query($con,$query);                  
@@ -426,7 +423,7 @@ $result1 = mysqli_query($con,$query1);
                       ?>
                       </select>	
                       <br><br>
-                      <select name="healthcenter_id">
+                      <select name="opvhealthcenter3rd">
                       <?php    
                       $query = "SELECT * FROM healthcenter_tbl";
                       $result = mysqli_query($con,$query);                  
@@ -443,14 +440,14 @@ $result1 = mysqli_query($con,$query1);
                     <td> INACTIVATED POLIO VACCINE </td>
                     <td> 1 <br> (3 ½ months) </td>
                     <td>
-                      <form action="/action_page.php">
+                   
                       <label for="datetime"> 1st Dose: </label>
-                      <input type="datetime-local" id="dtlocal" name="datetime">
-                      </form>
+                      <input type="datetime-local" id="dtlocal" name="inactivepolio1st">
+                  
                     </td><br>
                     <td>
                       <br>
-                      <select name="vaccinatorname">
+                      <select name="inactivepoliovaccinatorname">
                       <?php 
                       $query = "SELECT * FROM healthcare_info";
                       $result = mysqli_query($con,$query);
@@ -464,7 +461,7 @@ $result1 = mysqli_query($con,$query1);
                     </td>
                     <td>
                       <br>
-                      <select name="healthcenter_id">
+                      <select name="inactivepoliohealthcenter">
                       <?php    
                       $query = "SELECT * FROM healthcenter_tbl";
                       $result = mysqli_query($con,$query);                  
@@ -481,20 +478,20 @@ $result1 = mysqli_query($con,$query1);
                     <td> PNEUMOCOCCAL CONJUGATE VACCINE </td>
                     <td> 3 <br> (1 ½, 2 ½, 3 ½ months) </td>
                     <td>
-                      <form action="/action_page.php">
+                    
                       <label for="datetime"> 1st Dose: </label>
-                      <input type="datetime-local" id="dtlocal" name="datetime">
+                      <input type="datetime-local" id="dtlocal" name="pneumococcal1st">
                       <br>
                       <label for="datetime"> 2nd Dose: </label>
-                      <input type="datetime-local" id="dtlocal" name="datetime">
+                      <input type="datetime-local" id="dtlocal" name="pneumococcal2nd">
                       <br>
                       <label for="datetime"> 3rd Dose: </label>
-                      <input type="datetime-local" id="dtlocal" name="datetime">
-                      </form>
+                      <input type="datetime-local" id="dtlocal" name="pneumococcal3rd">
+                    
                     </td>
                     <td>
                       <br><br>
-                      <select name="vaccinatorname">
+                      <select name="pneumococcalvaccinatorname1st">
                       <?php 
                       $query = "SELECT * FROM healthcare_info";
                       $result = mysqli_query($con,$query);
@@ -506,7 +503,7 @@ $result1 = mysqli_query($con,$query1);
                       ?>
                     </select>
                       <br><br>
-                      <select name="vaccinatorname">
+                      <select name="pneumococcalvaccinatorname2nd">
                       <?php 
                       $query = "SELECT * FROM healthcare_info";
                       $result = mysqli_query($con,$query);
@@ -518,7 +515,7 @@ $result1 = mysqli_query($con,$query1);
                       ?>
                     </select>
                       <br><br>
-                      <select name="vaccinatorname">
+                      <select name="pneumococcalvaccinatorname3rd">
                       <?php 
                       $query = "SELECT * FROM healthcare_info";
                       $result = mysqli_query($con,$query);
@@ -532,7 +529,7 @@ $result1 = mysqli_query($con,$query1);
                     </td>
                     <td>
                       <br><br>
-                      <select name="healthcenter_id">
+                      <select name="pneumococcalhealthcenter1st">
                       <?php    
                       $query = "SELECT * FROM healthcenter_tbl";
                       $result = mysqli_query($con,$query);                  
@@ -544,7 +541,7 @@ $result1 = mysqli_query($con,$query1);
                       ?>
                       </select>	
                       <br><br>
-                      <select name="healthcenter_id">
+                      <select name="pneumococcalhealthcenter2nd">
                       <?php    
                       $query = "SELECT * FROM healthcenter_tbl";
                       $result = mysqli_query($con,$query);                  
@@ -556,7 +553,7 @@ $result1 = mysqli_query($con,$query1);
                       ?>
                       </select>	
                       <br><br>
-                      <select name="healthcenter_id">
+                      <select name="pneumococcalhealthcenter3rd">
                       <?php    
                       $query = "SELECT * FROM healthcenter_tbl";
                       $result = mysqli_query($con,$query);                  
@@ -573,17 +570,17 @@ $result1 = mysqli_query($con,$query1);
                     <td> MEASLES, MUMPS, RUBELLA (MMR) </td>
                     <td> 2 <br> (9 months, 1 year old) </td>
                     <td>
-                      <form action="/action_page.php">
+                    
                       <label for="datetime"> 1st Dose: </label>
-                      <input type="datetime-local" id="dtlocal" name="datetime">
+                      <input type="datetime-local" id="dtlocal" name="mmr1st">
                       <br>
                       <label for="datetime"> 2nd Dose: </label>
-                      <input type="datetime-local" id="dtlocal" name="datetime">
-                      </form>
+                      <input type="datetime-local" id="dtlocal" name="mmr2nd">
+                   
                     </td>
                     <td>
                     <br><br>
-                    <select name="vaccinatorname">
+                    <select name="mmrvaccinatorname1st">
                       <?php 
                       $query = "SELECT * FROM healthcare_info";
                       $result = mysqli_query($con,$query);
@@ -595,7 +592,7 @@ $result1 = mysqli_query($con,$query1);
                       ?>
                     </select>
                       <br><br>
-                      <select name="vaccinatorname">
+                      <select name="mmrvaccinatorname2nd">
                       <?php 
                       $query = "SELECT * FROM healthcare_info";
                       $result = mysqli_query($con,$query);
@@ -609,7 +606,7 @@ $result1 = mysqli_query($con,$query1);
                     </td>
                     <td>
                     <br><br>
-                    <select name="healthcenter_id">
+                    <select name="mmrhealthcenter1st">
                       <?php    
                       $query = "SELECT * FROM healthcenter_tbl";
                       $result = mysqli_query($con,$query);                  
@@ -621,7 +618,7 @@ $result1 = mysqli_query($con,$query1);
                       ?>
                       </select>	
                       <br><br>
-                      <select name="healthcenter_id">
+                      <select name="mmrhealthcenter2nd">
                       <?php    
                       $query = "SELECT * FROM healthcenter_tbl";
                       $result = mysqli_query($con,$query);                  
@@ -641,20 +638,18 @@ $result1 = mysqli_query($con,$query1);
                     <td> -- </td>
                     <td> -- </td>
                   </tr>
-     </tbody>
-     </table>
-</div>
-</div>
-</div></center>
+              </tbody>
+              </table>
+              <div class="modal-footer">
+              <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+          </div></center>
       </form>
-      <div class="modal-footer">
-        <input type="hidden" value="<?php echo $row['id']; ?>" name="id">
-        <button type="submit" name="updateResident" class="btn btn-secondary">Save Changes</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div> -->
+      
     </div>
   </div>
-            <?php } ?>
+  </div>
 <!-- Modal -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -673,12 +668,13 @@ $(document).ready(function(){
 
         console.log(data);
 
-        $('#id').val(data[0]);
-        $('#firstname').val(data[1]);
+        $('#child_id').val(data[0]);
+        $('#id').val(data[1]);
         $('#lastname').val(data[2]);
         $('#middlename').val(data[3]);
         $('#dateofbirth').val(data[4]);
         $('#address').val(data[5]);
+        $('#placeofbirth').val(data[0]);
         
         
   });
