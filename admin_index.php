@@ -6,10 +6,10 @@ include("php/functions.php");
 
 $user_data = check_login($con);
 
-$sql = "SELECT * FROM users";
+$sql = "SELECT * FROM chart where vaccine_id='4'";
 $result=mysqli_query($con,$sql);
 $rowcount=mysqli_num_rows($result);
-$sql2 = "SELECT first_name FROM users where first_name='dex'";
+$sql2 = "SELECT vaccinated FROM chart where vaccinated='yes'";
 $result2=mysqli_query($con,$sql2);
 $rowcount2=mysqli_num_rows($result2);
 

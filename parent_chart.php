@@ -4,15 +4,18 @@ session_start();
 include("php/connection.php");
 include("php/functions.php");
 
-$user_data = check_login($con);
+$child_data = chart($con);
 
-$id = $user_data['parent_id'];
-		$query = "SELECT * FROM bcg where id = '$id' limit 1";
 
-		$result = mysqli_query($con,$query);
-		
-			$bcg_data = mysqli_fetch_assoc($result);
-			
+$id = $_SESSION['child_id'];
+$sql = "SELECT dateofvaccination,healthcare_id,healthcenter_id FROM chart where child_id='$id'";
+$stmt = $con->prepare($sql);
+$stmt->execute();
+$result = $stmt->get_result();
+$datas = array();
+while($row = $result->fetch_assoc()){
+  $datas[] = $row;
+}
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +34,7 @@ $id = $user_data['parent_id'];
 </head>
 
 
-<body>Hello, <?php echo $user_data['id']; ?>
+<body>Hello, <?php echo $_SESSION['child_id']; ?>
     <!-- Navigation Bar -->
     <nav>
       <input type="checkbox" id="check">
@@ -54,6 +57,7 @@ $id = $user_data['parent_id'];
       </ul>
     </nav>
 
+    
      <!-- Table -->
      <center><div class="container" style="overflow-x: auto;">
          <center><header><i class="fa fa-chart-bar"></i>Vaccine Chart</header></center>
@@ -73,64 +77,75 @@ $id = $user_data['parent_id'];
                   <tr>
                     <td> BCG </td>
                     <td> 1 <br>(Birth) </td>
-                    <td><br> <p style="color:red;"><?php echo $bcg_data['date_of_vaccination'];   ?></td>
-                    <td><br> <p style="color:red;"><?php echo $bcg_data['bcg_vaccinator_name'];   ?></td>
-                    <td><br> <p style="color:red;"><?php echo $bcg_data['bcg_health_center'];   ?></td>
+                    <?php if (!empty($datas)) {
+                      foreach ($datas[0] as $data) { 
+                        echo '<td>' ."$data". '</td>'; 
+                      }
+                     } ?>
                   </tr>
                   <tr>
                     <td> HEPATITIS B </td>
                     <td> 1 <br>(Birth) </td>
-                    <td><br> -- </td>
-                    <td><br> -- </td>
-                    <td><br> -- </td>
+               <?php if (!empty($datas)) {
+                      foreach ($datas[0] as $data) { 
+                        echo '<td>' ."$data". '</td>'; 
+                      }
+                     } ?>
                   </tr>
                   <tr>
                     <td> PENTAVALENT VACCINE </td>
                     <td> 3 <br> (1 ½, 2 ½, 3 ½ months) </td>
-                    <td><br> -- <br><br> -- <br><br> --</td>
-                    <td><br> -- <br><br> -- <br><br> --</td>
-                    <td><br> -- <br><br> -- <br><br> --</td>
+                    <?php if (!empty($datas)) {
+                      foreach ($datas[0] as $data) { 
+                        echo '<td>' ."$data". '</td>'; 
+                      }
+                     } ?>
                   </tr>
                   <tr>
                     <td> ORAL POLIO VACCINE (OPV) </td>
                     <td> 3 <br> (1 ½, 2 ½, 3 ½ months) </td>
-                    <td><br> -- <br><br> -- <br><br> --</td>
-                    <td><br> -- <br><br> -- <br><br> --</td>
-                    <td><br> -- <br><br> -- <br><br> --</td>
+                    <?php if (!empty($datas)) {
+                      foreach ($datas[0] as $data) { 
+                        echo '<td>' ."$data". '</td>'; 
+                      }
+                     } ?>
                   </tr>
                   <tr>
                     <td> INACTIVATED POLIO VACCINE </td>
                     <td> 1 <br> (3 ½ months) </td>
-                    <td><br> -- </td>
-                    <td><br> -- </td>
-                    <td><br> -- </td>
+                    <?php if (!empty($datas)) {
+                      foreach ($datas[0] as $data) { 
+                        echo '<td>' ."$data". '</td>'; 
+                      }
+                     } ?>
                   </tr>
                   <tr>
                     <td> PNEUMOCOCCAL CONJUGATE VACCINE </td>
                     <td> 3 <br> (1 ½, 2 ½, 3 ½ months) </td>
-                    <td><br> -- <br><br> -- <br><br> --</td>
-                    <td><br> -- <br><br> -- <br><br> --</td>
-                    <td><br> -- <br><br> -- <br><br> --</td>
+                    <?php if (!empty($datas)) {
+                      foreach ($datas[0] as $data) { 
+                        echo '<td>' ."$data". '</td>'; 
+                      }
+                     } ?>
                   </tr>
                   <tr>
                     <td> MEASLES, MUMPS, RUBELLA (MMR) </td>
                     <td> 2 <br> (9 months, 1 year old) </td>
-                    <td><br> -- <br><br> --</td>
-                    <td><br> -- <br><br> --</td>
-                    <td><br> -- <br><br> --</td>
-                  </tr>
-                  <tr>
-                    <td> OTHERS </td>
-                    <td> -- </td>
-                    <td> -- </td>
-                    <td> -- </td>
-                    <td> -- </td>
-                  </tr>
-     </tbody>
-     </table>
-</div>
-</div>
-</div></center>
+                    <?php if (!empty($datas)) {
+                      foreach ($datas[0] as $data) { 
+                        echo '<td>' ."$data". '</td>'; 
+                      }
+                     } ?>
+                  </tr>                 
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div></center>
+      
+
+
+
 <!-- Datatables -->
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>

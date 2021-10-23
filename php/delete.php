@@ -6,8 +6,8 @@ include("functions.php");
 
 
 if(isset($_POST['delete_btn'])) {
-    $id = $_POST['id'];
-    $sql = "DELETE FROM users WHERE id='$id'";
+    $child_id = $_POST['child_id'];
+    $sql = "DELETE FROM chart WHERE child_id='$child_id'";
     $result = mysqli_query($con,$sql);
     if($result) {
         echo "deleted succesfully";
