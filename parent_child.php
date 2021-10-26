@@ -56,7 +56,6 @@ if(isset($_POST['submit'])){
     <link rel="stylesheet" href="./css/parent_child.css">
 </head>
 <body>parent id, <?php echo $user_data['parent_id']; ?>
-Hello, <?php echo $child_data['child_id']; ?>
 
 <!-- Navigation Bar -->
 <nav>
@@ -139,9 +138,21 @@ Add new User
             </div>
             <div class="bm-3">
               <label class="form-label">Sex:</label><br>
-              <input type="radio" id="male" name="sex" <?=$child_data['sex']=="male" ? "checked" : ""?> value="male">
+              <input type="radio" id="male" name="sex" 
+                  <?php if(isset($child_data['sex'])) {
+                      if($child_data['sex']=="male") {
+                        echo "checked";
+                      }
+                    }
+                  ?> value="male">
               <label for="male">male</label>
-              <input type="radio" id="female" name="sex" <?=$child_data['sex']=="female" ? "checked" : ""?> value="female">
+              <input type="radio" id="female" name="sex" 
+                  <?php if(isset($child_data['sex'])) {
+                      if($child_data['sex']=="female") {
+                        echo "checked";
+                      }
+                    }
+                  ?> value="female">
               <label for="female">female</label>
             </div>
             <div class="clearfix">
