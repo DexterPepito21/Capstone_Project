@@ -114,7 +114,7 @@ $result1 = mysqli_query($con,$query1);
           while($row = $result->fetch_assoc()){
           ?>
           <tr>
-              <td><?php echo $row['chart_id']; ?></td>  
+              <td hidden><?php echo $row['chart_id']; ?></td>  
               <td><?php echo $row['child_id']; ?></td>
               <td><?php echo $row['vaccine_id']; ?></td>
               <td><?php echo $row['healthcare_id']; ?></td>
