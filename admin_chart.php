@@ -46,13 +46,13 @@ $result1 = mysqli_query($con,$query1);
     <table id="example" class="table table-dark" style="width:100%">
         <thead>
             <tr>
-            <th>parent ID</th>
-                <th>child_id</th>
-                <th>firstname</th>
-                <th>lastname</th>
-                <th>middlename</th>
-                <th>Update</th>
-                <th>Delete</th>
+              <th>firstname</th>
+              <th>lastname</th>
+              <th>middlename</th>
+              <th>dateofbirth</th>
+              <th>address</th>
+              <th>Update</th>
+              <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -64,11 +64,13 @@ $result1 = mysqli_query($con,$query1);
             while($row = $result->fetch_assoc()){
             ?>
             <tr>
-            <td><?php echo $row['parent_id']; ?></td>
-                <td><?php echo $row['child_id']; ?></td>
+            <td hidden><?php echo $row['parent_id']; ?></td>
+                <td hidden><?php echo $row['child_id']; ?></td>
                 <td><?php echo $row['firstname']; ?></td>               
                 <td><?php echo $row['lastname']; ?></td>
-                <td><?php echo $row['middlename']; ?></td>              
+                <td><?php echo $row['middlename']; ?></td>    
+                <td><?php echo $row['dateofbirth']; ?></td>   
+                <td><?php echo $row['address']; ?></td>            
                 <td><button id="id-<?php echo $row['child_id']; ?>" type="button" class="btn btn-primary detailschart">
                 details
                 </button></td>
@@ -91,15 +93,17 @@ $result1 = mysqli_query($con,$query1);
   <table id="example" class="table table-dark" style="width:100%">
       <thead>
           <tr>
-              <th><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#adduserchart">
+            <th>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#adduserchart">
               Add Usser Chart
               </button>
-              </th>
-              <th>Child ID</th>
-              <th>vaccine_id</th>
-              <th>healthcare_id</th>
+            </th>
+          </tr>
+          <tr>
+              <th>vaccinename</th>
+              <th>vaccinatorname</th>
               <th>dateofvaccination</th>
-              <th>healthcenter_id</th>
+              <th>healthcenter</th>
               <th>vaccinated</th>
               <th>Update</th>
               <th>Delete</th>
@@ -107,7 +111,12 @@ $result1 = mysqli_query($con,$query1);
       </thead>
       <tbody>
           <?php 
-          $sql = "SELECT * FROM chart";
+         $sql = "SELECT *, vaccine.vaccinename, healthcare_info.vaccinatorname, chart.dateofvaccination, healthcenter_tbl.healthcenter 
+         FROM (((chart
+         LEFT JOIN vaccine ON chart.vaccine_id = vaccine.vaccine_id)
+         LEFT JOIN healthcare_info ON chart.healthcare_id = healthcare_info.healthcare_id)
+         LEFT JOIN  healthcenter_tbl ON chart.healthcenter_id = healthcenter_tbl.healthcenter_id)
+         ";
           $stmt = $con->prepare($sql);
           $stmt->execute();
           $result = $stmt->get_result();
@@ -115,11 +124,11 @@ $result1 = mysqli_query($con,$query1);
           ?>
           <tr>
               <td hidden><?php echo $row['chart_id']; ?></td>  
-              <td><?php echo $row['child_id']; ?></td>
-              <td><?php echo $row['vaccine_id']; ?></td>
-              <td><?php echo $row['healthcare_id']; ?></td>
+              <td hidden><?php echo $row['child_id']; ?></td>
+              <td><?php echo $row['vaccinename']; ?></td>
+              <td><?php echo $row['vaccinatorname']; ?></td>
               <td><?php echo $row['dateofvaccination']; ?></td>
-              <td><?php echo $row['healthcenter_id']; ?></td>        
+              <td><?php echo $row['healthcenter']; ?></td>        
               <td><?php echo $row['vaccinated']; ?></td>         
               <td><button id="id-<?php echo $row['chart_id']; ?>" type="button" class="btn btn-primary editbtn">
               edit
