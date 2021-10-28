@@ -9,12 +9,12 @@ LEFT JOIN  healthcenter_tbl ON chart.healthcenter_id = healthcenter_tbl.healthce
 where chart_id='$chart_id'";
 $result1 = mysqli_query($con,$query1); 
 $rows1=mysqli_fetch_assoc($result1);
-$vaccine_id = $rows1['vaccine_id'];
+$checkvaccine_id = $rows1['vaccine_id'];
 $vaccinename = $rows1['vaccinename'];
-$healthcare_id = $rows1['healthcare_id'];
+$checkhealthcare_id = $rows1['healthcare_id'];
 $vaccinatorname = $rows1['vaccinatorname'];
 $dateofvaccination = $rows1['dateofvaccination'];
-$healthcenter_id = $rows1['healthcenter_id'];
+$checkhealthcenter_id = $rows1['healthcenter_id'];
 $healthcenter = $rows1['healthcenter'];
 $vaccinated = $rows1['vaccinated'];
 ?>
@@ -23,13 +23,17 @@ $vaccinated = $rows1['vaccinated'];
             Vaccine Name
 
             <select name="vaccine_id">
-            <option value='<?php echo (isset($vaccine_id))?$vaccine_id:'';?>'><?php echo $vaccinename?></option>
+            <option value='<?php echo (isset($checkvaccine_id))?$checkvaccine_id:'';?>'><?php echo $vaccinename?></option>
                 <?php  
                 $query = "SELECT * FROM vaccine";
                 $result = mysqli_query($con,$query);  
                     while($rows=mysqli_fetch_assoc($result)){
                     $vaccine_id = $rows['vaccine_id'];
                     $vaccinename = $rows['vaccinename'];
+                    if ($checkvaccine_id == $vaccine_id) {
+                        continue;
+                      }
+                    
                     echo "<option value='$vaccine_id'>$vaccinename</option>";
                     }      
                 ?>
@@ -44,6 +48,9 @@ $vaccinated = $rows1['vaccinated'];
                 while($rows=mysqli_fetch_assoc($result)){
                   $healthcare_id = $rows['healthcare_id'];
                   $vaccinatorname = $rows['vaccinatorname'];
+                  if ($checkhealthcare_id == $healthcare_id) {
+                    continue;
+                  }
                   echo "<option value='$healthcare_id'>$vaccinatorname</option>";
                 } 
               ?>
@@ -61,6 +68,9 @@ $vaccinated = $rows1['vaccinated'];
                 while($rows=mysqli_fetch_assoc($result)){
                   $healthcenter_id = $rows['healthcenter_id'];
                   $healthcenter = $rows['healthcenter'];
+                  if ($checkhealthcenter_id == $healthcenter_id) {
+                    continue;
+                  }
                   echo "<option value='$healthcenter_id'>$healthcenter</option>";
                 }                                     
                 ?>

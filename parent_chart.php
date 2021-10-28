@@ -6,8 +6,7 @@ include("php/functions.php");
 
 $child_data = chart($con);
 
-
-$id = $_SESSION['child_id'];
+$id = $_SESSION['parent_id'];
 
 ?>
 
@@ -27,7 +26,7 @@ $id = $_SESSION['child_id'];
 </head>
 
 
-<body>Hello, <?php echo $_SESSION['child_id']; ?>
+<body>Hello, 
 <!-- Navigation Bar -->
 <nav>
   <input type="checkbox" id="check">
@@ -66,7 +65,7 @@ $id = $_SESSION['child_id'];
           INNER JOIN vaccine ON chart.vaccine_id = vaccine.vaccine_id)
           INNER JOIN healthcare_info ON chart.healthcare_id = healthcare_info.healthcare_id)
           INNER JOIN  healthcenter_tbl ON chart.healthcenter_id = healthcenter_tbl.healthcenter_id)
-          where child_id='$id'";
+          where parent_id='$id'";
           $stmt = $con->prepare($sql);
           $stmt->execute();
           $result = $stmt->get_result();
