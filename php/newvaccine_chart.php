@@ -37,7 +37,7 @@ if(isset($_POST['update'])){
     $healthcenter = $_POST['healthcenter'];
 	$vaccinated = $_POST['vaccinated'];
 	
-	$sql = "UPDATE chart SET healthcare_id='$vaccinatorname', dateofvaccination='$dateofvaccination',healthcenter_id='$healthcenter',vaccinated='$vaccinated' where chart_id = '$chart_id'";
+	$sql = "UPDATE chart SET vaccine_id='$vaccine_id', healthcare_id='$vaccinatorname', dateofvaccination='$dateofvaccination',healthcenter_id='$healthcenter',vaccinated='$vaccinated' where chart_id = '$chart_id'";
 	$result = mysqli_query($con, $sql);
 
 	header("Location: ../admin_chart.php");

@@ -2,7 +2,7 @@
 include("php/connection.php");
 $query1 = "SELECT * FROM healthcenter_tbl";
 $result1 = mysqli_query($con,$query1);
-
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,14 +64,14 @@ $result1 = mysqli_query($con,$query1);
             while($row = $result->fetch_assoc()){
             ?>
             <tr>
-            <td hidden><?php echo $row['parent_id']; ?></td>
+                <td hidden><?php echo $row['parent_id']; ?></td>
                 <td hidden><?php echo $row['child_id']; ?></td>
                 <td><?php echo $row['firstname']; ?></td>               
                 <td><?php echo $row['lastname']; ?></td>
                 <td><?php echo $row['middlename']; ?></td>    
                 <td><?php echo $row['dateofbirth']; ?></td>   
                 <td><?php echo $row['address']; ?></td>            
-                <td><button id="id-<?php echo $row['child_id']; ?>" type="button" class="btn btn-primary detailschart">
+                <td><button id="id-<?php echo $row['child_id']; ?>" type="button" class="btn btn-primary view_chart">
                 details
                 </button></td>
                 <td>
@@ -129,7 +129,8 @@ $result1 = mysqli_query($con,$query1);
               <td><?php echo $row['vaccinatorname']; ?></td>
               <td><?php echo $row['dateofvaccination']; ?></td>
               <td><?php echo $row['healthcenter']; ?></td>        
-              <td><?php echo $row['vaccinated']; ?></td>         
+              <td><?php echo $row['vaccinated']; ?></td>  
+              <td hidden><?php echo $row['vaccine_id']; ?></td>       
               <td><button id="id-<?php echo $row['chart_id']; ?>" type="button" class="btn btn-primary editbtn">
               edit
               </button></td>
@@ -153,42 +154,10 @@ $result1 = mysqli_query($con,$query1);
         <h5 class="modal-title" id="exampleModalLabel">DETAILS CHART</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-
-        <table id="example" class="table table-dark" style="width:100%">
-        <thead>
-            <tr>
-                </th>
-                <td>chartID</td>
-                <th>Child ID</th>
-                <th>vaccine_id</th>
-                <th>healthcare_id</th>
-                <th>dateofvaccination</th>
-                <th>healthcenter_id</th>
-                <th>vaccinated</th>
-            </tr>
-        </thead>
-          <tbody>
-              <?php 
-              $sql = "SELECT * FROM chart";
-              $stmt = $con->prepare($sql);
-              $stmt->execute();
-              $result = $stmt->get_result();
-              while($row = $result->fetch_assoc()){
-              ?>
-              <tr>
-                  <td><?php echo $row['chart_id']; ?></td>  
-                  <td><?php echo $row['child_id']; ?></td>
-                  <td><?php echo $row['vaccine_id']; ?></td>
-                  <td><?php echo $row['healthcare_id']; ?></td>
-                  <td><?php echo $row['dateofvaccination']; ?></td>
-                  <td><?php echo $row['healthcenter_id']; ?></td>        
-                  <td><?php echo $row['vaccinated']; ?></td>         
-                </tr>
-                <?php } ?>
-          </tbody>
-        </table>
-
+      <div class="modal-body" id="chart_detail">
+      
+       
+      
       </div>         
     </div>
   </div>
@@ -277,61 +246,7 @@ $result1 = mysqli_query($con,$query1);
       </div>
       <div class="modal-body">
 
-        <form action="php/newvaccine_chart.php" method="POST">    
-        <input type="text" placeholder="chart_id" name="chart_id" id="chart_id"/>                  
-            Vaccine Name
-            <select name="vaccine_id">
-                <?php  
-                $query = "SELECT * FROM vaccine";
-                $result = mysqli_query($con,$query);  
-                while($rows=mysqli_fetch_assoc($result)){
-                  $vaccine_id = $rows['vaccine_id'];
-                  $vaccinename = $rows['vaccinename'];
-                  echo "<option value='$vaccine_id'>$vaccinename</option>";
-                }                                     
-                ?>
-            </select> 
-            <br>
-            Vaccinator's Name 
-            <select name="vaccinatorname">
-                <?php 
-                $query = "SELECT * FROM healthcare_info";
-                $result = mysqli_query($con,$query);
-                while( $rows=mysqli_fetch_assoc($result)){
-                  $healthcare_id = $rows['healthcare_id'];
-                  $vaccinatorname = $rows['vaccinatorname'];
-                  echo "<option value='$healthcare_id'>$vaccinatorname</option>";
-                } 
-              ?>
-            </select>    
-            <br>
-            Date of Vaccination    
-            <input type="datetime-local" id="dtlocal" name="dateofvaccination">  
-            <br>
-            healthcenter
-            <select name="healthcenter">
-                <?php  
-                $query = "SELECT * FROM healthcenter_tbl";
-                $result = mysqli_query($con,$query);  
-                while($rows=mysqli_fetch_assoc($result)){
-                  $healthcenter_id = $rows['healthcenter_id'];
-                  $healthcenter = $rows['healthcenter'];
-                  echo "<option value='$healthcenter_id'>$healthcenter</option>";
-                }                                     
-                ?>
-            </select>     
-            <br>
-            vaccinate
-            <select name="vaccinated">
-                <option value="no">not vaccinated</option>
-                <option value="yes">vaccinated</option>
-            </select>
-            </br>  
-            <div class="modal-footer">
-                <button type="submit" name="update" class="btn btn-primary">update</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>  
-        </form>
+       
 
       </div>   
     </div>
@@ -349,9 +264,25 @@ $(document).ready(function(){
 
   //   // alert("add here");
   // });
+  $('.view_chart').on('click', function(){
+      var child_id = $(this).attr("id").replace('id-','');
+      // alert(child_id);
+ 
+        $.ajax({
+          url: "php/child.php",
+          type: "post",
+          data:{child_id: child_id},
+          success:function(data){
+            $('#chart_detail').html(data);
+            $('#detailschart').modal('show');
+          }
+        }); 
+
+      });
+      
   $('.editbtn').on('click', function(){
       var chart_id = $(this).attr("id").replace('id-','');
-      // alert(chart_id);
+      alert(chart_id);
       $('#editchart').modal('show');
       
         $tr = $(this).closest('tr');
@@ -362,30 +293,16 @@ $(document).ready(function(){
         console.log(data);
         $('#chart_id').val(data[0]);
         $('#child_id').val(data[1]);
-        $('#vaccine_id').val(data[2]);
-        $('#healthcare_id').val(data[3]);
+        $('#vaccinename').val(data[2]);
+        $('#vaccinatorname').val(data[3]);
         $('#dateofvaccination').val(data[4]);
-        $('#healthcenter_id').val(data[5]);
-        $('#vaccinated').val(data[6]);       
+        $('#healthcenter').val(data[5]);
+        $('#vaccinated').val(data[6]); 
+        $('#vaccine_id').val(data[7]);       
   });
 
-  $('.detailschart').on('click', function(){
-      var chart_id = $(this).attr("id").replace('id-','');
-      // alert(chart_id);
-      $('#detailschart').modal('show');
-      
-        $tr = $(this).closest('tr');
-        var data = $tr.children('td').map(function(){
-          return $(this).text();
-        }).get();
+ 
 
-        console.log(data);
-        $('#parent_id').val(data[0]);
-        $('#child_id').val(data[1]);
-        $('#firstname').val(data[2]);
-        $('#lastname').val(data[3]);
-        $('#middlename').val(data[4]);    
-  });
 });
 
 </script>
