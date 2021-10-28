@@ -244,8 +244,8 @@ session_start();
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-
+      <div class="modal-body" id="edit_child">
+                  
        
 
       </div>   
@@ -282,26 +282,34 @@ $(document).ready(function(){
       
   $('.editbtn').on('click', function(){
       var chart_id = $(this).attr("id").replace('id-','');
-      alert(chart_id);
-      $('#editchart').modal('show');
-      
-        $tr = $(this).closest('tr');
-        var data = $tr.children('td').map(function(){
-          return $(this).text();
-        }).get();
-
-        console.log(data);
-        $('#chart_id').val(data[0]);
-        $('#child_id').val(data[1]);
-        $('#vaccinename').val(data[2]);
-        $('#vaccinatorname').val(data[3]);
-        $('#dateofvaccination').val(data[4]);
-        $('#healthcenter').val(data[5]);
-        $('#vaccinated').val(data[6]); 
-        $('#vaccine_id').val(data[7]);       
+      // alert(chart_id);
+  
+      $.ajax({
+          url: "php/edit_child.php",
+          type: "post",
+          data:{chart_id: chart_id},
+          success:function(data){
+            $('#edit_child').html(data);
+            $('#editchart').modal('show');
+          }
+        }); 
+     
   });
 
- 
+  $tr = $(this).closest('tr');
+        // var data = $tr.children('td').map(function(){
+        //   return $(this).text();
+        // }).get();
+
+        // console.log(data);
+        // $('#chart_id').val(data[0]);
+        // $('#child_id').val(data[1]);
+        // $('#vaccinename').val(data[2]);
+        // $('#vaccinatorname').val(data[3]);
+        // $('#dateofvaccination').val(data[4]);
+        // $('#healthcenter').val(data[5]);
+        // $('#vaccinated').val(data[6]); 
+        // $('#vaccine_id').val(data[7]);     
 
 });
 
