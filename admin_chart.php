@@ -173,8 +173,21 @@ session_start();
       </div>
       <div class="modal-body">
 
-      <form action="php/newvaccine_chart.php" method="POST">    
-        <input type="text" placeholder="child_id Name" name="child_id" id="child_id"/>                  
+      <form action="php/newvaccine_chart.php" method="POST">          
+            Child Name
+            <select name="child_id">
+                <?php  
+                $query = "SELECT * FROM child_tbl";
+                $result = mysqli_query($con,$query);  
+                while($rows=mysqli_fetch_assoc($result)){
+                  $child_id = $rows['child_id'];
+                  $firstname = $rows['firstname'];
+                  $lastname = $rows['lastname'];
+                  $middlename = $rows['middlename'];
+                  echo "<option value='$child_id'>$firstname $middlename $lastname</option>";
+                }                                     
+                ?>
+            </select>         
             Vaccine Name
             <select name="vaccine_id">
                 <?php  
@@ -240,9 +253,7 @@ session_start();
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Vaccine Chart</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" id="edit_child">
                   

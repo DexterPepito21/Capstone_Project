@@ -6,7 +6,7 @@ include("php/functions.php");
 
 $child_data = chart($con);
 
-$id = $_SESSION['parent_id'];
+$parent_id = $_SESSION['parent_id'];
 
 ?>
 
@@ -48,7 +48,13 @@ $id = $_SESSION['parent_id'];
     </div>
   </ul>
 </nav>
-
+  <?php 
+    $sql = "SELECT * FROM child_tbl where parent_id='$parent_id'";
+    $stmt = $con->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while($row = $result->fetch_assoc()){
+  ?>        
   <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
       <thead>
           <tr>
@@ -60,12 +66,13 @@ $id = $_SESSION['parent_id'];
       </thead>
       <tbody>
           <?php 
+          $id = $row['child_id'];
           $sql = "SELECT vaccine.vaccinename, healthcare_info.vaccinatorname, chart.dateofvaccination, healthcenter_tbl.healthcenter 
           FROM (((chart
           INNER JOIN vaccine ON chart.vaccine_id = vaccine.vaccine_id)
           INNER JOIN healthcare_info ON chart.healthcare_id = healthcare_info.healthcare_id)
           INNER JOIN  healthcenter_tbl ON chart.healthcenter_id = healthcenter_tbl.healthcenter_id)
-          where parent_id='$id'";
+          where child_id='$id'";
           $stmt = $con->prepare($sql);
           $stmt->execute();
           $result = $stmt->get_result();
@@ -82,7 +89,7 @@ $id = $_SESSION['parent_id'];
       </tbody>
   </table>
 </div>
-
+<?php } ?>
 
 
 <!-- Datatables -->

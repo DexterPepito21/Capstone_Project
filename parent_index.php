@@ -1,10 +1,6 @@
 <?php 
-session_start();
-
-	include("php/connection.php");
-	include("php/functions.php");
-
-	$user_data = check_login($con);
+include("php/connection.php");
+include("php/functions.php");
 
 ?>
 <!DOCTYPE html>
@@ -17,7 +13,7 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Dashboard | Parent</title>
 </head>
-<body>Hello, <?php echo $user_data['parent_id']; ?>
+<body>
     <!-- Navigation Bar -->
     <nav>
         <input type="checkbox" id="check">
@@ -71,6 +67,33 @@ session_start();
                         <td>INACTIVATED POLIO VACCINE</td>
                         <td></td>
                     </tr>
+                </table>
+
+                <table id="example" class="table table-striped table-bordered dt-responsive nowrap">
+                <thead>
+                    <tr>
+                        <th>vaccine</th>
+                        <th>information</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php 
+                    $sql = "SELECT *, vaccine.vaccinename
+                    FROM (vaccine_information
+                    INNER JOIN vaccine ON vaccine_information.vaccine_id = vaccine.vaccine_id)";
+                    $stmt = $con->prepare($sql);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    while($row = $result->fetch_assoc()){
+                        $vaccinename = $row['vaccinename'];
+                        $information = $row['information'];
+                    ?>        
+                        <tr>
+                        <td  ><?php echo $vaccinename ?></td>  
+                        <td  ><?php echo $information ?></td>          
+                    </tr>
+                    <?php } ?>
+                </tbody>
                 </table>
             </div><!-- Dashboard -->
         </div><!-- Main Content -->

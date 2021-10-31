@@ -105,5 +105,42 @@ $rowcount2=mysqli_num_rows($result2);
               </tr>
             </tbody>
           </table>
+
+      <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+      <thead>       
+          <tr>
+              <th>Types of Vaccine</th>
+              <th>No. of Children</th>
+              <th>No. of Vaccinated</th>
+          </tr>
+      </thead>
+      <tbody>
+<?php 
+$sql = "SELECT * FROM vaccine";
+$stmt = $con->prepare($sql);
+$stmt->execute();
+$result = $stmt->get_result();
+while($row = $result->fetch_assoc()){
+  $vaccine_id = $row['vaccine_id'];
+  $vaccinename = $row['vaccinename'];
+  $sql1 = "SELECT * FROM chart where vaccine_id='$vaccine_id'";
+  $result1=mysqli_query($con,$sql1);
+  $rowcount=mysqli_num_rows($result1);
+  $sql2 = "SELECT vaccinated FROM chart where vaccinated='yes' AND vaccine_id='$vaccine_id'";
+  $result2=mysqli_query($con,$sql2);
+  $rowcount2=mysqli_num_rows($result2);
+
+?>        
+
+            <tr>
+              <td  ><?php echo $vaccinename ?></td>  
+              <td  ><?php echo $rowcount ?></td>
+              <td  ><?php echo $rowcount2 ?></td>            
+          </tr>
+     
+<?php } ?>
+</tbody>
+  </table>
+
  </body>
 </html>
