@@ -4,8 +4,13 @@ session_start();
 include("php/connection.php");
 include("php/functions.php");
 
-$user_data = check_login($con);
+$child_data = chart($con);
+
+
+$id = $_SESSION['parent_id'];
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,106 +25,67 @@ $user_data = check_login($con);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.0/css/dataTables.bootstrap4.min.css">
 </head>
-<body>Hello, <?php echo $user_data['id']; ?>
-    <!-- Navigation Bar -->
-    <nav>
-      <input type="checkbox" id="check">
-      <label for="check" class="checkbtn">
-        <i class="fas fa-bars"></i>
-      </label>
-      <label class="logo">Child Care System</label>
-      <ul>
-        <li><a href="parent_index.php"><i class="fas fa-home" id="icon"></i>Dashboard</a></li>
-        <li><a href="parent_child.php"><i class="fas fa-child"  id="icon"></i>Child Profile</a></li>
-        <li><a href="parent_chart.php" class="active"><i class="fa fa-chart-bar"  id="icon"></i>Vaccine Chart</a></li>
-        <li><a href="parent_guide.php"><i class="fas fa-book"  id="icon"></i>Nutrition Guide</a></li>
-              
-        <div class="dropdown">
-          <button class="dropbtn"><i class="fa fa-caret-down"></i></button>
-          <div class="dropdown-content">
-          <a href="./php/logout.php"><i class="fas fa-sign-out-alt" id="icon"></i>Logout</a>
-          </div>
-        </div>
-      </ul>
-    </nav>
 
-     <!-- Table -->
-     <center><div class="container" style="overflow-x: auto;">
-         <center><header><i class="fa fa-chart-bar"></i>Vaccine Chart</header></center>
-         <div class="row">
-             <div class="col">
-        <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
-            <thead>
-                <tr>
-                <th style="width: 5%;">Vaccine Name</th>
-                    <th style="width: 10%;">Doses <br> (Recommended Age)</th>
-                    <th style="width: 15%;">Date of Vaccination</th>
-                    <th style="width: 15%;">Vaccinator's Name</th>
-                    <th style="width: 10%;">Health Center</th>
-                </tr>
-            </thead>
-            <tbody>
-                  <tr>
-                    <td> BCG </td>
-                    <td> 1 <br>(Birth) </td>
-                    <td><br> --</td>
-                    <td><br> -- </td>
-                    <td><br> -- </td>
-                  </tr>
-                  <tr>
-                    <td> HEPATITIS B </td>
-                    <td> 1 <br>(Birth) </td>
-                    <td><br> -- </td>
-                    <td><br> -- </td>
-                    <td><br> -- </td>
-                  </tr>
-                  <tr>
-                    <td> PENTAVALENT VACCINE </td>
-                    <td> 3 <br> (1 ½, 2 ½, 3 ½ months) </td>
-                    <td><br> -- <br><br> -- <br><br> --</td>
-                    <td><br> -- <br><br> -- <br><br> --</td>
-                    <td><br> -- <br><br> -- <br><br> --</td>
-                  </tr>
-                  <tr>
-                    <td> ORAL POLIO VACCINE (OPV) </td>
-                    <td> 3 <br> (1 ½, 2 ½, 3 ½ months) </td>
-                    <td><br> -- <br><br> -- <br><br> --</td>
-                    <td><br> -- <br><br> -- <br><br> --</td>
-                    <td><br> -- <br><br> -- <br><br> --</td>
-                  </tr>
-                  <tr>
-                    <td> INACTIVATED POLIO VACCINE </td>
-                    <td> 1 <br> (3 ½ months) </td>
-                    <td><br> -- </td>
-                    <td><br> -- </td>
-                    <td><br> -- </td>
-                  </tr>
-                  <tr>
-                    <td> PNEUMOCOCCAL CONJUGATE VACCINE </td>
-                    <td> 3 <br> (1 ½, 2 ½, 3 ½ months) </td>
-                    <td><br> -- <br><br> -- <br><br> --</td>
-                    <td><br> -- <br><br> -- <br><br> --</td>
-                    <td><br> -- <br><br> -- <br><br> --</td>
-                  </tr>
-                  <tr>
-                    <td> MEASLES, MUMPS, RUBELLA (MMR) </td>
-                    <td> 2 <br> (9 months, 1 year old) </td>
-                    <td><br> -- <br><br> --</td>
-                    <td><br> -- <br><br> --</td>
-                    <td><br> -- <br><br> --</td>
-                  </tr>
-                  <tr>
-                    <td> OTHERS </td>
-                    <td> -- </td>
-                    <td> -- </td>
-                    <td> -- </td>
-                    <td> -- </td>
-                  </tr>
-     </tbody>
-     </table>
+
+<body>Hello,
+<!-- Navigation Bar -->
+<nav>
+  <input type="checkbox" id="check">
+  <label for="check" class="checkbtn">
+    <i class="fas fa-bars"></i>
+  </label>
+  <label class="logo">Child Care System</label>
+  <ul>
+    <li><a href="parent_index.php"><i class="fas fa-home" id="icon"></i>Dashboard</a></li>
+    <li><a href="parent_child.php"><i class="fas fa-child"  id="icon"></i>Child Profile</a></li>
+    <li><a href="parent_chart.php" class="active"><i class="fa fa-chart-bar"  id="icon"></i>Vaccine Chart</a></li>
+    <li><a href="parent_guide.php"><i class="fas fa-book"  id="icon"></i>Nutrition Guide</a></li>
+          
+    <div class="dropdown">
+      <button class="dropbtn"><i class="fa fa-caret-down"></i></button>
+      <div class="dropdown-content">
+      <a href="./php/logout.php"><i class="fas fa-sign-out-alt" id="icon"></i>Logout</a>
+      </div>
+    </div>
+  </ul>
+</nav>
+
+  <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+      <thead>
+          <tr>
+              <th>vaccine</th>
+              <th>dateofvaccination</th>
+              <th>vaccinatorname</th>
+              <th>healthcenter</th>
+          </tr>
+      </thead>
+      <tbody>
+          <?php 
+          $sql = "SELECT vaccine.vaccinename, healthcare_info.vaccinatorname, chart.dateofvaccination, healthcenter_tbl.healthcenter 
+          FROM (((chart
+          INNER JOIN vaccine ON chart.vaccine_id = vaccine.vaccine_id)
+          INNER JOIN healthcare_info ON chart.healthcare_id = healthcare_info.healthcare_id)
+          INNER JOIN  healthcenter_tbl ON chart.healthcenter_id = healthcenter_tbl.healthcenter_id)
+          where parent_id='$id'";
+          $stmt = $con->prepare($sql);
+          $stmt->execute();
+          $result = $stmt->get_result();
+          while($row = $result->fetch_assoc()){
+          ?>
+          <tr>
+              <td><?php echo $row['vaccinename']; ?></td>
+              <td><?php echo $row['dateofvaccination']; ?></td>
+              <td><?php echo $row['vaccinatorname']; ?></td>
+              <td><?php echo $row['healthcenter']; ?></td>        
+              </td>
+          </tr>
+          <?php } ?>
+      </tbody>
+  </table>
 </div>
-</div>
-</div></center>
+
+
+
 <!-- Datatables -->
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>

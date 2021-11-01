@@ -2,9 +2,17 @@
 session_start();
 
 include("php/connection.php");
-include("php/admin_functions.php");
+include("php/functions.php");
 
 $user_data = check_login($con);
+
+$sql = "SELECT * FROM chart where vaccine_id='4'";
+$result=mysqli_query($con,$sql);
+$rowcount=mysqli_num_rows($result);
+$sql2 = "SELECT vaccinated FROM chart where vaccinated='yes'";
+$result2=mysqli_query($con,$sql2);
+$rowcount2=mysqli_num_rows($result2);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +25,7 @@ $user_data = check_login($con);
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.js"></script>
     <link rel="stylesheet" href="./css/admin_index.css">
 </head>
-<body> Hello, <?php echo $user_data['first_name']; ?>
+<body>
         <!-- Navigation Bar -->
         <nav>
           <input type="checkbox" id="check">
@@ -62,8 +70,8 @@ $user_data = check_login($con);
             <tbody>
               <tr>
                 <td data-label="Types of Vaccine">BCG</td>
-                <td data-label="No. of Children">50</td>
-                <td data-label="No. of Vaccinated">45</td>
+                <td data-label="No. of Children"><?php echo $rowcount  ?></td>
+                <td data-label="No. of Vaccinated"><?php echo $rowcount2  ?></td>
               </tr>
               <tr>
                 <td scope="row" data-label="Types of Vaccine">HEPATITIS B</td>
