@@ -27,7 +27,7 @@ $id = $_SESSION['parent_id'];
 </head>
 
 
-<body>Hello,
+<body><?php echo $id?>
 <!-- Navigation Bar -->
 <nav>
   <input type="checkbox" id="check">
@@ -49,7 +49,6 @@ $id = $_SESSION['parent_id'];
     </div>
   </ul>
 </nav>
-
   <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
       <thead>
           <tr>
@@ -83,7 +82,6 @@ $id = $_SESSION['parent_id'];
       </tbody>
   </table>
 </div>
-
 
 
 <!-- Datatables -->

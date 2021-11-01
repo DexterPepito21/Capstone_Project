@@ -72,6 +72,33 @@ session_start();
                         <td></td>
                     </tr>
                 </table>
+
+                <table id="example" class="table table-striped table-bordered dt-responsive nowrap">
+                <thead>
+                    <tr>
+                        <th>vaccine</th>
+                        <th>information</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php 
+                    $sql = "SELECT *, vaccine.vaccinename
+                    FROM (vaccine_information
+                    INNER JOIN vaccine ON vaccine_information.vaccine_id = vaccine.vaccine_id)";
+                    $stmt = $con->prepare($sql);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    while($row = $result->fetch_assoc()){
+                        $vaccinename = $row['vaccinename'];
+                        $information = $row['information'];
+                    ?>        
+                        <tr>
+                        <td  ><?php echo $vaccinename ?></td>  
+                        <td  ><?php echo $information ?></td>          
+                    </tr>
+                    <?php } ?>
+                </tbody>
+                </table>
             </div><!-- Dashboard -->
         </div><!-- Main Content -->
     </div>

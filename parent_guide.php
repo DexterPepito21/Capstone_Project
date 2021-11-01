@@ -1,10 +1,7 @@
 <?php 
-session_start();
 
 include("php/connection.php");
-include("php/functions.php");
 
-$user_data = check_login($con);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +18,7 @@ $user_data = check_login($con);
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.0/css/dataTables.bootstrap4.min.css">
 </head>
 <body>
-Hello, <?php echo $user_data['id']; ?>
+
     <!-- Navigation Bar -->
     <nav>
         <input type="checkbox" id="check">
@@ -52,42 +49,30 @@ Hello, <?php echo $user_data['id']; ?>
        <table id="example" class="table table-striped table-bordered dt-responsive nowrap">
            <thead>
                <tr>
-                   <th style="width: 5%;">Vaccine Name</th>
-                   <th style="width: 5%;">Doses <br> (Recommended Age)</th>
+                   <th>Healthy foods</th>
+                   <th>benefits</th>
+                   <th>reminders</th>
                </tr>
            </thead>
            <tbody>
-            <tr>
-                <td>
-                  <ol>
-                    <li> </li>
-                    <li> </li>
-                    <li> </li>
-                  <ol>
-                </td>
-                <td>
-                  <ol>
-                    <li> </li>
-                    <li> </li>
-                    <li> </li>
-                  </ol>
-                </td>
-               </tr>
-            </table>
-            <div class="col">
-                <table class="rem">
-                <thead>
-                  <tr>
-                    <th> Reminders! </th>
-                  </tr>
-                </thead>
-                  <tr>
-                    <td> World </td>
-                  </tr>
-                </table>
-              </div>
-    </tbody>
-    </table>
+           <?php 
+              $sql = "SELECT * FROM guide";
+              $stmt = $con->prepare($sql);
+              $stmt->execute();
+              $result = $stmt->get_result();
+              while($row = $result->fetch_assoc()){
+                $hf = $row['hf'];
+                $benefits = $row['benefits'];
+                $reminders = $row['reminders'];
+              ?>        
+                <tr>
+                  <td  ><?php echo $hf ?></td>  
+                  <td  ><?php echo $benefits ?></td>
+                  <td  ><?php echo $reminders ?></td>            
+              </tr>
+              <?php } ?>
+          </tbody>
+        </table>
 </div>
 </div>
 </div>
