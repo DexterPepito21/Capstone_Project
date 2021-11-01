@@ -28,9 +28,8 @@ session_start();
   <label class="logo">Child Care System</label>
   <ul>
     <li><a href="admin_index.php"><i class="fas fa-home" id="icon"></i>Dashboard</a></li>
-    <li><a href="admin_child.php"><i class="fas fa-child"  id="icon"></i>Child Profile</a></li>
+    <li><a href="admin_input.php"><i class="fas fa-book"  id="icon"></i>Input</a></li>
     <li><a href="admin_chart.php" class="active"><i class="fa fa-chart-bar"  id="icon"></i>Vaccine Chart</a></li>
-    <li><a href="admin_guide.php"><i class="fas fa-book"  id="icon"></i>Nutrition Guide</a></li>
     <li><a href="admin_sms.php"><i class="fas fa-comment"  id="icon"></i>SMS Notification</a></li>
   
     <div class="dropdown">
@@ -51,7 +50,7 @@ session_start();
             <tr>
               <th>Child's Name</th>
               <th style="width: 10%">Details</th>
-              <th style="width: 10%">Delete</th>
+              <th style="width: 15%">Delete</th>
             </tr>
         </thead>
         <tbody class="table table-light" style="line-height: 20px">
@@ -129,7 +128,7 @@ session_start();
               <td><?php echo $row['vaccinated']; ?></td>  
               <td hidden><?php echo $row['vaccine_id']; ?></td>       
               <td><button id="id-<?php echo $row['chart_id']; ?>" type="button" class="btn btn-primary editbtn" style="color: black; border: none;">
-              <i class="fa fa-pencil-square-o"></i>
+              <i class="fas fa-edit"></i>
               </button></td>
               <td>
               <form action="php/delete.php" method="POST">

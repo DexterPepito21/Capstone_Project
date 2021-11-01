@@ -160,12 +160,11 @@ Add new User
 
 <!-- child table -->
 <div class="container">
-    <table id="example" class="table table-primary table-hover" style="width:50%;">
+    <table id="example" class="table table-primary table-hover" style="width:30%;">
         <thead>
             <tr>
               <th>Child's Name</th>
               <th style="width: 10%">Details</th>
-              <th style="width: 10%">Delete</th>
             </tr>
         </thead>
         <tbody class="table table-light" style="line-height: 20px">
@@ -183,12 +182,6 @@ Add new User
                 <td><button id="id-<?php echo $row['child_id']; ?>" type="button" class="btn btn-primary editbtn" style="color: black; border: none">
                 <i class="fa fa-arrow-circle-right"></i>
                 </button></td>
-                <td>
-                <form action="php/delete.php" method="POST">
-                    <input type="hidden" name="child_id" value="<?php echo $row['child_id']; ?>">
-                    <button type="submit" name="deletebtn" class="btn btn-danger"><a href="php/delete.php"></a><i class="fa fa-trash"></i></button>
-                </form>
-                </td>
             </tr>
             <?php } ?>
         </tbody>
@@ -207,7 +200,6 @@ Add new User
 
        
       </div>
-      
     </div>
   </div>
 </div>
@@ -226,7 +218,7 @@ while($row = $result->fetch_assoc()){
 $child_ids[] = $row['child_id'];
 }
 foreach ($child_ids as $value) {
-echo "$value <br>";
+echo "$value "."<br>";
 $sql = "SELECT * FROM child_tbl where child_id='$value'";
 $stmt = $con->prepare($sql);
 $stmt->execute();
@@ -234,61 +226,46 @@ $result = $stmt->get_result();
 while($row=mysqli_fetch_assoc($result)){
 ?>
 <div class="container">
-    <label class="label">First Name:</label>
-  <?php if(isset($row['firstname'])) echo $row['firstname']; ?>
-  <br>   
-    <label class="label">Middle Name:</label>
-  <?php if(isset($row['middlename'])) echo $row['middlename']; ?>
-
-    <label class="label">Last Name:</label>
-  <?php if(isset($row['lastname'])) echo $row['lastname']; ?>
-  <br>
-    <label class="label">Date of Birth:</label>
-  <?php if(isset($row['dateofbirth'])) echo $row['dateofbirth']; ?>
-
-<div class="container">
-  <div class="row">
-      <label class="label">Child's Name:</label>
-  </div>
   <div class="row">
     <label class="label">First Name:</label>
-    <?php if(isset($row['firstname'])) echo $row['firstname']; ?>
+    <input type="text" value=<?php if(isset($row['firstname'])) echo $row['firstname']; ?>>
   </div>
   <div class="row">   
     <label class="label">Middle Name:</label>
-    <?php if(isset($row['middlename'])) echo $row['middlename']; ?>  
+    <input type="text" value=<?php if(isset($row['middlename'])) echo $row['middlename']; ?>>
   </div>
   <div class="row">
     <label class="label">Last Name:</label>
-    <?php if(isset($row['lastname'])) echo $row['lastname']; ?>
+    <input type="text" value=<?php if(isset($row['lastname'])) echo $row['lastname']; ?>>
   </div>
   <div class="row">
     <label class="label">Date of Birth:</label>
-    <?php if(isset($row['dateofbirth'])) echo $row['dateofbirth']; ?>
+    <input type="text" value=<?php if(isset($row['dateofbirth'])) echo $row['dateofbirth']; ?>>
   </div>
   <div class="row">
     <label for="pwd" class="label">Place of Birth:</label>
-    <?php if(isset($row['placeofbirth'])) echo $row['placeofbirth']; ?>
+    <input type="text" value=<?php if(isset($row['placeofbirth'])) echo $row['placeofbirth']; ?>>
   <br>
     <label class="label">Address:</label>
-    <?php if(isset($row['address'])) echo $row['address']; ?>
+    <input type="text" value=<?php if(isset($row['address'])) echo $row['address']; ?>>
   <br>
     <label class="label">Mother's Name:</label>
-    <?php if(isset($child_data['mothername'])) echo $row['mothername']; ?>
+    <input type="text" value=<?php if(isset($child_data['mothername'])) echo $row['mothername']; ?>>
     
     <label for="pwd" class="label">Father's Name:</label>
-    <?php if(isset($row['fathername'])) echo $row['fathername']; ?>
+    <input type="text" value=<?php if(isset($row['fathername'])) echo $row['fathername']; ?>>
   <br>
     <label class="label">Birth Height:</label>
-    <?php if(isset($row['birthheight'])) echo $row['birthheight']; ?>
+    <input type="text" value=<?php if(isset($row['birthheight'])) echo $row['birthheight']; ?>>
  
     <label for="pwd" class="label"> Birth Weight:</label>
-<?php if(isset($row['birthweight'])) echo $row['birthweight']; ?>
+    <input type="text" value=<?php if(isset($row['birthweight'])) echo $row['birthweight']; ?>>
   <br>
     <label  class="label">Sex:</label>
-    <?php if(isset($row['sex'])) echo $row['sex']; ?>
-
+    <input type="text" value=<?php if(isset($row['sex'])) echo $row['sex']; ?>>
 <?php }}?>
+<br>
+<br>
 </div>
 </form>
 <!-- Modal -->

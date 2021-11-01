@@ -1,7 +1,6 @@
 <?php 
-
 include("php/connection.php");
-
+include("php/functions.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,16 +8,15 @@ include("php/connection.php");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutrition Guide | Parent</title>
+    <title>Nutrition Guide | Admin</title>
     <link rel= "stylesheet" href = "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.js"></script>
-    <link rel="stylesheet" href="./css/parent_guide.css">
+    <link rel="stylesheet" href="admin_guide.css">
     <!-- Datatables -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.0/css/dataTables.bootstrap4.min.css">
 </head>
 <body>
-
     <!-- Navigation Bar -->
     <nav>
         <input type="checkbox" id="check">
@@ -27,15 +25,15 @@ include("php/connection.php");
         </label>
         <label class="logo">Child Care System</label>
         <ul>
-          <li><a href="parent_index.php"><i class="fas fa-home" id="icon"></i>Dashboard</a></li>
+        <li><a href="parent_index.php" class="active"><i class="fas fa-home" id="icon"></i>Dashboard</a></li>
           <li><a href="parent_child.php"><i class="fas fa-child"  id="icon"></i>Child Profile</a></li>
           <li><a href="parent_chart.php"><i class="fa fa-chart-bar"  id="icon"></i>Vaccine Chart</a></li>
-          <li><a href="parent_guide.php" class="active"><i class="fas fa-book"  id="icon"></i>Nutrition Guide</a></li>
-                  
+          <li><a href="parent_guide.php"><i class="fas fa-book"  id="icon"></i>Nutrition Guide</a></li>
+        
           <div class="dropdown">
             <button class="dropbtn"><i class="fa fa-caret-down"></i></button>
             <div class="dropdown-content">
-            <a href="./php/logout.php"><i class="fas fa-sign-out-alt" id="icon"></i>Logout</a>
+            <a href="logout.php"><i class="fas fa-sign-out-alt" id="icon"></i>Logout</a>
             </div>
           </div>
         </ul>
@@ -45,7 +43,7 @@ include("php/connection.php");
        <center><header class="head"><i class="fa fa-book"></i>Nutrition Guide</header></center>
       <center><table class="table" style="width: 50%">
       <thead>
-        <th>Healthy Foods</th>
+        <th style="width: 30%">Healthy Foods</th>
         <th>Benefits</th>
       </thead>
       <tbody>

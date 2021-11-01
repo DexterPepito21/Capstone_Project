@@ -51,7 +51,7 @@ $id = $_SESSION['parent_id'];
 </nav>
 
 
-<table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+<center><table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:80%">
       <thead>
           <tr>
           <th>child name</th>
@@ -102,11 +102,9 @@ while($row=mysqli_fetch_assoc($result)){
     </td>
 </tr>
 <?php }}?>
-
-
 </tbody>
   </table>
-</div>
+  </center>
 
 
 <!-- Datatables -->

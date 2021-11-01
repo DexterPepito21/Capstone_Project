@@ -13,7 +13,7 @@ $user_data = check_login($con);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/parent_index.css">
+    <link rel="stylesheet" href="parent_index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Dashboard | Parent</title>
 </head>
@@ -39,20 +39,16 @@ $user_data = check_login($con);
           </div>
         </ul>
       </nav>
-
-   
-
-                <div class="main-content">
-            <div class="dashboard toShow">
-                <div class="title">
-                    <!-- <i class="fa fa-info-circle"></i> -->
-                    <h1>Vaccine Information</h1>
-                </div>
-                <table style="height: 100px;">
-                    <colgroup>
-                        <col span="1" style="background-color: #b7b8b8">
-                    </colgroup>
-                    <tr>
+      <br>
+      <br>
+      <center><table class="table" style="width: 50%">
+      <thead>
+                <th style="width: 30%">Vaccine</th>
+                <th style="width: 10%">Information</th>
+      </thead>
+      <tbody>
+           <tbody>
+           <tr>
                 <?php 
                     $sql = "SELECT *
                     FROM vaccine_information";
@@ -68,11 +64,12 @@ $user_data = check_login($con);
                         <td  ><?php echo $information ?></td>          
                     </tr>
                     <?php } ?>
-                </tbody>
-                </table>
-            </div><!-- Dashboard -->
-        </div><!-- Main Content -->
-    </div>
+          </tbody>
+        </table>
+        </div>
+        </div>
+        </div>
+
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

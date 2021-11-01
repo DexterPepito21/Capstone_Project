@@ -14,14 +14,14 @@
     width: 100%;
     border-bottom: 1px solid #77b7f6;
   }
-  .logo{
+  label.logo{
     color: #000000;
     font-size: 35px;
     line-height: 80px;
     padding: 0 20px;
     font-weight: bold;
   }
-  .logo:hover{
+  label.logo:hover{
     color: #77b7f6;
   }
   nav ul{
@@ -107,7 +107,7 @@
   }
   
   @media (max-width: 745px) {
-    .logo{
+    label.logo{
       font-size: 20px;
       padding-left: 15px;
     }
@@ -150,6 +150,7 @@
       text-align: center;
       transform: all .5s;
       transition: all .5s;
+      z-index: 1;
     }
     nav ul li{
       display: block;
@@ -167,74 +168,99 @@
   #check:checked ~ ul{
     left: 0;
   }
-
-/* Forms */
-/*add full-width input fields*/
-.form-inline{
-    margin-right: 10%;
-    margin-top: 5px;
-    width: 60%;
-    background-color: #edf6ff;
-}
-.form-inline-1{
-  margin-left: 25%;
-  margin-top: 5px;
-  width: 55%;
-  background-color: #edf6ff;
-}   
-h2{
-    font-size: 50px;
-    margin-top: 10px;
-    text-align: center;
-}
-input[type=text]
-{
-    padding: 5px;
-    margin: 5px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    justify-content: center;
-    align-items: center;
-    background-color: #6daffe;
-    width: 30%;
+/* Table */
+header{
+  font-size: 40px;
+  padding: 10px;
+  margin-bottom: 30px;
+  margin-top: 30px;
 }
 .container{
-        margin-bottom: 10px;
-        align-items: center;
-      }
-.label {
-        display: inline-block;
-        width: 125px;
-        text-align: right;
-      }
-button {
-    background-color: #6daffe;
-    color: white;
-    padding: 5px 10px;
-    margin: 5px 0;
-    cursor: pointer;
+  width: 50%;
+  padding: 20px;
+  margin: 30px 25% 20%;
+  border: 1px solid #f1f1f1;
+  box-shadow: 0 10px 30px 0 #ccc;
 }
-.btn{
-    margin-left: 20px;
-    width: 15%;
+.rem li{
+    padding: 10px;
+    list-style-type: disc;
+    list-style-position: inside;
+    background-color: #edf6ff;
 }
-.container {
-    padding: 16px;
+p{
+  text-align: center; 
+  margin: 20px 0; 
+  font-weight: bold;
 }
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
+.table {
+  width: 50%;
+  border-collapse: collapse;
 }
 
-/* Media Screen */
-@media (max-width: 700px){
-    /* Forms */
-    .btn {
-        width: 50%;
-    }
-    input[type=text]{
-      width: 50%;
-    }
+.table td,
+.table th {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: justify;
+  font-size: 16px;
+}
+
+.table th {
+  background-color: #97c2ee;
+  color: #000000;
+  text-align: center;
+  font-size: 18px;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #d1e8f5;
+}
+
+/*responsive*/
+
+@media (max-width: 700px) {
+  .table thead {
+    display: none;
+  }
+  .table,
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+    width: 100%;
+  }
+  .table tr {
+    margin-bottom: 15px;
+  }
+  .table td {
+    padding-left: 50%;
+    text-align: justify;
+    position: relative;
+  }
+  .table td::before {
+    content: attr(data-label);
+    position: absolute;
+    text-align: justify;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
+    font-size: 15px;
+    font-weight: bold;
+  }
+  .content{
+    margin-top: 50%;
+    width: 100%;
+  }
+  .rem li{
+    padding: 10px;
+    list-style-type: disc;
+    list-style-position: inside;
+    background-color: #edf6ff;
+}
+p{
+  text-align: center; 
+  margin: 20px 0; 
+  font-weight: bold;
+}
 }
