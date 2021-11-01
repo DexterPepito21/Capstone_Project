@@ -68,10 +68,10 @@ function chart($con)
 {
 
 	
-	if(isset($_SESSION['child_id'])){
+	if(isset($_SESSION['parent_id'])){
 
-		$child_id = $_SESSION['child_id'];
-		$query = "SELECT * FROM chart where child_id = '$child_id' limit 1";
+		$parent_id = $_SESSION['parent_id'];
+		$query = "SELECT * FROM child_tbl where parent_id = '$parent_id'";
 	  
 		$result = mysqli_query($con,$query);
 		if($result && mysqli_num_rows($result) > 0)

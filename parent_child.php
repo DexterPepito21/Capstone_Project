@@ -11,7 +11,7 @@ $child_data = child($con);
 $parent_id = $user_data['parent_id'];
 
 
-if(isset($_POST['submit'])){
+if(isset($_POST['add'])){
   $child_id = $child_data['child_id'];
   $firstname = $_POST['firstname'];
   $lastname = $_POST['lastname'];
@@ -25,18 +25,32 @@ if(isset($_POST['submit'])){
   $birthweight = $_POST['birthweight'];
   $sex = $_POST['sex'];
 
-  $sql = "INSERT INTO child_tbl (child_id,parent_id,firstname,lastname,middlename,dateofbirth,placeofbirth,address,fathername,mothername,birthheight,birthweight,sex)
-  values ('$child_id','$parent_id','$firstname','$lastname','$middlename','$dateofbirth','$placeofbirth','$address','$fathername','$mothername','$birthheight','$birthweight','$sex') 
-  ON DUPLICATE KEY UPDATE firstname='$firstname', lastname='$lastname', middlename='$middlename', dateofbirth='$dateofbirth', placeofbirth='$placeofbirth', address='$address',fathername='$fathername', mothername='$mothername', birthheight='$birthheight', birthweight='$birthweight', sex='$sex'";
+  $sql = "INSERT INTO child_tbl (parent_id,firstname,lastname,middlename,dateofbirth,placeofbirth,address,fathername,mothername,birthheight,birthweight,sex)
+  values ('$parent_id','$firstname','$lastname','$middlename','$dateofbirth','$placeofbirth','$address','$fathername','$mothername','$birthheight','$birthweight','$sex')";
+  //  ON DUPLICATE KEY UPDATE firstname='$firstname', lastname='$lastname', middlename='$middlename', dateofbirth='$dateofbirth', placeofbirth='$placeofbirth', address='$address',fathername='$fathername', mothername='$mothername', birthheight='$birthheight', birthweight='$birthweight', sex='$sex'
 
   $result = mysqli_query($con, $sql);
 
-	if($result){
-    $_SESSION['child_id'] = $child_data['child_id'];
-		echo "alert('data updated')";
-	}else {
-		die(mysqli_error($con));
-	}
+	
+
+}
+
+if(isset($_POST['update'])){
+  $child_id = $child_data['child_id'];
+  $firstname = $_POST['firstname'];
+  $lastname = $_POST['lastname'];
+  $middlename = $_POST['middlename'];
+  $dateofbirth = $_POST['dateofbirth'];
+  $placeofbirth = $_POST['placeofbirth'];
+  $address = $_POST['address'];
+  $fathername = $_POST['fathername'];
+  $mothername = $_POST['mothername'];
+  $birthheight = $_POST['birthheight'];
+  $birthweight = $_POST['birthweight'];
+  $sex = $_POST['sex'];
+
+  $sql = "UPDATE chart SET child_id='$child_id', firstname='$firstname', lastname='$lastname', middlename='$middlename', dateofbirth='$dateofbirth', placeofbirth='$placeofbirth', address='$address',fathername='$fathername', mothername='$mothername', birthheight='$birthheight', birthweight='$birthweight', sex='$sex'";
+  $result = mysqli_query($con, $sql);
 
 
 }
@@ -94,58 +108,46 @@ Add new User
       </div>
       <div class="modal-body">
 
-        <form class="form-inline" action="php/addchild.php" method="post"  style=" width: 100%">
+        <form class="form-inline" action="#" method="post"  style=" width: 100%">
           <div class="container" >
               <label class="label">First Name:</label>
-              <input type="text" class="form-control"  name="firstname" value=<?php if(isset($child_data['firstname'])) echo $child_data['firstname']; ?>>
+              <input type="text" class="form-control"  name="firstname">
             <br>
               <label class="label">Middle Name:</label>
-              <input type="text" class="form-control" name="middlename" value=<?php if(isset($child_data['middlename'])) echo $child_data['middlename']; ?>>
+              <input type="text" class="form-control" name="middlename">
 
               <label class="label">Last Name:</label>
-              <input type="text" class="form-control" name="lastname" value=<?php if(isset($child_data['lastname'])) echo $child_data['lastname']; ?>>
+              <input type="text" class="form-control" name="lastname">
             <br>
               <label class="label">Date of Birth:</label>
-              <input type="text" class="form-control" name="dateofbirth" value=<?php if(isset($child_data['dateofbirth'])) echo $child_data['dateofbirth']; ?>><br>
+              <input type="text" class="form-control" name="dateofbirth"><br>
 
               <label class="label">Place of Birth:</label>
-              <input type="text"class="form-control" name="placeofbirth" value=<?php if(isset($child_data['placeofbirth'])) echo $child_data['placeofbirth']; ?>>
+              <input type="text"class="form-control" name="placeofbirth">
             <br>
               <label class="label">Address:</label>
-              <input type="text"class="form-control" name="address" value=<?php if(isset($child_data['address'])) echo $child_data['address']; ?>>
+              <input type="text"class="form-control" name="address">
             <br>
               <label class="label">Mother's Name:</label>
-              <input type="text"class="form-control" name="mothername" value=<?php if(isset($child_data['mothername'])) echo $child_data['mothername']; ?>>
+              <input type="text"class="form-control" name="mothername">
 
               <label class="label">Father's Name:</label>
-              <input type="text"class="form-control" name="fathername" value=<?php if(isset($child_data['fathername'])) echo $child_data['fathername']; ?>>
+              <input type="text"class="form-control" name="fathername">
             <br>
               <label class="label">Birth Height:</label>
-              <input type="text"class="form-control" name="birthheight" value=<?php if(isset($child_data['birthheight'])) echo $child_data['birthheight']; ?>>
+              <input type="text"class="form-control" name="birthheight">
 
               <label class="label"> Birth Weight:</label>
-              <input type="text"class="form-control" name="birthweight" value=<?php if(isset($child_data['birthweight'])) echo $child_data['birthweight']; ?>>
+              <input type="text"class="form-control" name="birthweight">
             <br>
               <label class="label">Sex:</label><br>
-              <input type="radio" id="male" name="sex" 
-                  <?php if(isset($child_data['sex'])) {
-                      if($child_data['sex']=="male") {
-                        echo "checked";
-                      }
-                    }
-                  ?> value="male">
+              <input type="radio" id="male" name="sex"  value="male">
               <label for="male">male</label>
-              <input type="radio" id="female" name="sex" 
-                  <?php if(isset($child_data['sex'])) {
-                      if($child_data['sex']=="female") {
-                        echo "checked";
-                      }
-                    }
-                  ?> value="female">
+              <input type="radio" id="female" name="sex"  value="female">
               <label for="female">female</label>
             </div>
             <div class="clearfix">
-                <button type="submit" class="btn btn-primary" name="submit">Update</button>
+                <button type="submit" class="btn btn-primary" name="add">Update</button>
             </div>
             </div>
           </div>
@@ -155,24 +157,94 @@ Add new User
     </div>
   </div>
 </div>
-    
+
+<!-- child table -->
+<div class="container">
+    <table id="example" class="table table-primary table-hover" style="width:50%;">
+        <thead>
+            <tr>
+              <th>Child's Name</th>
+              <th style="width: 10%">Details</th>
+              <th style="width: 10%">Delete</th>
+            </tr>
+        </thead>
+        <tbody class="table table-light" style="line-height: 20px">
+            <?php 
+            $sql = "SELECT * FROM child_tbl where parent_id='$parent_id'";
+            $stmt = $con->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            while($row = $result->fetch_assoc()){
+            ?>
+            <tr>
+                <td hidden><?php echo $row['parent_id']; ?></td>
+                <td hidden><?php echo $row['child_id']; ?></td>
+                <td><?php echo $row['firstname']."  ".$row['lastname']; ?></td>                           
+                <td><button id="id-<?php echo $row['child_id']; ?>" type="button" class="btn btn-primary editbtn" style="color: black; border: none">
+                <i class="fa fa-arrow-circle-right"></i>
+                </button></td>
+                <td>
+                <form action="php/delete.php" method="POST">
+                    <input type="hidden" name="child_id" value="<?php echo $row['child_id']; ?>">
+                    <button type="submit" name="deletebtn" class="btn btn-danger"><a href="php/delete.php"></a><i class="fa fa-trash"></i></button>
+                </form>
+                </td>
+            </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+</div>
+<div class="container">
+<!-- Edit child Modal -->
+<div class="modal fade" id="editchild" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="edit_child">
+
+       
+      </div>
+      
+    </div>
+  </div>
+</div>
     
 <!-- Forms -->
 <!--Step 1:Adding HTML-->
 <h2><i class="fa fa-child"></i>Profile</h2>
 <form class="form-inline-1" action="/action_page.php"  style="border:1px solid #ccc">
+<?php 
+$sql = "SELECT * FROM child_tbl where parent_id='$parent_id'";
+$stmt = $con->prepare($sql);
+$stmt->execute();
+$result = $stmt->get_result();
+$child_ids = array();
+while($row = $result->fetch_assoc()){
+$child_ids[] = $row['child_id'];
+}
+foreach ($child_ids as $value) {
+echo "$value <br>";
+$sql = "SELECT * FROM child_tbl where child_id='$value'";
+$stmt = $con->prepare($sql);
+$stmt->execute();
+$result = $stmt->get_result();
+while($row=mysqli_fetch_assoc($result)){
+?>
 <div class="container">
     <label class="label">First Name:</label>
-    <input type="text" class="form-control"  name="email" value="<?php if(isset($child_data['firstname'])) echo $child_data['firstname']; ?>">
+  <?php if(isset($row['firstname'])) echo $row['firstname']; ?>
   <br>   
     <label class="label">Middle Name:</label>
-    <input type="text" class="form-control"  name="email" value="<?php if(isset($child_data['middlename'])) echo $child_data['middlename']; ?>">  
+  <?php if(isset($row['middlename'])) echo $row['middlename']; ?>
 
     <label class="label">Last Name:</label>
-    <input type="text" class="form-control"   name="email" value="<?php if(isset($child_data['lastname'])) echo $child_data['lastname']; ?>">
+  <?php if(isset($row['lastname'])) echo $row['lastname']; ?>
   <br>
     <label class="label">Date of Birth:</label>
-    <input type="text" class="form-control"   name="email" value="<?php if(isset($child_data['dateofbirth'])) echo $child_data['dateofbirth']; ?>">
+  <?php if(isset($row['dateofbirth'])) echo $row['dateofbirth']; ?>
 
 <div class="container">
   <div class="row">
@@ -180,47 +252,69 @@ Add new User
   </div>
   <div class="row">
     <label class="label">First Name:</label>
-    <?php if(isset($child_data['firstname'])) echo $child_data['firstname']; ?>
+    <?php if(isset($row['firstname'])) echo $row['firstname']; ?>
   </div>
   <div class="row">   
     <label class="label">Middle Name:</label>
-    <?php if(isset($child_data['middlename'])) echo $child_data['middlename']; ?>  
+    <?php if(isset($row['middlename'])) echo $row['middlename']; ?>  
   </div>
   <div class="row">
     <label class="label">Last Name:</label>
-    <?php if(isset($child_data['lastname'])) echo $child_data['lastname']; ?>
+    <?php if(isset($row['lastname'])) echo $row['lastname']; ?>
   </div>
   <div class="row">
     <label class="label">Date of Birth:</label>
-    <?php if(isset($child_data['dateofbirth'])) echo $child_data['dateofbirth']; ?>
+    <?php if(isset($row['dateofbirth'])) echo $row['dateofbirth']; ?>
   </div>
   <div class="row">
     <label for="pwd" class="label">Place of Birth:</label>
-    <input type="text" class="form-control"   name="email" value="<?php if(isset($child_data['placeofbirth'])) echo $child_data['placeofbirth']; ?>">
+    <?php if(isset($row['placeofbirth'])) echo $row['placeofbirth']; ?>
   <br>
     <label class="label">Address:</label>
-    <input type="text" class="form-control"  name="email" value="<?php if(isset($child_data['address'])) echo $child_data['address']; ?>">
+    <?php if(isset($row['address'])) echo $row['address']; ?>
   <br>
     <label class="label">Mother's Name:</label>
-    <input type="text" class="form-control"   name="email" value="<?php if(isset($child_data['mothername'])) echo $child_data['mothername']; ?>">
+    <?php if(isset($child_data['mothername'])) echo $row['mothername']; ?>
     
     <label for="pwd" class="label">Father's Name:</label>
-    <input type="text" class="form-control"   name="email" value="<?php if(isset($child_data['fathername'])) echo $child_data['fathername']; ?>">
+    <?php if(isset($row['fathername'])) echo $row['fathername']; ?>
   <br>
     <label class="label">Birth Height:</label>
-    <input type="text" class="form-control"   name="email" value="<?php if(isset($child_data['birthheight'])) echo $child_data['birthheight']; ?>">
+    <?php if(isset($row['birthheight'])) echo $row['birthheight']; ?>
  
     <label for="pwd" class="label"> Birth Weight:</label>
-    <input type="text" class="form-control"   name="email" value="<?php if(isset($child_data['birthweight'])) echo $child_data['birthweight']; ?>">
+<?php if(isset($row['birthweight'])) echo $row['birthweight']; ?>
   <br>
     <label  class="label">Sex:</label>
-    <?php if(isset($child_data['sex'])) echo $child_data['sex']; ?>
+    <?php if(isset($row['sex'])) echo $row['sex']; ?>
+
+<?php }}?>
 </div>
 </form>
-
 <!-- Modal -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+$(document).ready(function(){
+      
+  $('.editbtn').on('click', function(){
+      var child_id = $(this).attr("id").replace('id-','');
+      // alert(chart_id);
+  
+      $.ajax({
+          url: "php/edit_child_parent.php",
+          type: "post",
+          data:{child_id: child_id},
+          success:function(data){
+            $('#edit_child').html(data);
+            $('#editchild').modal('show');
+          }
+        }); 
+   
+  });
+});
+</script>
 
 </body>
 </html>
