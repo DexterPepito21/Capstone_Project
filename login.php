@@ -76,7 +76,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
   <body>
 
 <div class="wrapper fadeInDown">
-<a href="home.php" class="back"><i class="fas fa-arrow-circle-left"></i></a>
+<a href="index.php" class="back"><i class="fas fa-arrow-circle-left"></i></a>
   <div id="formContent">
     
     <!-- Icon -->

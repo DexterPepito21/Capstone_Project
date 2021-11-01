@@ -28,9 +28,8 @@ session_start();
   <label class="logo">Child Care System</label>
   <ul>
     <li><a href="admin_index.php"><i class="fas fa-home" id="icon"></i>Dashboard</a></li>
-    <li><a href="admin_child.php"><i class="fas fa-child"  id="icon"></i>Child Profile</a></li>
+    <li><a href="admin_input.php"><i class="fas fa-book"  id="icon"></i>Input</a></li>
     <li><a href="admin_chart.php" class="active"><i class="fa fa-chart-bar"  id="icon"></i>Vaccine Chart</a></li>
-    <li><a href="admin_guide.php"><i class="fas fa-book"  id="icon"></i>Nutrition Guide</a></li>
     <li><a href="admin_sms.php"><i class="fas fa-comment"  id="icon"></i>SMS Notification</a></li>
   
     <div class="dropdown">
@@ -51,7 +50,7 @@ session_start();
             <tr>
               <th>Child's Name</th>
               <th style="width: 10%">Details</th>
-              <th style="width: 10%">Delete</th>
+              <th style="width: 15%">Delete</th>
             </tr>
         </thead>
         <tbody class="table table-light" style="line-height: 20px">
@@ -193,7 +192,8 @@ session_start();
                 while($rows=mysqli_fetch_assoc($result)){
                   $vaccine_id = $rows['vaccine_id'];
                   $vaccinename = $rows['vaccinename'];
-                  echo "<option value='$vaccine_id'>$vaccinename</option>";
+                  $doses = $rows['doses'];
+                  echo "<option value='$vaccine_id'>$vaccinename $doses dose</option>";
                 }                                     
                 ?>
             </select> 

@@ -4,7 +4,8 @@ session_start();
 
 	include("php/connection.php");
 	include("php/functions.php");
-	if($_SERVER['REQUEST_METHOD'] == "POST")
+
+	if(isset($_POST['signup']))
   {
     $errors = array();
 		
@@ -50,9 +51,9 @@ session_start();
       $query = "INSERT INTO parent_tbl (firstname,lastname,middlename,address,phonenum,username,password)
       values ('$firstname','$lastname','$middlename','$address','$phonenum','$username','$password')";
 			mysqli_query($con, $query);
-
+      header("Location: login.php");
 		}
-    header("Location: login.php");
+
 	}
 ?>
 <!DOCTYPE html>
@@ -74,31 +75,31 @@ session_start();
   </head>
   <body>
 <div class="wrapper fadeInDown">
-<a href="home.php" class="back"><i class="fas fa-arrow-circle-left"></i></a>
+<a href="index.php" class="back"><i class="fas fa-arrow-circle-left"></i></a>
   <div id="formContent">
     <!-- Icon -->
     <div class="fadeIn first">
       <img src="admin/b2.png" id="icon" alt="User Icon" />
     </div>
     <h2>Sign Up</h2>
-    <!-- Login Form -->
+    <!-- Login Form --><p style="color:red;">  <?php if(isset($errors['fn'])) echo $errors['fn']; ?></p>
+    <p style="color:red;">  <?php if(isset($errors['uln'])) echo $errors['uln']; ?></p>
+    <p style="color:red;">  <?php if(isset($errors['mn'])) echo $errors['mn']; ?></p>
+    <p style="color:red;">  <?php if(isset($errors['a'])) echo $errors['a']; ?></p>
+    <p style="color:red;">  <?php if(isset($errors['pn'])) echo $errors['pn']; ?></p>
+    <p style="color:red;">  <?php if(isset($errors['u'])) echo $errors['u']; ?></p>
+    <p style="color:red;">  <?php if(isset($errors['p'])) echo $errors['p']; ?>
     <form action="#" method="POST" class="form-inline">
+    
     <i class="fas fa-user"></i><input type="text" id="login" class="fadeIn second" name="firstname" placeholder="Firstname"/><br>
-    <p style="color:red;">  <?php if(isset($errors['fn'])) echo $errors['fn']; ?></p><br>
     <i class="fas fa-user"></i><input type="text" id="password" class="fadeIn third" name="lastname" placeholder="Lastname"/><br>
-    <p style="color:red;">  <?php if(isset($errors['uln'])) echo $errors['uln']; ?></p><br>
     <i class="fas fa-user"></i><input type="text" id="login" class="fadeIn second" name="middlename" placeholder="Middle name"/><br>
-    <p style="color:red;">  <?php if(isset($errors['mn'])) echo $errors['mn']; ?></p><br>
     <i class="fas fa-map-marker"></i><input type="text" id="password" class="fadeIn third" name="address" placeholder="Address"/><br>
-    <p style="color:red;">  <?php if(isset($errors['a'])) echo $errors['a']; ?></p><br>
     <i class="fas fa-phone"></i><input type="text" id="login" class="fadeIn second" name="phonenum" placeholder="Phone Number"/><br>
-    <p style="color:red;">  <?php if(isset($errors['pn'])) echo $errors['pn']; ?></p><br>
     <i class="fas fa-user"></i><input type="text" id="login" class="fadeIn second" name="username" placeholder="Username"/>
-    <p style="color:red;">  <?php if(isset($errors['u'])) echo $errors['u']; ?></p><br>
     <i class="fas fa-lock"></i><input type="password" id="password" class="fadeIn third" name="password" placeholder="Password"/><br>
-    <p style="color:red;">  <?php if(isset($errors['p'])) echo $errors['p']; ?></p>
     <br>
-      <input type="submit" class="fadeIn fourth" value="Sign up">
+      <input type="submit" name="signup" class="fadeIn fourth" value="Sign up">
   
     </form>
     <div id="formFooter">

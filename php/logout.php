@@ -12,5 +12,5 @@ if(isset($_SESSION['child_id']))
 	unset($_SESSION['child_id']);
 
 }
-header("Location: ../home.php");
+header("Location: ../index.php");
 die;

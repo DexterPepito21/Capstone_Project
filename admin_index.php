@@ -12,7 +12,6 @@ $complete=mysqli_num_rows($result);
 $sql2 = "SELECT vaccinated FROM chart where vaccinated='no'";
 $result2=mysqli_query($con,$sql2);
 $Incomplete=mysqli_num_rows($result2);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,9 +34,8 @@ $Incomplete=mysqli_num_rows($result2);
           <label class="logo">Child Care System</label>
           <ul>
             <li><a href="admin_index.php" class="active"><i class="fas fa-home" id="icon"></i>Dashboard</a></li>
-            <li><a href="admin_child.php"><i class="fas fa-child"  id="icon"></i>Child Profile</a></li>
+            <li><a href="admin_input.php"><i class="fas fa-book"  id="icon"></i>Input</a></li>
             <li><a href="admin_chart.php"><i class="fa fa-chart-bar"  id="icon"></i>Vaccine Chart</a></li>
-            <li><a href="admin_guide.php"><i class="fas fa-book"  id="icon"></i>Nutrition Guide</a></li>
             <li><a href="admin_sms.php"><i class="fas fa-comment"  id="icon"></i>SMS Notification</a></li>
           
             <div class="dropdown">
@@ -61,7 +59,8 @@ $Incomplete=mysqli_num_rows($result2);
            </tr>
           </table>
 
-      <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:50%">
+      <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:50%; height: 100%">
+      <caption></caption>
       <thead>       
           <tr>
               <th>Types of Vaccine</th>

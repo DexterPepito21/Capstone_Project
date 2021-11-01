@@ -188,9 +188,9 @@
   }
 /* Main Content */
 .dashboard{
-    width: 800px;
-    height: 400px;
-    margin-left: 50%;
+    width: 100%;
+    height: 100%;
+    margin-left: 20%;
     margin-top: 10%;
 }
 .main-content .dashboard .title{
@@ -201,7 +201,8 @@
     margin: 1rem 4em;
 }
 /* Tables */
-table, th, td {
+table{
+    width: 100%;
     border: 2px solid black;
     border-collapse: collapse;
     text-align: center;
