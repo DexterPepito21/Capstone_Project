@@ -1,5 +1,5 @@
 <?php 
-//update.php
+error_reporting(0);
 session_start();
 
 include("php/connection.php");
@@ -69,7 +69,7 @@ if(isset($_POST['update'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/parent_child.css">
 </head>
-<body>parent id, <?php echo $user_data['parent_id']; ?>
+<body>
 
 <!-- Navigation Bar -->
 <nav>

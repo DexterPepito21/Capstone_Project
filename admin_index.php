@@ -6,6 +6,12 @@ include("php/functions.php");
 
 $user_data = check_login($con);
 
+$sql = "SELECT vaccinated FROM chart where vaccinated='yes'";
+$result=mysqli_query($con,$sql);
+$complete=mysqli_num_rows($result);
+$sql2 = "SELECT vaccinated FROM chart where vaccinated='no'";
+$result2=mysqli_query($con,$sql2);
+$Incomplete=mysqli_num_rows($result2);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,9 +52,11 @@ $user_data = check_login($con);
           <table class="row">
            <tr>
              <td>Completed</td>
+             <td><?php echo $complete; ?></td>
            </tr>
            <tr>
              <td>Incomplete</td>
+             <td><?php echo $Incomplete; ?></td>
            </tr>
           </table>
          <table>
