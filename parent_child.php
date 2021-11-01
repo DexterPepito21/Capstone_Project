@@ -53,7 +53,7 @@ if(isset($_POST['submit'])){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.js"></script>
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/parent_child.css">
+    <link rel="stylesheet" href="css/parent_child.css">
 </head>
 <body>parent id, <?php echo $user_data['parent_id']; ?>
 
@@ -86,7 +86,7 @@ Add new User
 <div class="container">
 <!-- Add user Modal -->
 <div class="modal fade" id="addUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog  modal-xl">
+  <div class="modal-dialog  modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
@@ -94,50 +94,39 @@ Add new User
       </div>
       <div class="modal-body">
 
-        <form class="form-inline" action="php/addchild.php" method="post"  style="border:1px solid #ccc">
-          <div class="container">
-            <div class="bm-3"> 
-              <label class="form-label">First Name:</label>
+        <form class="form-inline" action="php/addchild.php" method="post"  style=" width: 100%">
+          <div class="container" >
+              <label class="label">First Name:</label>
               <input type="text" class="form-control"  name="firstname" value=<?php if(isset($child_data['firstname'])) echo $child_data['firstname']; ?>>
-            </div>  
-            <div class="bm-3">
-              <label class="form-label">Middle Name:</label>
+            <br>
+              <label class="label">Middle Name:</label>
               <input type="text" class="form-control" name="middlename" value=<?php if(isset($child_data['middlename'])) echo $child_data['middlename']; ?>>
-            </div>
-            <div class="bm-3">
-              <label class="form-label">Last Name:</label>
+
+              <label class="label">Last Name:</label>
               <input type="text" class="form-control" name="lastname" value=<?php if(isset($child_data['lastname'])) echo $child_data['lastname']; ?>>
-            </div>
-            <div class="bm-3">
-              <label class="form-label">Date of Birth:</label>
+            <br>
+              <label class="label">Date of Birth:</label>
               <input type="text" class="form-control" name="dateofbirth" value=<?php if(isset($child_data['dateofbirth'])) echo $child_data['dateofbirth']; ?>><br>
-            </div>
-            <div class="bm-3">
-              <label for="pwd" class="form-label">Place of Birth:</label>
+
+              <label class="label">Place of Birth:</label>
               <input type="text"class="form-control" name="placeofbirth" value=<?php if(isset($child_data['placeofbirth'])) echo $child_data['placeofbirth']; ?>>
-            </div>
-            <div class="bm-3">
-              <label class="form-label">Address:</label>
+            <br>
+              <label class="label">Address:</label>
               <input type="text"class="form-control" name="address" value=<?php if(isset($child_data['address'])) echo $child_data['address']; ?>>
-            </div>
-            <div class="bm-3">
-              <label class="form-label">Mother's Name:</label>
+            <br>
+              <label class="label">Mother's Name:</label>
               <input type="text"class="form-control" name="mothername" value=<?php if(isset($child_data['mothername'])) echo $child_data['mothername']; ?>>
-            </div>
-            <div class="bm-3">
-              <label for="pwd" class="form-label">Father's Name:</label>
+
+              <label class="label">Father's Name:</label>
               <input type="text"class="form-control" name="fathername" value=<?php if(isset($child_data['fathername'])) echo $child_data['fathername']; ?>>
-            </div>
-            <div class="bm-3">
-              <label class="form-label">Birth Height:</label>
+            <br>
+              <label class="label">Birth Height:</label>
               <input type="text"class="form-control" name="birthheight" value=<?php if(isset($child_data['birthheight'])) echo $child_data['birthheight']; ?>>
-            </div>
-            <div class="bm-3">
-              <label for="pwd" class="form-label"> Birth Weight:</label>
+
+              <label class="label"> Birth Weight:</label>
               <input type="text"class="form-control" name="birthweight" value=<?php if(isset($child_data['birthweight'])) echo $child_data['birthweight']; ?>>
-            </div>
-            <div class="bm-3">
-              <label class="form-label">Sex:</label><br>
+            <br>
+              <label class="label">Sex:</label><br>
               <input type="radio" id="male" name="sex" 
                   <?php if(isset($child_data['sex'])) {
                       if($child_data['sex']=="male") {
@@ -156,7 +145,7 @@ Add new User
               <label for="female">female</label>
             </div>
             <div class="clearfix">
-                <button type="submit" class="signupbtn" name="submit">Update</button>
+                <button type="submit" class="btn btn-primary" name="submit">Update</button>
             </div>
             </div>
           </div>
@@ -171,6 +160,19 @@ Add new User
 <!-- Forms -->
 <!--Step 1:Adding HTML-->
 <h2><i class="fa fa-child"></i>Profile</h2>
+<form class="form-inline-1" action="/action_page.php"  style="border:1px solid #ccc">
+<div class="container">
+    <label class="label">First Name:</label>
+    <input type="text" class="form-control"  name="email" value="<?php if(isset($child_data['firstname'])) echo $child_data['firstname']; ?>">
+  <br>   
+    <label class="label">Middle Name:</label>
+    <input type="text" class="form-control"  name="email" value="<?php if(isset($child_data['middlename'])) echo $child_data['middlename']; ?>">  
+
+    <label class="label">Last Name:</label>
+    <input type="text" class="form-control"   name="email" value="<?php if(isset($child_data['lastname'])) echo $child_data['lastname']; ?>">
+  <br>
+    <label class="label">Date of Birth:</label>
+    <input type="text" class="form-control"   name="email" value="<?php if(isset($child_data['dateofbirth'])) echo $child_data['dateofbirth']; ?>">
 
 <div class="container">
   <div class="row">
@@ -194,34 +196,27 @@ Add new User
   </div>
   <div class="row">
     <label for="pwd" class="label">Place of Birth:</label>
-    <?php if(isset($child_data['placeofbirth'])) echo $child_data['placeofbirth']; ?>
-  </div>
-  <div class="row">
+    <input type="text" class="form-control"   name="email" value="<?php if(isset($child_data['placeofbirth'])) echo $child_data['placeofbirth']; ?>">
+  <br>
     <label class="label">Address:</label>
-    <?php if(isset($child_data['address'])) echo $child_data['address']; ?> 
-  </div>
-  <div class="row">
+    <input type="text" class="form-control"  name="email" value="<?php if(isset($child_data['address'])) echo $child_data['address']; ?>">
+  <br>
     <label class="label">Mother's Name:</label>
-    <?php if(isset($child_data['mothername'])) echo $child_data['mothername']; ?>
-  </div>
-  <div class="row">     
+    <input type="text" class="form-control"   name="email" value="<?php if(isset($child_data['mothername'])) echo $child_data['mothername']; ?>">
+    
     <label for="pwd" class="label">Father's Name:</label>
-    <?php if(isset($child_data['fathername'])) echo $child_data['fathername']; ?>
-  </div>
-  <div class="row">
+    <input type="text" class="form-control"   name="email" value="<?php if(isset($child_data['fathername'])) echo $child_data['fathername']; ?>">
+  <br>
     <label class="label">Birth Height:</label>
-    <?php if(isset($child_data['birthheight'])) echo $child_data['birthheight']; ?>
-  </div>
-  <div class="row">
+    <input type="text" class="form-control"   name="email" value="<?php if(isset($child_data['birthheight'])) echo $child_data['birthheight']; ?>">
+ 
     <label for="pwd" class="label"> Birth Weight:</label>
-    <?php if(isset($child_data['birthweight'])) echo $child_data['birthweight']; ?>
-  </div>
-  <div class="row">
+    <input type="text" class="form-control"   name="email" value="<?php if(isset($child_data['birthweight'])) echo $child_data['birthweight']; ?>">
+  <br>
     <label  class="label">Sex:</label>
     <?php if(isset($child_data['sex'])) echo $child_data['sex']; ?>
-  </div>
 </div>
-
+</form>
 
 <!-- Modal -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

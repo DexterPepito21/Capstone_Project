@@ -170,35 +170,42 @@
 
 /* Forms */
 /*add full-width input fields*/
-form{
-    margin-left: 25%;
-    margin-right: 20%;
-    margin-top: 30px;
-    width: 50%;
+.form-inline{
+    margin-right: 10%;
+    margin-top: 5px;
+    width: 55%;
     background-color: #edf6ff;
+}
+.form-inline-1{
+  margin-left: 25%;
+  margin-top: 5px;
+  width: 55%;
+  background-color: #edf6ff;
 }   
 h2{
     font-size: 50px;
-    margin-top: 50px;
+    margin-top: 10px;
     text-align: center;
 }
 input[type=text]
 {
     padding: 5px;
-    margin: 10px;
+    margin: 5px;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
     justify-content: center;
     align-items: center;
     background-color: #6daffe;
+    width: 30%;
 }
 .container{
         margin-bottom: 10px;
+        align-items: center;
       }
 .label {
         display: inline-block;
-        width: 150px;
+        width: 125px;
         text-align: right;
       }
 button {
@@ -208,9 +215,9 @@ button {
     margin: 5px 0;
     cursor: pointer;
 }
-.signupbtn {
+.btn{
     margin-left: 20px;
-    width: 30%;
+    width: 15%;
 }
 .container {
     padding: 16px;
@@ -224,7 +231,10 @@ button {
 /* Media Screen */
 @media (max-width: 700px){
     /* Forms */
-    .signupbtn {
+    .btn {
         width: 50%;
+    }
+    input[type=text]{
+      width: 50%;
     }
 }

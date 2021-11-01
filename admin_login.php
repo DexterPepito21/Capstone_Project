@@ -7,10 +7,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
    
-    $usernameErr = "SELECT username FROM parent_tbl WHERE username='$username'";
+    $usernameErr = "SELECT username FROM admin_tbl WHERE username='$username'";
     $usernameErrResult = mysqli_query($con,$usernameErr);
 
-    $passwordErr = "SELECT username FROM users WHERE password='$password'";
+    $passwordErr = "SELECT username FROM admin_tbl WHERE password='$password'";
     $passwordErrResult = mysqli_query($con,$usernameErr);
 
 
@@ -25,7 +25,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     }
     
     if(count($errors)==0){
-      $query = "SELECT * FROM parent_tbl where username = '$username' limit 1";
+      $query = "SELECT * FROM admin_tbl where username = '$username' limit 1";
 			$result = mysqli_query($con, $query);
 
 			if($result)
@@ -38,8 +38,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 					if($user_data['password'] === $password)
 					{
             
-						$_SESSION['parent_id'] = $user_data['parent_id'];
-						header("Location: parent_index.php");
+						$_SESSION['admin_id'] = $user_data['admin_id'];
+						header("Location: admin_index.php");
 						die;
 					}
 				}
@@ -83,9 +83,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     <div class="fadeIn first">
       <img src="admin/b2.png" id="icon" alt="User Icon" />
     </div>
-    <h2>Login</h2>
+    <h2>Admin Login</h2>
     <!-- Login Form -->
-    <form action="#"  method="POST">
+    <form action="admin_index.php"  method="POST">
       <p style="color:red;"><?php if(isset($errors['up'])) echo $errors['up']; ?></p><br>
       <i class="fas fa-user"></i><input type="text" id="login" class="fadeIn second" name="username" placeholder="Username"/>
       <p style="color:red;"><?php if(isset($errors['u'])) echo $errors['u']; ?></p><br>
@@ -97,7 +97,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     <!-- Remind Passowrd -->
     <div id="formFooter">
     <a class="underlineHover" href="forgot.php">Forgot Password?</a><br>
-    <a class="underlineHover" href="signup.php">Don't have an Account? Sign up</a>
     </div>
 
   </div>

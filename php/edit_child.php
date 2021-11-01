@@ -19,10 +19,10 @@ $healthcenter = $rows1['healthcenter'];
 $vaccinated = $rows1['vaccinated'];
 ?>
 <form action="php/newvaccine_chart.php" method="POST">    
-        <input type="text" placeholder="<?php echo (isset($chart_id))?$chart_id:'';?>" name="chart_id" value="<?php echo (isset($chart_id))?$chart_id:'';?>"/>                  
+        <input class="form-control" type="text" placeholder="<?php echo (isset($chart_id))?$chart_id:'';?>" name="chart_id" value="<?php echo (isset($chart_id))?$chart_id:'';?>"/>                  
             Vaccine Name
 
-            <select name="vaccine_id">
+            <select name="vaccine_id" class="form-control">
             <option value='<?php echo (isset($checkvaccine_id))?$checkvaccine_id:'';?>'><?php echo $vaccinename?></option>
                 <?php  
                 $query = "SELECT * FROM vaccine";
@@ -40,8 +40,8 @@ $vaccinated = $rows1['vaccinated'];
             </select> 
             <br>
             Vaccinator's Name 
-            <select name="vaccinatorname">
-            <option value='<?php echo (isset($checkhealthcare_id))?$checkhealthcare_id:'';?>'><?php echo $vaccinatorname?></option>
+            <select name="vaccinatorname" class="form-control">
+            <option value='<?php echo (isset($healthcare_id))?$healthcare_id:'';?>'><?php echo $vaccinatorname?></option>
                 <?php 
                 $query = "SELECT * FROM healthcare_info";
                 $result = mysqli_query($con,$query);
@@ -57,11 +57,11 @@ $vaccinated = $rows1['vaccinated'];
             </select>    
             <br>
             Date of Vaccination    
-            <input type="datetime-local" id="dtlocal" name="dateofvaccination" value="<?php echo (isset($dateofvaccination))?$dateofvaccination:'';?>">  
+            <input class="form-control" type="datetime-local" id="dtlocal" name="dateofvaccination" value="<?php echo (isset($dateofvaccination))?$dateofvaccination:'';?>">  
             <br>
             healthcenter
-            <select name="healthcenter">
-            <option value='<?php echo (isset($checkhealthcenter_id))?$checkhealthcenter_id:'';?>'><?php echo $healthcenter?></option>
+            <select name="healthcenter" class="form-control">
+            <option value='<?php echo (isset($healthcenter_id))?$healthcenter_id:'';?>'><?php echo $healthcenter?></option>
                 <?php  
                 $query = "SELECT * FROM healthcenter_tbl";
                 $result = mysqli_query($con,$query);  
@@ -77,7 +77,11 @@ $vaccinated = $rows1['vaccinated'];
             </select>     
             <br>
             vaccinate
+<<<<<<< HEAD
             <select name="vaccinated">
+=======
+            <select name="vaccinated" class="form-control">
+>>>>>>> upstream/main
                 <option value='<?php echo (isset($vaccinated))?$vaccinated:'';?>'><?php echo $vaccinated?></option>
                 <option value="yes">yes</option>
                 <option value="no">no</option>
