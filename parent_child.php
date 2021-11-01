@@ -160,7 +160,7 @@ Add new User
 
 <!-- child table -->
 <div class="container">
-    <table id="example" class="table table-primary table-hover" style="width:40%;">
+    <table id="example" class="table table-primary table-hover" style="width:30%;">
         <thead>
             <tr>
               <th>Child's Name</th>

@@ -43,7 +43,7 @@ include("php/functions.php");
        <center><header class="head"><i class="fa fa-book"></i>Nutrition Guide</header></center>
       <center><table class="table" style="width: 50%">
       <thead>
-        <th>Healthy Foods</th>
+        <th style="width: 30%">Healthy Foods</th>
         <th>Benefits</th>
       </thead>
       <tbody>
