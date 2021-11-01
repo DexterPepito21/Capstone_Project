@@ -18,6 +18,13 @@ if(isset($_POST['guide'])){
     values ('$vaccine_id','$information')";
     $result = mysqli_query($con, $sql);
   }
+  if(isset($_POST['vaccine'])){
+    $vaccinename = $_POST['vaccinename'];
+    $doses = $_POST['doses'];
+    $sql = "INSERT INTO vaccine (vaccinename,doses)
+    values ('$vaccinename','$doses')";
+    $result = mysqli_query($con, $sql);
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,6 +81,23 @@ while($row = $result->fetch_assoc()){
   </div>
   <button type="submit" name="guide" class="btn btn-primary">Submit</button>
 </form>
+
+<form action="#" method="post" >
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Vaccine name</label>
+    <input type="text" name="vaccinename" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+  <select name="vaccine_id" class="form-control">
+  <option value='$vaccine_id'>1st</option>
+  <option value='$vaccine_id'>2nd</option>
+  <option value='$vaccine_id'>3rd</option>
+  
+  </div>
+  <button type="submit" name="vaccine" class="btn btn-primary">Submit</button>
+</form>
+
+
 <form action="#" method="post" >
   <div class="mb-3">
   <select name="vaccine_id">

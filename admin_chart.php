@@ -193,7 +193,8 @@ session_start();
                 while($rows=mysqli_fetch_assoc($result)){
                   $vaccine_id = $rows['vaccine_id'];
                   $vaccinename = $rows['vaccinename'];
-                  echo "<option value='$vaccine_id'>$vaccinename</option>";
+                  $doses = $rows['doses'];
+                  echo "<option value='$vaccine_id'>$vaccinename $doses dose</option>";
                 }                                     
                 ?>
             </select> 
