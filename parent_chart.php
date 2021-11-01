@@ -27,7 +27,7 @@ $id = $_SESSION['parent_id'];
 </head>
 
 
-<body>Hello,
+<body><?php echo $id?>
 <!-- Navigation Bar -->
 <nav>
   <input type="checkbox" id="check">
