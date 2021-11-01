@@ -6,12 +6,12 @@ include("php/functions.php");
 
 $user_data = check_login($con);
 
-$sql = "SELECT * FROM chart where vaccine_id='4'";
+$sql = "SELECT vaccinated FROM chart where vaccinated='yes'";
 $result=mysqli_query($con,$sql);
-$rowcount=mysqli_num_rows($result);
-$sql2 = "SELECT vaccinated FROM chart where vaccinated='yes'";
+$complete=mysqli_num_rows($result);
+$sql2 = "SELECT vaccinated FROM chart where vaccinated='no'";
 $result2=mysqli_query($con,$sql2);
-$rowcount2=mysqli_num_rows($result2);
+$Incomplete=mysqli_num_rows($result2);
 
 ?>
 <!DOCTYPE html>
@@ -23,7 +23,7 @@ $rowcount2=mysqli_num_rows($result2);
     <title>Dashboard | Admin</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.js"></script>
-    <link rel="stylesheet" href="./css/admin_index.css">
+    <link rel="stylesheet" href="admin_index.css">
 </head>
 <body>
         <!-- Navigation Bar -->
@@ -53,60 +53,15 @@ $rowcount2=mysqli_num_rows($result2);
           <table class="row">
            <tr>
              <td>Completed</td>
+             <td><?php echo $complete; ?></td>
            </tr>
            <tr>
              <td>Incomplete</td>
+             <td><?php echo $Incomplete; ?></td>
            </tr>
           </table>
-         <table>
-            <caption></caption>
-            <thead>
-              <tr>
-                <th scope="col">Types of Vaccine</th>
-                <th scope="col">No. of Children</th>
-                <th scope="col">No. of Vaccinated</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td data-label="Types of Vaccine">BCG</td>
-                <td data-label="No. of Children"><?php echo $rowcount  ?></td>
-                <td data-label="No. of Vaccinated"><?php echo $rowcount2  ?></td>
-              </tr>
-              <tr>
-                <td scope="row" data-label="Types of Vaccine">HEPATITIS B</td>
-                <td data-label="No. of Children">50</td>
-                <td data-label="No. of Vaccinated">45</td>
-              </tr>
-              <tr>
-                <td scope="row" data-label="Types of Vaccine">PENTAVALENT VACCINE</td>
-                <td data-label="No. of Children">50</td>
-                <td data-label="No. of Vaccinated">45</td>
-              </tr>
-              <tr>
-                <td scope="row" data-label="Types of Vaccine">ORAL POLIO VACCINE</td>
-                <td data-label="No. of Children">50</td>
-                <td data-label="No. of Vaccinated">45</td>
-              </tr>
-              <tr>
-                <td scope="row" data-label="Types of Vaccine">INACTIVATED POLIO VACCINE</td>
-                <td data-label="No. of Children">50</td>
-                <td data-label="No. of Vaccinated">45</td>
-              </tr>
-              <tr>
-                <td scope="row" data-label="Types of Vaccine">PNEUMOCOCCAL CONJUGATE VACCINE</td>
-                <td data-label="No. of Children">50</td>
-                <td data-label="No. of Vaccinated">45</td>
-              </tr>
-              <tr>
-                <td scope="row" data-label="Types of Vaccine">MEASLES, MUMPS, RUBELLA</td>
-                <td data-label="No. of Children">50</td>
-                <td data-label="No. of Vaccinated">45</td>
-              </tr>
-            </tbody>
-          </table>
 
-      <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+      <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:50%">
       <thead>       
           <tr>
               <th>Types of Vaccine</th>

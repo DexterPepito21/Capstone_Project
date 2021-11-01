@@ -174,27 +174,6 @@ Add new User
     <label class="label">Date of Birth:</label>
     <input type="text" class="form-control"   name="email" value="<?php if(isset($child_data['dateofbirth'])) echo $child_data['dateofbirth']; ?>">
 
-<div class="container">
-  <div class="row">
-      <label class="label">Child's Name:</label>
-  </div>
-  <div class="row">
-    <label class="label">First Name:</label>
-    <?php if(isset($child_data['firstname'])) echo $child_data['firstname']; ?>
-  </div>
-  <div class="row">   
-    <label class="label">Middle Name:</label>
-    <?php if(isset($child_data['middlename'])) echo $child_data['middlename']; ?>  
-  </div>
-  <div class="row">
-    <label class="label">Last Name:</label>
-    <?php if(isset($child_data['lastname'])) echo $child_data['lastname']; ?>
-  </div>
-  <div class="row">
-    <label class="label">Date of Birth:</label>
-    <?php if(isset($child_data['dateofbirth'])) echo $child_data['dateofbirth']; ?>
-  </div>
-  <div class="row">
     <label for="pwd" class="label">Place of Birth:</label>
     <input type="text" class="form-control"   name="email" value="<?php if(isset($child_data['placeofbirth'])) echo $child_data['placeofbirth']; ?>">
   <br>

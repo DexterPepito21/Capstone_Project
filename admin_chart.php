@@ -129,7 +129,7 @@ session_start();
               <td><?php echo $row['vaccinated']; ?></td>  
               <td hidden><?php echo $row['vaccine_id']; ?></td>       
               <td><button id="id-<?php echo $row['chart_id']; ?>" type="button" class="btn btn-primary editbtn" style="color: black; border: none;">
-              <i class="fa fa-pencil-square-o"></i>
+              <i class="fas fa-edit"></i>
               </button></td>
               <td>
               <form action="php/delete.php" method="POST">
