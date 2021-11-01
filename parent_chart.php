@@ -54,7 +54,9 @@ $id = $_SESSION['parent_id'];
 <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
       <thead>
           <tr>
+          <th>child name</th>
               <th>vaccine</th>
+              <th>doses</th>
               <th>dateofvaccination</th>
               <th>vaccinatorname</th>
               <th>healthcenter</th>
@@ -71,12 +73,11 @@ while($row = $result->fetch_assoc()){
 $child_ids[] = $row['child_id'];
 }
 foreach ($child_ids as $value) {
-echo "$value <br>";
-$sql = "SELECT vaccine.vaccinename, healthcare_info.vaccinatorname, chart.dateofvaccination, healthcenter_tbl.healthcenter 
+$sql = "SELECT vaccine.doses,vaccine.vaccinename, healthcare_info.vaccinatorname, chart.dateofvaccination, healthcenter_tbl.healthcenter 
 FROM (((chart
-INNER JOIN vaccine ON chart.vaccine_id = vaccine.vaccine_id)
-INNER JOIN healthcare_info ON chart.healthcare_id = healthcare_info.healthcare_id)
-INNER JOIN  healthcenter_tbl ON chart.healthcenter_id = healthcenter_tbl.healthcenter_id)
+RIGHT JOIN vaccine ON chart.vaccine_id = vaccine.vaccine_id)
+RIGHT JOIN healthcare_info ON chart.healthcare_id = healthcare_info.healthcare_id)
+RIGHT JOIN  healthcenter_tbl ON chart.healthcenter_id = healthcenter_tbl.healthcenter_id)
 where child_id='$value'";
 $stmt = $con->prepare($sql);
 $stmt->execute();
@@ -84,7 +85,17 @@ $result = $stmt->get_result();
 while($row=mysqli_fetch_assoc($result)){
 ?>
 <tr>
-    <td><?php echo $row['vaccinename']; ?></td>
+<td><?php 
+            $sql1 = "SELECT * FROM child_tbl where child_id='$value'";
+            $stmt1 = $con->prepare($sql1);
+            $stmt1->execute();
+            $result1 = $stmt1->get_result();
+            while($row1 = $result1->fetch_assoc()){
+               echo $row1['firstname']."  ".$row1['lastname'];
+            }
+            ?></td>
+<td><?php echo $row['vaccinename']; ?></td>
+    <td><?php echo $row['doses']; ?></td>
     <td><?php echo $row['dateofvaccination']; ?></td>
     <td><?php echo $row['vaccinatorname']; ?></td>
     <td><?php echo $row['healthcenter']; ?></td>        

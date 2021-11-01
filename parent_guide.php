@@ -42,18 +42,13 @@ include("php/connection.php");
       </nav>
 
        <!-- Table -->
-        <div class="container">
-        <center><header><i class="fa fa-book"></i>Nutrition Guide</header></center>
-        <div class="row">
-            <div class="col">
-       <table id="example" class="table table-striped table-bordered dt-responsive nowrap">
-           <thead>
-               <tr>
-                   <th>Healthy foods</th>
-                   <th>benefits</th>
-                   <th>reminders</th>
-               </tr>
-           </thead>
+       <center><header class="head"><i class="fa fa-book"></i>Nutrition Guide</header></center>
+      <center><table class="table" style="width: 50%">
+      <thead>
+        <th>Healthy Foods</th>
+        <th>Benefits</th>
+      </thead>
+      <tbody>
            <tbody>
            <?php 
               $sql = "SELECT * FROM guide";
@@ -63,19 +58,40 @@ include("php/connection.php");
               while($row = $result->fetch_assoc()){
                 $hf = $row['hf'];
                 $benefits = $row['benefits'];
-                $reminders = $row['reminders'];
               ?>        
                 <tr>
-                  <td  ><?php echo $hf ?></td>  
-                  <td  ><?php echo $benefits ?></td>
-                  <td  ><?php echo $reminders ?></td>            
+                  <td data-label="Healthy Food" style="text-align: center;" ><?php echo $hf ?></td>  
+                  <td data-label="Benefits"><?php echo $benefits ?></td>       
               </tr>
               <?php } ?>
           </tbody>
         </table>
-</div>
-</div>
-</div>
+        </div>
+        </div>
+        </div>
+        <!-- Table -->
+      
+      
+
+    <div class="container">
+       <h1 style="text-align: center;">Reminders!</h1>
+       <div class="content">
+       <ul class="rem" style="text-align: justify;">
+       <?php 
+              $sql = "SELECT * FROM guide";
+              $stmt = $con->prepare($sql);
+              $stmt->execute();
+              $result = $stmt->get_result();
+              while($row = $result->fetch_assoc()){
+                $reminders = $row['reminders'];
+              ?>        
+                <li><?php echo $reminders ?></li>
+              <?php } ?>
+        </ul>
+        </div>
+    </div>
+
+   
 <!-- Datatables -->
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>

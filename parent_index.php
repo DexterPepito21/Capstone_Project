@@ -1,10 +1,10 @@
 <?php 
 session_start();
+error_reporting(0);
+include("php/connection.php");
+include("php/functions.php");
 
-	include("php/connection.php");
-	include("php/functions.php");
-
-	$user_data = check_login($con);
+$user_data = check_login($con);
 
 ?>
 <!DOCTYPE html>
@@ -17,7 +17,7 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Dashboard | Parent</title>
 </head>
-<body>Hello, <?php echo $user_data['parent_id']; ?>
+<body>
     <!-- Navigation Bar -->
     <nav>
         <input type="checkbox" id="check">
@@ -40,51 +40,22 @@ session_start();
         </ul>
       </nav>
 
-    <!-- Table -->
-        <div class="main-content">
+   
+
+                <div class="main-content">
             <div class="dashboard toShow">
                 <div class="title">
                     <!-- <i class="fa fa-info-circle"></i> -->
                     <h1>Vaccine Information</h1>
                 </div>
-                <table style="height: 300px;">
+                <table style="height: 100px;">
                     <colgroup>
                         <col span="1" style="background-color: #b7b8b8">
                     </colgroup>
                     <tr>
-                        <th style="width: 18%;">BCG</th>
-                        <th style="width: 100%;">(Information Here)</th>
-                    </tr>
-                    <tr>
-                        <td>HEPATITIS B</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>PENTAVALENT VACCINE</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>ORAL POLIO VACCINE</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>INACTIVATED POLIO VACCINE</td>
-                        <td></td>
-                    </tr>
-                </table>
-
-                <table id="example" class="table table-striped table-bordered dt-responsive nowrap">
-                <thead>
-                    <tr>
-                        <th>vaccine</th>
-                        <th>information</th>
-                    </tr>
-                </thead>
-                <tbody>
                 <?php 
-                    $sql = "SELECT *, vaccine.vaccinename
-                    FROM (vaccine_information
-                    INNER JOIN vaccine ON vaccine_information.vaccine_id = vaccine.vaccine_id)";
+                    $sql = "SELECT *
+                    FROM vaccine_information";
                     $stmt = $con->prepare($sql);
                     $stmt->execute();
                     $result = $stmt->get_result();
