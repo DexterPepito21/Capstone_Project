@@ -25,6 +25,7 @@ if(isset($_POST['guide'])){
     values ('$vaccinename','$doses')";
     $result = mysqli_query($con, $sql);
   }
+ 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,6 +80,7 @@ if(isset($_POST['guide'])){
   </div>
   <button type="submit" name="vaccine" class="btn btn-primary">vaccine</button>
 </form>
+
 
 <br><br><br>
 

@@ -85,7 +85,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     </div>
     <h2>Admin Login</h2>
     <!-- Login Form -->
-    <form action="admin_index.php"  method="POST">
+    <form action="#"  method="POST">
       <p style="color:red;"><?php if(isset($errors['up'])) echo $errors['up']; ?></p><br>
       <i class="fas fa-user"></i><input type="text" id="login" class="fadeIn second" name="username" placeholder="Username"/>
       <p style="color:red;"><?php if(isset($errors['u'])) echo $errors['u']; ?></p><br>

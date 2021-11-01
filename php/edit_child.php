@@ -57,7 +57,8 @@ $vaccinated = $rows1['vaccinated'];
             </select>    
             <br>
             Date of Vaccination    
-            <input class="form-control" type="datetime-local" id="dtlocal" name="dateofvaccination" value="<?php echo (isset($dateofvaccination))?$dateofvaccination:'';?>">  
+          
+            <input class="form-control" type="datetime-local" id="dtlocal" name="dateofvaccination" value="<?php echo (isset($dateofvaccination))?$dateofvaccination:'';?>"> 
             <br>
             healthcenter
             <select name="healthcenter" class="form-control">
