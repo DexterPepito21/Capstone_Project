@@ -25,15 +25,15 @@ include("php/functions.php");
         </label>
         <label class="logo">Child Care System</label>
         <ul>
-        <li><a href="parent_index.php" class="active"><i class="fas fa-home" id="icon"></i>Dashboard</a></li>
+        <li><a href="parent_index.php" ><i class="fas fa-home" id="icon"></i>Dashboard</a></li>
           <li><a href="parent_child.php"><i class="fas fa-child"  id="icon"></i>Child Profile</a></li>
           <li><a href="parent_chart.php"><i class="fa fa-chart-bar"  id="icon"></i>Vaccine Chart</a></li>
-          <li><a href="parent_guide.php"><i class="fas fa-book"  id="icon"></i>Nutrition Guide</a></li>
+          <li><a href="parent_guide.php" class="active"><i class="fas fa-book"  id="icon"></i>Nutrition Guide</a></li>
         
           <div class="dropdown">
             <button class="dropbtn"><i class="fa fa-caret-down"></i></button>
             <div class="dropdown-content">
-            <a href="logout.php"><i class="fas fa-sign-out-alt" id="icon"></i>Logout</a>
+            <a href="php/logout.php"><i class="fas fa-sign-out-alt" id="icon"></i>Logout</a>
             </div>
           </div>
         </ul>

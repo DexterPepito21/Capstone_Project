@@ -77,6 +77,7 @@ $result = $stmt->get_result();
 while($row = $result->fetch_assoc()){
   $vaccine_id = $row['vaccine_id'];
   $vaccinename = $row['vaccinename'];
+  $doses = $row['doses'];
   $sql1 = "SELECT * FROM chart where vaccine_id='$vaccine_id'";
   $result1=mysqli_query($con,$sql1);
   $rowcount=mysqli_num_rows($result1);
@@ -87,7 +88,7 @@ while($row = $result->fetch_assoc()){
 ?>        
 
             <tr>
-              <td  ><?php echo $vaccinename ?></td>  
+              <td  ><?php echo $vaccinename.' '.$doses.' dose'; ?></td>  
               <td  ><?php echo $rowcount ?></td>
               <td  ><?php echo $rowcount2 ?></td>            
           </tr>

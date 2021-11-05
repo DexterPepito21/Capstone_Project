@@ -11,6 +11,7 @@ $result1 = mysqli_query($con,$query1);
 $rows1=mysqli_fetch_assoc($result1);
 $checkvaccine_id = $rows1['vaccine_id'];
 $vaccinename = $rows1['vaccinename'];
+$doses = $rows1['doses'];
 $checkhealthcare_id = $rows1['healthcare_id'];
 $vaccinatorname = $rows1['vaccinatorname'];
 $dateofvaccination = $rows1['dateofvaccination'];
@@ -18,23 +19,24 @@ $checkhealthcenter_id = $rows1['healthcenter_id'];
 $healthcenter = $rows1['healthcenter'];
 $vaccinated = $rows1['vaccinated'];
 ?>
-<form action="php/newvaccine_chart.php" method="POST">    
+<form action="php/update_chart_admin.php" method="POST">    
         <input hidden class="form-control" type="text" placeholder="<?php echo (isset($chart_id))?$chart_id:'';?>" name="chart_id" value="<?php echo (isset($chart_id))?$chart_id:'';?>"/>                  
             Vaccine Name
 
             <select name="vaccine_id" class="form-control">
-            <option value='<?php echo (isset($checkvaccine_id))?$checkvaccine_id:'';?>'><?php echo $vaccinename?></option>
+            <option value='<?php echo (isset($checkvaccine_id))?$checkvaccine_id:'';?>'><?php echo $vaccinename.' '.$doses;?></option>
                 <?php  
                 $query = "SELECT * FROM vaccine";
                 $result = mysqli_query($con,$query);  
                     while($rows=mysqli_fetch_assoc($result)){
                     $vaccine_id = $rows['vaccine_id'];
                     $vaccinename = $rows['vaccinename'];
+                    $doses = $rows['doses'];
                     if ($checkvaccine_id == $vaccine_id) {
                         continue;
                       }
                     
-                    echo "<option value='$vaccine_id'>$vaccinename</option>";
+                    echo "<option value='$vaccine_id'>$vaccinename $doses doses</option>";
                     }      
                 ?>
             </select> 
