@@ -76,7 +76,7 @@ Add child
               <input type="text" class="form-control" name="lastname">
             <br>
               <label class="label">Date of Birth:</label>
-              <input type="text" class="form-control" name="dateofbirth"><br>
+              <input type="date" class="form-control" name="dateofbirth"><br>
 
               <label class="label">Place of Birth:</label>
               <input type="text"class="form-control" name="placeofbirth">

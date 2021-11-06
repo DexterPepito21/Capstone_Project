@@ -19,8 +19,8 @@ $child_data = mysqli_fetch_assoc($result);
         <input type="text" class="form-control" name="lastname" value=<?php if(isset($child_data['lastname'])) echo $child_data['lastname']; ?>>
       <br>
         <label class="label">Date of Birth:</label>
-        <input type="text" class="form-control" name="dateofbirth" value=<?php if(isset($child_data['dateofbirth'])) echo $child_data['dateofbirth']; ?>><br>
-
+        <input type="date" class="form-control" name="dateofbirth" value=<?php if(isset($child_data['dateofbirth'])) echo $child_data['dateofbirth']; ?>><br>
+        
         <label class="label">Place of Birth:</label>
         <input type="text"class="form-control" name="placeofbirth" value=<?php if(isset($child_data['placeofbirth'])) echo $child_data['placeofbirth']; ?>>
       <br>

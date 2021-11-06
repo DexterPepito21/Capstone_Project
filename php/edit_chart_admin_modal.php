@@ -1,5 +1,6 @@
 <?php 
 include("connection.php");
+date_default_timezone_set('Asia/Manila');
 $chart_id = $_POST['chart_id'];
 $query1 = "SELECT *, vaccine.vaccinename, healthcare_info.vaccinatorname, chart.dateofvaccination, healthcenter_tbl.healthcenter 
 FROM (((chart
@@ -59,8 +60,8 @@ $vaccinated = $rows1['vaccinated'];
             </select>    
             <br>
             Date of Vaccination    
-          
-            <input class="form-control" type="datetime-local" id="dtlocal" name="dateofvaccination" value="<?php echo (isset($dateofvaccination))?$dateofvaccination:'';?>"> 
+            <input  class="form-control" type="datetime" class="m-wrap" value="<?php echo strftime('%Y-%m-%d, %H:%M:%S', strtotime($dateofvaccination)); ?>" name="dateofvaccination" />
+            <input class="form-control" type="datetime-local" id="dtlocal" name="wew" value="<?php echo (isset($dateofvaccination))?$dateofvaccination:'';?>"> 
             <br>
             healthcenter
             <select name="healthcenter" class="form-control">
