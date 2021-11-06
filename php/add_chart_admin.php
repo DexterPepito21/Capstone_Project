@@ -10,14 +10,15 @@ $user_data = check_login($con);
 if(isset($_POST['submit'])){
 	$child_id = $_POST['child_id'];
 	$vaccine_id = $_POST['vaccine_id'];
+	$dose = $_POST['dose'];
 	$vaccinatorname = $_POST['vaccinatorname'];
 	$dateofvaccination = $_POST['dateofvaccination'];
     $healthcenter = $_POST['healthcenter'];
 	$vaccinated = $_POST['vaccinated'];
 	
-	$sql = "INSERT INTO chart (child_id,vaccine_id,healthcare_id,dateofvaccination,healthcenter_id,vaccinated)
+	$sql = "INSERT INTO chart (child_id,vaccine_id,dose,healthcare_id,dateofvaccination,healthcenter_id,vaccinated)
 	values 
-	('$child_id','$vaccine_id','$vaccinatorname','$dateofvaccination','$healthcenter','$vaccinated')
+	('$child_id','$vaccine_id','$dose','$vaccinatorname','$dateofvaccination','$healthcenter','$vaccinated')
 	";
 	$result = mysqli_query($con, $sql);
 

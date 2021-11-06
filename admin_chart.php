@@ -93,7 +93,8 @@ session_start();
           </tr>
           <tr>
               <th>Child's Name</th>
-              <th>Vaccine Name & Dosage</th>
+              <th>Vaccine Name</th>
+              <th>Dosage</th>
               <th>Vaccinator Name</th>
               <th>Date of Vaccination</th>
               <th>Health Center</th>
@@ -121,6 +122,7 @@ session_start();
               <td hidden><?php echo $row['child_id']; ?></td>
               <td><?php echo $row['firstname'].'  '.$row['lastname']; ?></td>
               <td><?php echo $row['vaccinename']; ?></td>
+              <td><?php echo $row['dose']; ?></td>
               <td><?php echo $row['vaccinatorname']; ?></td>
               <td><?php echo $row['dateofvaccination']; ?></td>
               <td><?php echo $row['healthcenter']; ?></td>        
@@ -194,6 +196,12 @@ session_start();
                 }                                     
                 ?>
             </select> 
+            Dose
+            <select name="dose" class="form-control">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
             <br>
             Vaccinator's Name 
             <select name="vaccinatorname" class="form-control">

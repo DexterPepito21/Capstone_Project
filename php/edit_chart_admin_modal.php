@@ -1,6 +1,5 @@
 <?php 
 include("connection.php");
-date_default_timezone_set('Asia/Manila');
 $chart_id = $_POST['chart_id'];
 $query1 = "SELECT *, vaccine.vaccinename, healthcare_info.vaccinatorname, chart.dateofvaccination, healthcenter_tbl.healthcenter 
 FROM (((chart
@@ -12,7 +11,7 @@ $result1 = mysqli_query($con,$query1);
 $rows1=mysqli_fetch_assoc($result1);
 $checkvaccine_id = $rows1['vaccine_id'];
 $vaccinename = $rows1['vaccinename'];
-$doses = $rows1['doses'];
+$dose = $rows1['dose'];
 $checkhealthcare_id = $rows1['healthcare_id'];
 $vaccinatorname = $rows1['vaccinatorname'];
 $dateofvaccination = $rows1['dateofvaccination'];
@@ -25,22 +24,28 @@ $vaccinated = $rows1['vaccinated'];
             Vaccine Name
 
             <select name="vaccine_id" class="form-control">
-            <option value='<?php echo (isset($checkvaccine_id))?$checkvaccine_id:'';?>'><?php echo $vaccinename.' '.$doses;?></option>
+            <option value='<?php echo (isset($checkvaccine_id))?$checkvaccine_id:'';?>'><?php echo $vaccinename?></option>
                 <?php  
                 $query = "SELECT * FROM vaccine";
                 $result = mysqli_query($con,$query);  
                     while($rows=mysqli_fetch_assoc($result)){
                     $vaccine_id = $rows['vaccine_id'];
                     $vaccinename = $rows['vaccinename'];
-                    $doses = $rows['doses'];
                     if ($checkvaccine_id == $vaccine_id) {
                         continue;
                       }
                     
-                    echo "<option value='$vaccine_id'>$vaccinename $doses doses</option>";
+                    echo "<option value='$vaccine_id'>$vaccinename</option>";
                     }      
                 ?>
             </select> 
+            Dose
+            <select name="dose" class="form-control">
+                <option value='<?php echo (isset($dose))?$dose:'';?>'><?php echo $dose?></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
             <br>
             Vaccinator's Name 
             <select name="vaccinatorname" class="form-control">
