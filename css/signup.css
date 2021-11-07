@@ -1,9 +1,9 @@
 * BASIC */
-header{
-  background-image: url('admin/bg.jpg');
+/* header{
+  background-image: url('admin/lbg.jpg');
   background-repeat: no-repeat;
   background-size: 50% 100%;
-}
+} */
 html {
   background-color: #56baed;
 }
@@ -11,6 +11,12 @@ html {
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
+  background-image: url("../admin/bgc.jpg");
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
 }
 
 a {
@@ -95,7 +101,7 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   transform: scale(0.95);
 }
 
-input[type=text] {
+input[type=text], input[type=password] {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;

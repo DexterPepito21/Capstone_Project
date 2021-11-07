@@ -10,50 +10,6 @@ $child_data = child($con);
 
 $parent_id = $user_data['parent_id'];
 
-
-if(isset($_POST['add'])){
-  $child_id = $child_data['child_id'];
-  $firstname = $_POST['firstname'];
-  $lastname = $_POST['lastname'];
-  $middlename = $_POST['middlename'];
-  $dateofbirth = $_POST['dateofbirth'];
-  $placeofbirth = $_POST['placeofbirth'];
-  $address = $_POST['address'];
-  $fathername = $_POST['fathername'];
-  $mothername = $_POST['mothername'];
-  $birthheight = $_POST['birthheight'];
-  $birthweight = $_POST['birthweight'];
-  $sex = $_POST['sex'];
-
-  $sql = "INSERT INTO child_tbl (parent_id,firstname,lastname,middlename,dateofbirth,placeofbirth,address,fathername,mothername,birthheight,birthweight,sex)
-  values ('$parent_id','$firstname','$lastname','$middlename','$dateofbirth','$placeofbirth','$address','$fathername','$mothername','$birthheight','$birthweight','$sex')";
-  //  ON DUPLICATE KEY UPDATE firstname='$firstname', lastname='$lastname', middlename='$middlename', dateofbirth='$dateofbirth', placeofbirth='$placeofbirth', address='$address',fathername='$fathername', mothername='$mothername', birthheight='$birthheight', birthweight='$birthweight', sex='$sex'
-
-  $result = mysqli_query($con, $sql);
-
-	
-
-}
-
-if(isset($_POST['update'])){
-  $child_id = $child_data['child_id'];
-  $firstname = $_POST['firstname'];
-  $lastname = $_POST['lastname'];
-  $middlename = $_POST['middlename'];
-  $dateofbirth = $_POST['dateofbirth'];
-  $placeofbirth = $_POST['placeofbirth'];
-  $address = $_POST['address'];
-  $fathername = $_POST['fathername'];
-  $mothername = $_POST['mothername'];
-  $birthheight = $_POST['birthheight'];
-  $birthweight = $_POST['birthweight'];
-  $sex = $_POST['sex'];
-
-  $sql = "UPDATE chart SET child_id='$child_id', firstname='$firstname', lastname='$lastname', middlename='$middlename', dateofbirth='$dateofbirth', placeofbirth='$placeofbirth', address='$address',fathername='$fathername', mothername='$mothername', birthheight='$birthheight', birthweight='$birthweight', sex='$sex'";
-  $result = mysqli_query($con, $sql);
-
-
-}
 ?>
 
 <!DOCTYPE html>
@@ -82,8 +38,7 @@ if(isset($_POST['update'])){
     <li><a href="parent_index.php"><i class="fas fa-home" id="icon"></i>Dashboard</a></li>
     <li><a href="parent_child.php" class="active"><i class="fas fa-child"  id="icon"></i>Child Profile</a></li>
     <li><a href="parent_chart.php"><i class="fa fa-chart-bar"  id="icon"></i>Vaccine Chart</a></li>
-    <li><a href="parent_guide.php"><i class="fas fa-book"  id="icon"></i>Nutrition Guide</a></li>
-              
+    <li><a href="parent_guide.php"><i class="fas fa-book"  id="icon"></i>Nutrition Guide</a></li>          
     <div class="dropdown">
       <button class="dropbtn"><i class="fa fa-caret-down"></i></button>
       <div class="dropdown-content">
@@ -93,22 +48,23 @@ if(isset($_POST['update'])){
   </ul>
 </nav>
 
-<!-- Button trigger modal -->
+<!-- Button to  trigger add child modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUser">
-Add new User
+Add child
 </button>
 <div class="container">
-<!-- Add user Modal -->
+<!-- Adding child Modal -->
 <div class="modal fade" id="addUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog  modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add child</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
 
-        <form class="form-inline" action="#" method="post"  style=" width: 100%">
+        <form class="form-inline" action="php/add_parent_child.php" method="post"  style=" width: 100%">
+        <input hidden type="text" class="form-control"  name="parent_id" value=<?php if(isset($parent_id)) echo $parent_id; ?>>
           <div class="container" >
               <label class="label">First Name:</label>
               <input type="text" class="form-control"  name="firstname">
@@ -120,8 +76,8 @@ Add new User
               <input type="text" class="form-control" name="lastname">
             <br>
               <label class="label">Date of Birth:</label>
-              <input type="text" class="form-control" name="dateofbirth"><br>
-
+              <input type="date"  name="dateofbirth">
+              <br>
               <label class="label">Place of Birth:</label>
               <input type="text"class="form-control" name="placeofbirth">
             <br>
@@ -147,7 +103,7 @@ Add new User
               <label for="female">female</label>
             </div>
             <div class="clearfix">
-                <button type="submit" class="btn btn-primary" name="add">Update</button>
+                <button type="submit" class="btn btn-primary" name="add">add</button>
             </div>
             </div>
           </div>
@@ -164,7 +120,7 @@ Add new User
         <thead>
             <tr>
               <th>Child's Name</th>
-              <th style="width: 10%">Details</th>
+              <th style="width: 10%">Update</th>
             </tr>
         </thead>
         <tbody class="table table-light" style="line-height: 20px">
@@ -187,8 +143,9 @@ Add new User
         </tbody>
     </table>
 </div>
+
+<!-- Edit child data Modal -->
 <div class="container">
-<!-- Edit child Modal -->
 <div class="modal fade" id="editchild" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog  modal-lg">
     <div class="modal-content">
@@ -197,8 +154,7 @@ Add new User
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" id="edit_child">
-
-       
+              <!-- the -->
       </div>
     </div>
   </div>
@@ -207,7 +163,7 @@ Add new User
 <!-- Forms -->
 <!--Step 1:Adding HTML-->
 <h2><i class="fa fa-child"></i>Profile</h2>
-<form class="form-inline-1" action="/action_page.php"  style="border:1px solid #ccc">
+
 <?php 
 $sql = "SELECT * FROM child_tbl where parent_id='$parent_id'";
 $stmt = $con->prepare($sql);
@@ -218,13 +174,13 @@ while($row = $result->fetch_assoc()){
 $child_ids[] = $row['child_id'];
 }
 foreach ($child_ids as $value) {
-echo "$value "."<br>";
 $sql = "SELECT * FROM child_tbl where child_id='$value'";
 $stmt = $con->prepare($sql);
 $stmt->execute();
 $result = $stmt->get_result();
 while($row=mysqli_fetch_assoc($result)){
 ?>
+<form class="form-inline-1" action="/action_page.php"  style="border:1px solid #ccc">
 <div class="container">
   <div class="row">
     <label class="label">First Name:</label>
@@ -245,29 +201,37 @@ while($row=mysqli_fetch_assoc($result)){
   <div class="row">
     <label for="pwd" class="label">Place of Birth:</label>
     <input type="text" value=<?php if(isset($row['placeofbirth'])) echo $row['placeofbirth']; ?>>
-  <br>
+  </div>
+  <div class="row">
     <label class="label">Address:</label>
     <input type="text" value=<?php if(isset($row['address'])) echo $row['address']; ?>>
-  <br>
+    </div>
+    <div class="row">
     <label class="label">Mother's Name:</label>
     <input type="text" value=<?php if(isset($child_data['mothername'])) echo $row['mothername']; ?>>
-    
+    </div>
+    <div class="row">
     <label for="pwd" class="label">Father's Name:</label>
     <input type="text" value=<?php if(isset($row['fathername'])) echo $row['fathername']; ?>>
-  <br>
+    </div>
+    <div class="row">
     <label class="label">Birth Height:</label>
     <input type="text" value=<?php if(isset($row['birthheight'])) echo $row['birthheight']; ?>>
- 
+    </div>
+    <div class="row">
     <label for="pwd" class="label"> Birth Weight:</label>
     <input type="text" value=<?php if(isset($row['birthweight'])) echo $row['birthweight']; ?>>
-  <br>
+    </div>
+    <div class="row">
     <label  class="label">Sex:</label>
     <input type="text" value=<?php if(isset($row['sex'])) echo $row['sex']; ?>>
-<?php }}?>
-<br>
-<br>
-</div>
+    </div>
+    </div>
 </form>
+<br>
+<?php }}?>
+
+
 <!-- Modal -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -280,7 +244,7 @@ $(document).ready(function(){
       // alert(chart_id);
   
       $.ajax({
-          url: "php/edit_child_parent.php",
+          url: "php/edit_parent_child_modal.php",
           type: "post",
           data:{child_id: child_id},
           success:function(data){

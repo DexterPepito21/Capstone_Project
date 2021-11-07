@@ -4,7 +4,7 @@
     
 }
 body{
-    background-image: url("admin/lbg.jpg");
+    background-image: url("../admin/lbg.jpg");
     height: 100vh;
     background-size: cover;
     background-position: center;

@@ -8,7 +8,7 @@ include("php/functions.php");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutrition Guide | Admin</title>
+    <title>Nutrition Guide | Parent</title>
     <link rel= "stylesheet" href = "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.js"></script>
     <link rel="stylesheet" href="admin_guide.css">
@@ -25,15 +25,15 @@ include("php/functions.php");
         </label>
         <label class="logo">Child Care System</label>
         <ul>
-        <li><a href="parent_index.php" class="active"><i class="fas fa-home" id="icon"></i>Dashboard</a></li>
+        <li><a href="parent_index.php" ><i class="fas fa-home" id="icon"></i>Dashboard</a></li>
           <li><a href="parent_child.php"><i class="fas fa-child"  id="icon"></i>Child Profile</a></li>
           <li><a href="parent_chart.php"><i class="fa fa-chart-bar"  id="icon"></i>Vaccine Chart</a></li>
-          <li><a href="parent_guide.php"><i class="fas fa-book"  id="icon"></i>Nutrition Guide</a></li>
+          <li><a href="parent_guide.php" class="active"><i class="fas fa-book"  id="icon"></i>Nutrition Guide</a></li>
         
           <div class="dropdown">
             <button class="dropbtn"><i class="fa fa-caret-down"></i></button>
             <div class="dropdown-content">
-            <a href="logout.php"><i class="fas fa-sign-out-alt" id="icon"></i>Logout</a>
+            <a href="php/logout.php"><i class="fas fa-sign-out-alt" id="icon"></i>Logout</a>
             </div>
           </div>
         </ul>

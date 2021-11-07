@@ -14,6 +14,7 @@ session_start();
     $middlename = $_POST['middlename'];
     $address = $_POST['address'];
     $phonenum = $_POST['phonenum'];
+    $email = $_POST['email'];
     $username = $_POST['username'];
     $password = $_POST['password'];
 
@@ -48,8 +49,8 @@ session_start();
 		if(count($errors)==0){
 
 		
-      $query = "INSERT INTO parent_tbl (firstname,lastname,middlename,address,phonenum,username,password)
-      values ('$firstname','$lastname','$middlename','$address','$phonenum','$username','$password')";
+      $query = "INSERT INTO parent_tbl (firstname,lastname,middlename,address,phonenum,email,username,password)
+      values ('$firstname','$lastname','$middlename','$address','$phonenum','$email','$username','$password')";
 			mysqli_query($con, $query);
       header("Location: login.php");
 		}
@@ -65,7 +66,7 @@ session_start();
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="login.css" />
+    <link rel="stylesheet" href="css/login.css" />
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -96,6 +97,7 @@ session_start();
     <i class="fas fa-user"></i><input type="text" id="login" class="fadeIn second" name="middlename" placeholder="Middle name"/><br>
     <i class="fas fa-map-marker"></i><input type="text" id="password" class="fadeIn third" name="address" placeholder="Address"/><br>
     <i class="fas fa-phone"></i><input type="text" id="login" class="fadeIn second" name="phonenum" placeholder="Phone Number"/><br>
+    <i class="fas fa-user"></i><input type="text" id="login" class="fadeIn second" name="email" placeholder="Email"/>
     <i class="fas fa-user"></i><input type="text" id="login" class="fadeIn second" name="username" placeholder="Username"/>
     <i class="fas fa-lock"></i><input type="password" id="password" class="fadeIn third" name="password" placeholder="Password"/><br>
     <br>

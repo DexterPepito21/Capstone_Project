@@ -14,7 +14,7 @@ session_start();
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="admin_chart.css">
+    <link rel="stylesheet" href="css/admin_chart.css">
 </head>
 <body>
 
@@ -31,7 +31,6 @@ session_start();
     <li><a href="admin_input.php"><i class="fas fa-book"  id="icon"></i>Input</a></li>
     <li><a href="admin_chart.php" class="active"><i class="fa fa-chart-bar"  id="icon"></i>Vaccine Chart</a></li>
     <li><a href="admin_sms.php"><i class="fas fa-comment"  id="icon"></i>SMS Notification</a></li>
-  
     <div class="dropdown">
       <button class="dropbtn"><i class="fa fa-caret-down"></i></button>
       <div class="dropdown-content">
@@ -44,7 +43,7 @@ session_start();
       
 
             <!-- child table -->
-    <div class="container">
+<div class="container">
     <table id="example" class="table table-primary table-hover" style="width:50%;">
         <thead>
             <tr>
@@ -71,7 +70,7 @@ session_start();
                 <td>
                 <form action="php/delete.php" method="POST">
                     <input type="hidden" name="child_id" value="<?php echo $row['child_id']; ?>">
-                    <button type="submit" name="deletebtn" class="btn btn-danger"><a href="php/delete.php"></a><i class="fa fa-trash"></i></button>
+                    <button type="submit" name="delete_child" class="btn btn-danger"><a href="php/delete.php"></a><i class="fa fa-trash"></i></button>
                 </form>
                 </td>
             </tr>
@@ -88,13 +87,14 @@ session_start();
           <tr>
             <th>
               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#adduserchart">
-              Add User Chart
+              Add Child Chart
               </button>
             </th>
           </tr>
           <tr>
               <th>Child's Name</th>
-              <th>Vaccine Name & Dosage</th>
+              <th>Vaccine Name</th>
+              <th>Dosage</th>
               <th>Vaccinator Name</th>
               <th>Date of Vaccination</th>
               <th>Health Center</th>
@@ -122,6 +122,7 @@ session_start();
               <td hidden><?php echo $row['child_id']; ?></td>
               <td><?php echo $row['firstname'].'  '.$row['lastname']; ?></td>
               <td><?php echo $row['vaccinename']; ?></td>
+              <td><?php echo $row['dose']; ?></td>
               <td><?php echo $row['vaccinatorname']; ?></td>
               <td><?php echo $row['dateofvaccination']; ?></td>
               <td><?php echo $row['healthcenter']; ?></td>        
@@ -133,7 +134,7 @@ session_start();
               <td>
               <form action="php/delete.php" method="POST">
                   <input type="hidden" name="chart_id" value="<?php echo $row['chart_id']; ?>">
-                  <button type="submit" name="delete_btn" class="btn btn-danger"><a href="php/delete.php"></a><i class="fa fa-trash"></i></button>
+                  <button type="submit" name="delete_chart" class="btn btn-danger"><a href="php/delete.php"></a><i class="fa fa-trash"></i></button>
               </form>
               </td>
           </tr>
@@ -142,7 +143,7 @@ session_start();
   </table>
 </div>
 
-<!-- user details chart modal -->
+<!-- new child details including profile and chart modal -->
 <div class="modal fade" id="detailschart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
@@ -151,8 +152,6 @@ session_start();
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" id="chart_detail">
-      
-       
       
       </div>         
     </div>
@@ -164,27 +163,28 @@ session_start();
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add Child Chart</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
 
-      <form action="php/newvaccine_chart.php" method="POST">    
-      <select name="child_id" class="form-control">
+      <form action="php/add_chart_admin.php" method="POST">    
+            Child Name
+            <select name="child_id" class="form-control">
                 <?php  
                 $query = "SELECT * FROM child_tbl";
                 $result = mysqli_query($con,$query);  
                 while($rows=mysqli_fetch_assoc($result)){
                   $child_id = $rows['child_id'];
                   $firstname = $rows['firstname'];
-                  $lastname - $row['lastname'];
-                  $middlename = $row['middlename'];
-                  echo "<option value='$child_id'>$firstname</option>";
+                  $lastname = $rows['lastname'];
+                  $middlename = $rows['middlename'];
+                  echo "<option value='$child_id'>$firstname $middlename $lastname</option>";
                 }                                     
                 ?>
             </select>
             <br>                   
-            Vaccine Name & Dosage
+            Vaccine Name
             <select name="vaccine_id" class="form-control">
                 <?php  
                 $query = "SELECT * FROM vaccine";
@@ -192,11 +192,17 @@ session_start();
                 while($rows=mysqli_fetch_assoc($result)){
                   $vaccine_id = $rows['vaccine_id'];
                   $vaccinename = $rows['vaccinename'];
-                  $doses = $rows['doses'];
-                  echo "<option value='$vaccine_id'>$vaccinename $doses dose</option>";
+                  echo "<option value='$vaccine_id'>$vaccinename</option>";
                 }                                     
                 ?>
             </select> 
+            <br>
+            Dosage
+            <select name="dose" class="form-control">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
             <br>
             Vaccinator's Name 
             <select name="vaccinatorname" class="form-control">
@@ -212,7 +218,7 @@ session_start();
             </select>    
             <br>
             Date of Vaccination    
-            <input class="form-control" type="datetime-local" id="dtlocal" name="dateofvaccination">  
+            <input class="form-control" type="date" id="dtlocal" name="dateofvaccination">  
             <br>
             healthcenter
             <select name="healthcenter" class="form-control">
@@ -234,7 +240,7 @@ session_start();
             </select>
             </br>  
             <div class="modal-footer">
-                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" name="submit" class="btn btn-primary">Add</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>  
         </form>
@@ -246,10 +252,10 @@ session_start();
 
 <!-- edit user chart -->
 <div class="modal fade" id="editchart" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">DETAILS CHART</h5>
+        <h5 class="modal-title" id="exampleModalLabel">UPDATE CHART</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" id="edit_child"> 
@@ -275,7 +281,7 @@ $(document).ready(function(){
       // alert(child_id);
  
         $.ajax({
-          url: "php/child.php",
+          url: "php/view_child_admin_modal.php",
           type: "post",
           data:{child_id: child_id},
           success:function(data){
@@ -291,7 +297,7 @@ $(document).ready(function(){
       // alert(chart_id);
   
       $.ajax({
-          url: "php/edit_child.php",
+          url: "php/edit_chart_admin_modal.php",
           type: "post",
           data:{chart_id: chart_id},
           success:function(data){

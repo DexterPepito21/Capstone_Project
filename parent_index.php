@@ -13,7 +13,7 @@ $user_data = check_login($con);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="parent_index.css">
+    <link rel="stylesheet" href="css/parent_index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Dashboard | Parent</title>
 </head>
@@ -43,8 +43,8 @@ $user_data = check_login($con);
       <br>
       <center><table class="table" style="width: 50%">
       <thead>
-                <th style="width: 30%">Vaccine</th>
-                <th style="width: 10%">Information</th>
+                <th style="width: 10%">Vaccine</th>
+                <th style="width: 30%">Information</th>
       </thead>
       <tbody>
            <tbody>

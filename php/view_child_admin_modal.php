@@ -49,16 +49,17 @@ if(isset($_POST['child_id'])){
 <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
       <thead>
           <tr>
-              <th>Vaccine & Dosage</th>
+              <th>Vaccine</th>
+              <th>Dosage</th>
               <th>Date of Vaccination</th>
-              <th>Vaccinated?</th>
               <th>Vaccinator Name</th>
               <th>Health Center</th>
+              <th>Vaccinated?</th>
           </tr>
       </thead>
       <tbody>
           <?php 
-          $sql = "SELECT chart.vaccinated, vaccine.vaccinename, healthcare_info.vaccinatorname, chart.dateofvaccination, healthcenter_tbl.healthcenter 
+          $sql = "SELECT *,chart.vaccinated, vaccine.vaccinename, healthcare_info.vaccinatorname, chart.dateofvaccination, healthcenter_tbl.healthcenter 
           FROM (((chart
           INNER JOIN vaccine ON chart.vaccine_id = vaccine.vaccine_id)
           INNER JOIN healthcenter_tbl ON chart.healthcenter_id = healthcenter_tbl.healthcenter_id)
@@ -71,10 +72,11 @@ if(isset($_POST['child_id'])){
           ?>
           <tr>
               <td><?php echo $row['vaccinename']; ?></td>
+              <td><?php echo $row['dose']; ?></td>
               <td><?php echo $row['dateofvaccination']; ?></td>
-              <td><?php echo $row['vaccinated']; ?></td>
               <td><?php echo $row['vaccinatorname']; ?></td>        
               <td><?php echo $row['healthcenter']; ?></td> 
+              <td><?php echo $row['vaccinated']; ?></td>
               </td>
           </tr>
           <?php } ?>

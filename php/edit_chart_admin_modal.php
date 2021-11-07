@@ -11,6 +11,7 @@ $result1 = mysqli_query($con,$query1);
 $rows1=mysqli_fetch_assoc($result1);
 $checkvaccine_id = $rows1['vaccine_id'];
 $vaccinename = $rows1['vaccinename'];
+$dose = $rows1['dose'];
 $checkhealthcare_id = $rows1['healthcare_id'];
 $vaccinatorname = $rows1['vaccinatorname'];
 $dateofvaccination = $rows1['dateofvaccination'];
@@ -18,7 +19,7 @@ $checkhealthcenter_id = $rows1['healthcenter_id'];
 $healthcenter = $rows1['healthcenter'];
 $vaccinated = $rows1['vaccinated'];
 ?>
-<form action="php/newvaccine_chart.php" method="POST">    
+<form action="php/update_chart_admin.php" method="POST">    
         <input hidden class="form-control" type="text" placeholder="<?php echo (isset($chart_id))?$chart_id:'';?>" name="chart_id" value="<?php echo (isset($chart_id))?$chart_id:'';?>"/>                  
             Vaccine Name
 
@@ -39,6 +40,14 @@ $vaccinated = $rows1['vaccinated'];
                 ?>
             </select> 
             <br>
+            Dose
+            <select name="dose" class="form-control">
+                <option value='<?php echo (isset($dose))?$dose:'';?>'><?php echo $dose?></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+            <br>
             Vaccinator's Name 
             <select name="vaccinatorname" class="form-control">
             <option value='<?php echo (isset($checkhealthcare_id))?$checkhealthcare_id:'';?>'><?php echo $vaccinatorname?></option>
@@ -57,7 +66,7 @@ $vaccinated = $rows1['vaccinated'];
             </select>    
             <br>
             Date of Vaccination    
-            <input class="form-control" type="datetime-local" id="dtlocal" name="dateofvaccination" value="<?php echo (isset($dateofvaccination))?$dateofvaccination:'';?>">  
+            <input  class="form-control" type="date" class="m-wrap" value="<?php echo strftime('%Y-%m-%d', strtotime($dateofvaccination)); ?>" name="dateofvaccination" />
             <br>
             healthcenter
             <select name="healthcenter" class="form-control">

@@ -26,12 +26,10 @@ if(isset($_POST['guide'])){
   }
   if(isset($_POST['vaccine'])){
     $vaccinename = $_POST['vaccinename'];
-    $doses = $_POST['doses'];
-    $sql = "INSERT INTO vaccine (vaccinename,doses)
-    values ('$vaccinename','$doses')";
+    $sql = "INSERT INTO vaccine (vaccinename)
+    values ('$vaccinename')";
     $result = mysqli_query($con, $sql);
   }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +42,7 @@ if(isset($_POST['guide'])){
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="input.css">
+    <link rel="stylesheet" href="css/input.css">
 </head>
 <body>
 <!-- Navigation Bar -->
@@ -55,8 +53,8 @@ if(isset($_POST['guide'])){
           </label>
           <label class="logo">Child Care System</label>
           <ul>
-            <li><a href="admin_index.php" class="active"><i class="fas fa-home" id="icon"></i>Dashboard</a></li>
-            <li><a href="admin_input.php"><i class="fas fa-book"  id="icon"></i>Input</a></li>
+            <li><a href="admin_index.php" ><i class="fas fa-home" id="icon"></i>Dashboard</a></li>
+            <li><a href="admin_input.php" class="active"><i class="fas fa-book"  id="icon"></i>Input</a></li>
             <li><a href="admin_chart.php"><i class="fa fa-chart-bar"  id="icon"></i>Vaccine Chart</a></li>
             <li><a href="admin_sms.php"><i class="fas fa-comment"  id="icon"></i>SMS Notification</a></li>
           
@@ -94,22 +92,13 @@ if(isset($_POST['guide'])){
 <br><br><br>
 
 <div class="container">
-  <p>Fill this up for the new vaccine to be added and its dosage.
+  <p>Fill this up for the new vaccine to be added.
 </p>
 <!-- Vaccine with Doses -->
 <form action="#" method="post" >
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Vaccine name:</label>
     <input type="text" name="vaccinename">
-  </div>
-  <div class="mb-3">
-  Dose:
-  <select name="doses">
-      <option value=''></option>
-      <option value='1st'>1st</option>
-      <option value='2nd'>2nd</option>
-      <option value='3rd'>3rd</option>
-  </select>
   </div>
   <button type="submit" name="vaccine" class="btn btn-primary">vaccine</button>
 </form>

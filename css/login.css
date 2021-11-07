@@ -11,7 +11,7 @@ html {
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
-  background-image: url("admin/bgc.jpg");
+  background-image: url("../admin/bgc.jpg");
   height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -54,8 +54,8 @@ h2 {
   border-radius: 10px 10px 10px 10px;
   background: #fff;
   padding: 30px;
-  width: 100%;
-  max-width: 500px;
+  width: 50%;
+  max-width: 50%;
   position: relative;
   padding: 0px;
   box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
@@ -77,19 +77,19 @@ h2 {
 
 /* FORM TYPOGRAPHY*/
 
-input[type=button], input[type=submit], input[type=reset]  {
+input[type=button], input[type=submit] {
   background-color: #56baed;
   border: none;
   color: white;
-  padding: 10px 30px;
+  padding: 15px 30px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  position: inherit;
   text-transform: uppercase;
   font-size: 13px;
   box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
   border-radius: 5px 5px 5px 5px;
-  margin: 5px 20px 40px 20px;
+  margin: 30px 325px 15px 43%;
   transition: all 0.3s ease-in-out;
 }
 
@@ -105,12 +105,12 @@ input[type=text], input[type=password] {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
-  padding: 15px 32px;
+  padding: 15px 20px;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
-  margin: 5px;
-  width: 80%;
+  font-size: 15px;
+  margin: 10px;
+  width: 40%;
   border: 2px solid #f6f6f6;
   transition: all 0.5s ease-in-out;
   border-radius: 5px 5px 5px 5px;
@@ -157,4 +157,8 @@ input[type=text]:placeholder {
   width:30%;
   margin-bottom: 20px;
   margin-top: 20px;
+}
+.form-inline i{
+  margin-left: 25px;
+  margin-right: 5px;
 }

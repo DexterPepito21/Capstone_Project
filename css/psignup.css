@@ -11,7 +11,7 @@ html {
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
-  background-image: url("admin/bgc.jpg");
+  background-image: url("../admin/bgc.jpg");
   height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -65,7 +65,7 @@ h2 {
 #formFooter {
   background-color: #f6f6f6;
   border-top: 1px solid #dce8f1;
-  padding: 25px;
+  padding: 15px;
   text-align: center;
   border-radius: 0 0 10px 10px;
 }
@@ -81,7 +81,7 @@ input[type=button], input[type=submit], input[type=reset]  {
   background-color: #56baed;
   border: none;
   color: white;
-  padding: 15px 80px;
+  padding: 10px 30px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -110,7 +110,7 @@ input[type=text], input[type=password] {
   display: inline-block;
   font-size: 16px;
   margin: 5px;
-  width: 85%;
+  width: 80%;
   border: 2px solid #f6f6f6;
   transition: all 0.5s ease-in-out;
   border-radius: 5px 5px 5px 5px;
