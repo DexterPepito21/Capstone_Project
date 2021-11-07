@@ -26,9 +26,8 @@ if(isset($_POST['guide'])){
   }
   if(isset($_POST['vaccine'])){
     $vaccinename = $_POST['vaccinename'];
-    $doses = $_POST['doses'];
-    $sql = "INSERT INTO vaccine (vaccinename,doses)
-    values ('$vaccinename','$doses')";
+    $sql = "INSERT INTO vaccine (vaccinename)
+    values ('$vaccinename')";
     $result = mysqli_query($con, $sql);
   }
 ?>
@@ -93,22 +92,13 @@ if(isset($_POST['guide'])){
 <br><br><br>
 
 <div class="container">
-  <p>Fill this up for the new vaccine to be added and its dosage.
+  <p>Fill this up for the new vaccine to be added.
 </p>
 <!-- Vaccine with Doses -->
 <form action="#" method="post" >
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Vaccine name:</label>
     <input type="text" name="vaccinename">
-  </div>
-  <div class="mb-3">
-  Dose:
-  <select name="doses">
-      <option value=''></option>
-      <option value='1st'>1st</option>
-      <option value='2nd'>2nd</option>
-      <option value='3rd'>3rd</option>
-  </select>
   </div>
   <button type="submit" name="vaccine" class="btn btn-primary">vaccine</button>
 </form>

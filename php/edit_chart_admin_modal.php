@@ -39,6 +39,7 @@ $vaccinated = $rows1['vaccinated'];
                     }      
                 ?>
             </select> 
+            <br>
             Dose
             <select name="dose" class="form-control">
                 <option value='<?php echo (isset($dose))?$dose:'';?>'><?php echo $dose?></option>
@@ -65,8 +66,7 @@ $vaccinated = $rows1['vaccinated'];
             </select>    
             <br>
             Date of Vaccination    
-            <input  class="form-control" type="datetime" class="m-wrap" value="<?php echo strftime('%Y-%m-%d, %H:%M:%S', strtotime($dateofvaccination)); ?>" name="dateofvaccination" />
-            <input class="form-control" type="datetime-local" id="dtlocal" name="wew" value="<?php echo (isset($dateofvaccination))?$dateofvaccination:'';?>"> 
+            <input  class="form-control" type="date" class="m-wrap" value="<?php echo strftime('%Y-%m-%d', strtotime($dateofvaccination)); ?>" name="dateofvaccination" />
             <br>
             healthcenter
             <select name="healthcenter" class="form-control">

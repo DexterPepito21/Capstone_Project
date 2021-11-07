@@ -169,7 +169,8 @@ session_start();
       <div class="modal-body">
 
       <form action="php/add_chart_admin.php" method="POST">    
-      <select name="child_id" class="form-control">
+            Child Name
+            <select name="child_id" class="form-control">
                 <?php  
                 $query = "SELECT * FROM child_tbl";
                 $result = mysqli_query($con,$query);  
@@ -183,7 +184,7 @@ session_start();
                 ?>
             </select>
             <br>                   
-            Vaccine Name & Dosage
+            Vaccine Name
             <select name="vaccine_id" class="form-control">
                 <?php  
                 $query = "SELECT * FROM vaccine";
@@ -191,12 +192,12 @@ session_start();
                 while($rows=mysqli_fetch_assoc($result)){
                   $vaccine_id = $rows['vaccine_id'];
                   $vaccinename = $rows['vaccinename'];
-                  $doses = $rows['doses'];
-                  echo "<option value='$vaccine_id'>$vaccinename $doses dose</option>";
+                  echo "<option value='$vaccine_id'>$vaccinename</option>";
                 }                                     
                 ?>
             </select> 
-            Dose
+            <br>
+            Dosage
             <select name="dose" class="form-control">
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -217,7 +218,7 @@ session_start();
             </select>    
             <br>
             Date of Vaccination    
-            <input class="form-control" type="datetime-local" id="dtlocal" name="dateofvaccination">  
+            <input class="form-control" type="date" id="dtlocal" name="dateofvaccination">  
             <br>
             healthcenter
             <select name="healthcenter" class="form-control">
@@ -251,10 +252,10 @@ session_start();
 
 <!-- edit user chart -->
 <div class="modal fade" id="editchart" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">DETAILS CHART</h5>
+        <h5 class="modal-title" id="exampleModalLabel">UPDATE CHART</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" id="edit_child"> 

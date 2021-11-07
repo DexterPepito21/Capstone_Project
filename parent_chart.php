@@ -60,6 +60,7 @@ $id = $_SESSION['parent_id'];
               <th>dateofvaccination</th>
               <th>vaccinatorname</th>
               <th>healthcenter</th>
+              <th>vaccinated?</th>
           </tr>
       </thead>
       <tbody>
@@ -73,7 +74,7 @@ while($row = $result->fetch_assoc()){
 $child_ids[] = $row['child_id'];
 }
 foreach ($child_ids as $value) {
-$sql = "SELECT *, vaccine.doses,vaccine.vaccinename, healthcare_info.vaccinatorname, chart.dateofvaccination, healthcenter_tbl.healthcenter 
+$sql = "SELECT *, vaccine.vaccinename, healthcare_info.vaccinatorname, chart.dateofvaccination, healthcenter_tbl.healthcenter 
 FROM (((chart
 RIGHT JOIN vaccine ON chart.vaccine_id = vaccine.vaccine_id)
 RIGHT JOIN healthcare_info ON chart.healthcare_id = healthcare_info.healthcare_id)
@@ -98,7 +99,8 @@ while($row=mysqli_fetch_assoc($result)){
     <td><?php echo $row['dose']; ?></td>
     <td><?php echo $row['dateofvaccination']; ?></td>
     <td><?php echo $row['vaccinatorname']; ?></td>
-    <td><?php echo $row['healthcenter']; ?></td>        
+    <td><?php echo $row['healthcenter']; ?></td>
+    <td><?php echo $row['vaccinated']; ?></td>         
     </td>
 </tr>
 <?php }}?>
