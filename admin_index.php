@@ -31,7 +31,11 @@ $Incomplete=mysqli_num_rows($result2);
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
+<<<<<<< HEAD
           ['Year', 'NO. OF CHILDREN', 'NO. OF VACCINATED '],
+=======
+          ['2021', 'NO. OF CHILDREN', 'NO. OF VACCINATED '],
+>>>>>>> upstream/main
           <?php 
             $sql = "SELECT * FROM vaccine";
             $stmt = $con->prepare($sql);
@@ -53,8 +57,13 @@ $Incomplete=mysqli_num_rows($result2);
      
         var options = {
           chart: {
+<<<<<<< HEAD
             title: 'Company Performance',
             subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+=======
+            title: 'Child Summary Reports',
+            subtitle: '2021',
+>>>>>>> upstream/main
           }
         };
 
@@ -75,8 +84,13 @@ $Incomplete=mysqli_num_rows($result2);
      
         var options = {
           chart: {
+<<<<<<< HEAD
             title: 'Company Performance',
             subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+=======
+            title: 'Child Summary Reports',
+            subtitle: '2021',
+>>>>>>> upstream/main
           }
         };
 
@@ -109,56 +123,8 @@ $Incomplete=mysqli_num_rows($result2);
             </div>
           </ul>
         </nav>
-        <div id="columnchart_material" style="width: 100%; height: 500px;"></div>
-    <div id="total_of_vaccinated" style="width: 100%; height: 500px;"></div>
-         <!-- Table -->
-          <table class="row">
-           <tr>
-             <td>Total number of Vaccinated</td>
-             <td><?php echo $complete; ?></td>
-           </tr>
-           <tr>
-             <td>Total number of not Vaccinated</td>
-             <td><?php echo $Incomplete; ?></td>
-           </tr>
-          </table>
-
-      <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:50%; height: 100%">
-      <caption></caption>
-      <thead>       
-          <tr>
-              <th>Types of Vaccine</th>
-              <th>No. of Children</th>
-              <th>No. of Vaccinated</th>
-          </tr>
-      </thead>
-      <tbody>
-<?php 
-$sql = "SELECT * FROM vaccine";
-$stmt = $con->prepare($sql);
-$stmt->execute();
-$result = $stmt->get_result();
-while($row = $result->fetch_assoc()){
-  $vaccine_id = $row['vaccine_id'];
-  $vaccinename = $row['vaccinename'];
-  $sql1 = "SELECT * FROM chart where vaccine_id='$vaccine_id'";
-  $result1=mysqli_query($con,$sql1);
-  $rowcount=mysqli_num_rows($result1);
-  $sql2 = "SELECT vaccinated FROM chart where vaccinated='yes' AND vaccine_id='$vaccine_id'";
-  $result2=mysqli_query($con,$sql2);
-  $rowcount2=mysqli_num_rows($result2);
-
-?>        
-
-            <tr>
-              <td  ><?php echo $vaccinename; ?></td>  
-              <td  ><?php echo $rowcount ?></td>
-              <td  ><?php echo $rowcount2 ?></td>            
-          </tr>
-     
-<?php } ?>
-</tbody>
-  </table>
+        <center><div id="columnchart_material" style="width: 50%; height: 500px;" class="container"></div></center>
+       <center><div id="total_of_vaccinated" style="width: 50%; height: 500px;" class="container"></div></center>
 
  </body>
 </html>

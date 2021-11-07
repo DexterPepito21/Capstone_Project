@@ -11,7 +11,11 @@ html {
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
+<<<<<<< HEAD:css/signup.css
   background-image: url("../admin/lbg.jpg");
+=======
+  background-image: url("../admin/bgc.jpg");
+>>>>>>> upstream/main:signup.css
   height: 100%;
   background-size: cover;
   background-repeat: no-repeat;

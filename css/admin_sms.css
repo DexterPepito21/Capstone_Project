@@ -168,3 +168,20 @@
     left: 0;
   }
   }
+
+  /* sms */
+  .container{
+    width: 50%;
+    padding: 10px;
+    margin: 5% 50% 0 40%;
+    display: inline-block;
+    border: 1px solid #f1f1f1;
+    box-shadow: 0 10px 10px 0 rgb(68, 150, 245);
+  }
+  #example{
+    background-color: rgb(68, 150, 245);
+  }
+  .link{
+    text-decoration: none;
+    color: #000000;
+  }

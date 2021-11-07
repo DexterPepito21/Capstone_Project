@@ -43,8 +43,8 @@ $user_data = check_login($con);
       <br>
       <center><table class="table" style="width: 50%">
       <thead>
-                <th style="width: 30%">Vaccine</th>
-                <th style="width: 10%">Information</th>
+                <th style="width: 10%">Vaccine</th>
+                <th style="width: 30%">Information</th>
       </thead>
       <tbody>
            <tbody>

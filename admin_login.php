@@ -96,7 +96,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
     <!-- Remind Passowrd -->
     <div id="formFooter">
-    <a class="underlineHover" href="forgot.php">Forgot Password?</a><br>
+    <a class="underlineHover" href="adminforgot.php">Forgot Password?</a><br>
     </div>
 
   </div>
