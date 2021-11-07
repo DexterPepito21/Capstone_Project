@@ -11,7 +11,7 @@ html {
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
-  background-image: url("admin/bgc.jpg");
+  background-image: url("../admin/bgc.jpg");
   height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
