@@ -1,7 +1,4 @@
-
 <?php 
-session_start();
-
 	include("php/connection.php");
 	include("php/functions.php");
 
@@ -17,6 +14,8 @@ session_start();
     $email = $_POST['email'];
     $username = $_POST['username'];
     $password = $_POST['password'];
+
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     $usernameErr = "SELECT username FROM parent_tbl WHERE username='$username'";
     $usernameErrResult = mysqli_query($con,$usernameErr);
@@ -50,7 +49,7 @@ session_start();
 
 		
       $query = "INSERT INTO parent_tbl (firstname,lastname,middlename,address,phonenum,email,username,password)
-      values ('$firstname','$lastname','$middlename','$address','$phonenum','$email','$username','$password')";
+      values ('$firstname','$lastname','$middlename','$address','$phonenum','$email','$username','$hashed_password')";
 			mysqli_query($con, $query);
       header("Location: login.php");
 		}

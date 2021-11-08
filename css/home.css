@@ -4,11 +4,7 @@
     
 }
 body{
-<<<<<<< HEAD:css/home.css
     background-image: url("lbg.jpg");
-=======
-    background-image: url("../admin/lbg.jpg");
->>>>>>> upstream/main:home.css
     height: 100vh;
     background-size: cover;
     background-position: center;

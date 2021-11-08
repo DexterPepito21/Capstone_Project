@@ -31,11 +31,7 @@ $Incomplete=mysqli_num_rows($result2);
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-<<<<<<< HEAD
-          ['Year', 'NO. OF CHILDREN', 'NO. OF VACCINATED '],
-=======
           ['2021', 'NO. OF CHILDREN', 'NO. OF VACCINATED '],
->>>>>>> upstream/main
           <?php 
             $sql = "SELECT * FROM vaccine";
             $stmt = $con->prepare($sql);
@@ -57,13 +53,8 @@ $Incomplete=mysqli_num_rows($result2);
      
         var options = {
           chart: {
-<<<<<<< HEAD
-            title: 'Company Performance',
-            subtitle: 'Sales, Expenses, and Profit: 2014-2017',
-=======
             title: 'Child Summary Reports',
             subtitle: '2021',
->>>>>>> upstream/main
           }
         };
 
@@ -84,13 +75,8 @@ $Incomplete=mysqli_num_rows($result2);
      
         var options = {
           chart: {
-<<<<<<< HEAD
-            title: 'Company Performance',
-            subtitle: 'Sales, Expenses, and Profit: 2014-2017',
-=======
             title: 'Child Summary Reports',
             subtitle: '2021',
->>>>>>> upstream/main
           }
         };
 

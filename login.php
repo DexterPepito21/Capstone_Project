@@ -34,8 +34,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 				{
 
 					$user_data = mysqli_fetch_assoc($result);
-					
-					if($user_data['password'] === $password)
+
+					if(password_verify($password, $user_data['password']))
 					{
             
 						$_SESSION['parent_id'] = $user_data['parent_id'];

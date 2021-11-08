@@ -18,7 +18,7 @@ if(isset($_POST['guide'])){
     values ('$vaccinename','$information')";
     $result = mysqli_query($con, $sql);
   }
-  if(isset($_POST['vaccinatorname'])){
+  if(isset($_POST['healthcare'])){
     $vaccinatorname = $_POST['vaccinatorname'];
     $sql = "INSERT INTO healthcare_info (vaccinatorname)
     values ('$vaccinatorname')";
@@ -111,7 +111,7 @@ if(isset($_POST['guide'])){
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Vaccinator name:</label>
     <input type="text" name="vaccinatorname">
-    <button type="submit" name="vaccinatorname" class="btn btn-primary">Submit</button>
+    <button type="submit" name="healthcare" class="btn btn-primary">Submit</button>
   </div>
 </form>
 </div>
