@@ -5,7 +5,7 @@ session_start();
 include("php/connection.php");
 include("php/functions.php");
 
-$user_data = check_login($con);
+check_login($con);
 $child_data = child($con);
 
 $parent_id = $user_data['parent_id'];

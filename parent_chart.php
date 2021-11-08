@@ -5,7 +5,7 @@ include("php/connection.php");
 include("php/functions.php");
 
 $child_data = chart($con);
-
+check_login($con);
 
 $id = $_SESSION['parent_id'];
 

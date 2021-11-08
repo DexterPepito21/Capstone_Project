@@ -3,8 +3,7 @@ session_start();
 error_reporting(0);
 include("php/connection.php");
 include("php/functions.php");
-
-$user_data = check_login($con);
+check_login($con);
 
 ?>
 <!DOCTYPE html>

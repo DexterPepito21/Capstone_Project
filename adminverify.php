@@ -5,10 +5,10 @@ $email = $_GET['email'];
 
 if(isset($_POST['reset'])){
     $password = $_POST['password'];
-
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     $sql = "UPDATE admin_tbl SET password=? WHERE email='$email'";
     $stmt = $con->prepare($sql);
-    $stmt->bind_param("s", $password);
+    $stmt->bind_param("s", $hashed_password);
     if($stmt->execute()){
 
     echo "<script>

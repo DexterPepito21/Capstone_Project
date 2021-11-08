@@ -2,9 +2,9 @@
 
 session_start();
 
-if(isset($_SESSION['id']))
+if(isset($_SESSION['parent_id']))
 {
-	unset($_SESSION['id']);
+	unset($_SESSION['parent_id']);
 
 }
 if(isset($_SESSION['child_id']))

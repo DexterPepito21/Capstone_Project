@@ -1,6 +1,8 @@
 <?php 
+session_start();
 include("php/connection.php");
 include("php/functions.php");
+check_login($con);
 ?>
 <!DOCTYPE html>
 <html lang="en">
