@@ -1,8 +1,8 @@
 <?php 
 session_start();
-
 include("php/connection.php");
-
+include("php/functions.php");
+check_admin_login($con);
 $sql = "SELECT vaccinated FROM chart where vaccinated='yes'";
 $result=mysqli_query($con,$sql);
 $complete=mysqli_num_rows($result);

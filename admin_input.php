@@ -1,7 +1,8 @@
 <?php 
-
+session_start();
 include("php/connection.php");
 include("php/functions.php");
+check_admin_login($con);
 
 if(isset($_POST['guide'])){
     $hf = $_POST['hf'];

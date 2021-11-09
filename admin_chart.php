@@ -1,8 +1,10 @@
 <?php 
+session_start();
 include("php/connection.php");
+include("php/functions.php");
+check_admin_login($con);
 $query1 = "SELECT * FROM healthcenter_tbl";
 $result1 = mysqli_query($con,$query1);
-session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">

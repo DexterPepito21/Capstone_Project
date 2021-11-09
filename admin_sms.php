@@ -1,8 +1,8 @@
 <?php 
 session_start();
-
 include("php/connection.php");
 include("php/functions.php");
+check_admin_login($con);
 
 ?>
 <!DOCTYPE html>

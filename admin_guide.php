@@ -1,4 +1,6 @@
 <?php 
+session_start();
+check_admin_login($con);
 include("php/connection.php");
 include("php/functions.php");
 ?>
