@@ -8,7 +8,7 @@ include("php/functions.php");
 check_login($con);
 $child_data = child($con);
 
-$parent_id = $user_data['parent_id'];
+$parent_id = $_SESSION['parent_id'];
 
 ?>
 
@@ -184,15 +184,15 @@ while($row=mysqli_fetch_assoc($result)){
 <div class="container">
   <div class="row">
     <label class="label">First Name:</label>
-    <input type="text" value=<?php if(isset($row['firstname'])) echo $row['firstname']; ?>>
+    <input type="text" value="<?php if(isset($row['firstname'])) echo $row['firstname']; ?>">
   </div>
   <div class="row">   
     <label class="label">Middle Name:</label>
-    <input type="text" value=<?php if(isset($row['middlename'])) echo $row['middlename']; ?>>
+    <input type="text" value="<?php if(isset($row['middlename'])) echo $row['middlename']; ?>">
   </div>
   <div class="row">
     <label class="label">Last Name:</label>
-    <input type="text" value=<?php if(isset($row['lastname'])) echo $row['lastname']; ?>>
+    <input type="text" value="<?php if(isset($row['lastname'])) echo $row['lastname']; ?>">
   </div>
   <div class="row">
     <label class="label">Date of Birth:</label>
@@ -200,19 +200,19 @@ while($row=mysqli_fetch_assoc($result)){
   </div>
   <div class="row">
     <label for="pwd" class="label">Place of Birth:</label>
-    <input type="text" value=<?php if(isset($row['placeofbirth'])) echo $row['placeofbirth']; ?>>
+    <input type="text" value="<?php if(isset($row['placeofbirth'])) echo $row['placeofbirth']; ?>">
   </div>
   <div class="row">
     <label class="label">Address:</label>
-    <input type="text" value=<?php if(isset($row['address'])) echo $row['address']; ?>>
+    <input type="text" value="<?php if(isset($row['address'])) echo $row['address']; ?>">
     </div>
     <div class="row">
     <label class="label">Mother's Name:</label>
-    <input type="text" value=<?php if(isset($child_data['mothername'])) echo $row['mothername']; ?>>
+    <input type="text" value="<?php if(isset($child_data['mothername'])) echo $row['mothername']; ?>">
     </div>
     <div class="row">
     <label for="pwd" class="label">Father's Name:</label>
-    <input type="text" value=<?php if(isset($row['fathername'])) echo $row['fathername']; ?>>
+    <input type="text" value="<?php if(isset($row['fathername'])) echo $row['fathername']; ?>">
     </div>
     <div class="row">
     <label class="label">Birth Height:</label>
