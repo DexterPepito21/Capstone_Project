@@ -1,7 +1,9 @@
 <?php
-	// Account details
-	$apiKey = urlencode('Your apiKey');
-	
+include("connection.php");
+
+// Account details
+$apiKey = urlencode('Your apiKey');
+
 if(isset($_POST['update'])){
     
 	// Message details
