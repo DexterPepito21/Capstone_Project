@@ -14,14 +14,14 @@ function itexmo($number,$message,$apicode,$passwd){
 }
 include("connection.php");
 
-$date = date("Y/m/d");
+$date = date("Y/m/d", strtotime("+1 day"));
 $today_date =strftime('%Y-%m-%d', strtotime($date));
 echo $today_date.' is the date today <br><br><br>';
 $sql = "SELECT * FROM chart";
 $result = mysqli_query($con,$sql);  
 while($rows=mysqli_fetch_assoc($result)){
     
-if(date("Y/m/d", strtotime($rows['dateofvaccination'])) == date('Y/m/d')){
+if(date("Y/m/d", strtotime($rows['dateofvaccination'])) == $date){
     $child_id=  $rows['child_id']; //child id
     
     $sql1 = "SELECT child_tbl.parent_id,vaccine.vaccinename
@@ -50,11 +50,11 @@ if(date("Y/m/d", strtotime($rows['dateofvaccination'])) == date('Y/m/d')){
     echo 'date of vaccination is'.$rows['dateofvaccination'].'<br>';
 
     // start here is the code for sending sms
-    $number = $phonenum;
-    $api = "TR-CAMEL935366_PTYY2";
-    $pass = "kpdz9}}!9]";
-    $text = "you are schedule to be vaccinated tommorrow";
-    itexmo($number,$text,$api,$pass);
+    // $number = $phonenum;
+    // $api = "TR-PATPE797790_QMKWB";
+    // $pass = "2[)ewnm4cn";
+    // $text = "you are schedule to be vaccinated tommorrow";
+    // itexmo($number,$text,$api,$pass);
     
 
  }else{
