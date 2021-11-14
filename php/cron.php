@@ -1,4 +1,17 @@
 <?php
+function itexmo($number,$message,$apicode,$passwd){
+    $url = 'https://www.itexmo.com/php_api/api.php';
+    $itexmo = array('1' => $number, '2' => $message, '3' => $apicode, 'passwd' => $passwd);
+    $param = array(
+        'http' => array(
+            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+            'method'  => 'POST',
+            'content' => http_build_query($itexmo),
+        ),
+    );
+    $context  = stream_context_create($param);
+    return file_get_contents($url, false, $context);
+}
 include("connection.php");
 
 $date = date("Y/m/d");
@@ -36,6 +49,13 @@ if(date("Y/m/d", strtotime($rows['dateofvaccination'])) == date('Y/m/d')){
     echo $phonenum.'phone number ';
     echo 'date of vaccination is'.$rows['dateofvaccination'].'<br>';
 
+    // start here is the code for sending sms
+    $number = $phonenum;
+    $api = "TR-CAMEL935366_PTYY2";
+    $pass = "kpdz9}}!9]";
+    $text = "you are schedule to be vaccinated tommorrow";
+    itexmo($number,$text,$api,$pass);
+    
 
  }else{
      echo "no <br>";
