@@ -181,11 +181,9 @@ header{
     margin-bottom: 30px;
 }
 thead{
-    background-color: #6daffe;
     text-align: center;
 }
 td{
-    background-color: #edf6ff;
     text-align: center;
 }
 #submit {

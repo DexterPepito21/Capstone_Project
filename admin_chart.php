@@ -14,7 +14,7 @@ session_start();
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/admin_chart.css">
+    <link rel="stylesheet" href="admin_chart.css">
     <!-- bootstrap datatables -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
@@ -87,15 +87,12 @@ session_start();
 
 <!-- chart table -->
 <div class="container" style="overflow-x: auto">
-  <table id="example" class="table table-primary table-hover" style="width:100%">
-      <thead>
-          <tr>
-            <th>
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#adduserchart">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#adduserchart">
               Add Child Chart
-              </button>
-            </th>
-          </tr>
+        </button>
+        <br><br>
+  <table id="example" class="table table table-hover" style="width:100%">
+      <thead class="table table-primary">
           <tr>
               <th>Child's Name</th>
               <th>Vaccine Name</th>
