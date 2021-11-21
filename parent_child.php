@@ -201,7 +201,7 @@ while($row=mysqli_fetch_assoc($result)){
     <input type="text" value=<?php if(isset($row['address'])) echo $row['address']; ?>>
 <br>
     <label class="label">Mother's Name:</label>
-    <input type="text" value=<?php if(isset($child_data['mothername'])) echo $row['mothername']; ?>>
+    <input type="text" value=<?php if(isset($row['mothername'])) echo $row['mothername']; ?>>
 
     <label for="pwd" class="label">Father's Name:</label>
     <input type="text" value=<?php if(isset($row['fathername'])) echo $row['fathername']; ?>>
