@@ -109,8 +109,28 @@ $Incomplete=mysqli_num_rows($result2);
             </div>
           </ul>
         </nav>
-        <center><div id="columnchart_material" style="width: 50%; height: 500px;" class="container"></div></center>
-       <center><div id="total_of_vaccinated" style="width: 50%; height: 500px;" class="container"></div></center>
-
+        <div style="overflow-x: auto">
+        <center><div id="columnchart_material" class="container"></div></center>
+       <center><div id="total_of_vaccinated" class="container"></div></center>
+       </div>
+<style>
+  .container{
+    height: 500px;
+    width: 50%;
+    padding: 20px;
+    margin: 30px 25%;
+    display: inline-block;
+    border: 1px solid #f1f1f1;
+    box-shadow: 0 10px 30px 0 #ccc;
+  }
+  @media (max-width: 700px){
+    .container{
+      width: auto;
+      margin: 20px 0px;
+      border: 1px solid #f1f1f1;
+      box-shadow: 0 10px 30px 0 #ccc;
+    }
+  }
+</style>
  </body>
 </html>

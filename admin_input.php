@@ -42,7 +42,7 @@ if(isset($_POST['guide'])){
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/input.css">
+    <link rel="stylesheet" href="input.css">
 </head>
 <body>
 <!-- Navigation Bar -->
@@ -66,30 +66,7 @@ if(isset($_POST['guide'])){
             </div>
           </ul>
         </nav>
-  
-<div class="container">
-<!-- Nutrition Guide -->
-<form action="#" method="post" >
-  <div class="mb-3">
-  <p>Please input healthy foods for Nutrition Guide.</p>
-    <!-- <label for="exampleInputEmail1" class="form-label">Healthy foods:</label> -->
-    <input type="text" name="hf"></textarea>
-  </div>
-  <div class="mb-3">
-    <p>Please input the benefit of the following healthy foods.</p>
-    <!-- <label for="exampleInputPassword1" class="form-label">Benefits</label> -->
-    <textarea id="w3review" name="benefits" rows="5" cols="100"></textarea>
-  </div>
-  <div class="mb-3">
-    <p>Please input some reminders for parents regarding child's healthy lifestyle.</p>
-    <!-- <label for="exampleInputPassword1" class="form-label">Reminders</label> -->
-    <textarea id="w3review" name="reminders" rows="5" cols="100"></textarea>
-  </div>
-  <button type="submit" name="guide" class="btn btn-primary">Nutrition Guide</button>
-</form>
-</div>
 
-<br><br><br>
 
 <div class="container">
   <p>Fill this up for the new vaccine to be added.
@@ -137,6 +114,5 @@ Vaccine Name:
   <button type="submit" name="vaccine_information" class="btn btn-primary">Submit</button>
 </form>
 </div>
-
  </body>
 </html>

@@ -41,8 +41,8 @@ $user_data = check_login($con);
       </nav>
       <br>
       <br>
-      <center><table class="table" style="width: 50%">
-      <thead>
+      <center><table class="table" style="width: 60%; margin-bottom: 30px">
+      <thead style="line-height: 40px">
                 <th style="width: 10%">Vaccine</th>
                 <th style="width: 30%">Information</th>
       </thead>
