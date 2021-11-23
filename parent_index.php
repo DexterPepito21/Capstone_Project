@@ -4,7 +4,10 @@ error_reporting(0);
 include("php/connection.php");
 include("php/functions.php");
 check_login($con);
-
+$parent_id = $_SESSION['parent_id'];
+//tommrow date
+$date = date("Y/m/d", strtotime("+1 day"));
+$today_date =strftime('%Y-%m-%d', strtotime($date));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,14 +43,87 @@ check_login($con);
       </nav>
       <br>
       <br>
+      <!-- Next Due vaccines -->
+      <center>
+      <table class="table" style="width: 50%">
+      <tbody>
+      <thead>
+                <th >Next Due Vaccination</th>
+      </thead>
+        
+              <?php 
+                $sql = "SELECT * FROM child_tbl where parent_id='$parent_id'";
+                $stmt = $con->prepare($sql);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $child_ids = array();
+                while($row = $result->fetch_assoc()){
+                $child_ids[] = $row['child_id'];
+                }
+                foreach ($child_ids as $value) {
+                $sql = "SELECT * FROM chart where child_id='$value'";
+                $stmt = $con->prepare($sql);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                while($row=mysqli_fetch_assoc($result)){
+                  $child_id = $row['child_id'];
+              ?>
+                <tr>
+                  <?php 
+                    $sql = "SELECT * FROM chart where child_id='$child_id'";
+                    $stmt = $con->prepare($sql);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    while($row=mysqli_fetch_assoc($result)){
+                      if($row['vaccinated'] == 'no'){
+                        $chart_id = $row['chart_id'];
+                        $sql1 = "SELECT *, child_tbl.parent_id,vaccine.vaccinename, healthcenter_tbl.healthcenter 
+                        FROM (((chart
+                        LEFT JOIN child_tbl ON chart.child_id = child_tbl.child_id)
+                        LEFT JOIN vaccine ON chart.vaccine_id = vaccine.vaccine_id)
+                        LEFT JOIN  healthcenter_tbl ON chart.healthcenter_id = healthcenter_tbl.healthcenter_id)
+                        where chart.chart_id='$chart_id'";
+                        $result1 = mysqli_query($con,$sql1); 
+                        $rows1=mysqli_fetch_assoc($result1);
+                        $number_rows_chart=mysqli_num_rows($result1);
+                        $vaccinename = $rows1['vaccinename']; //vaccine name
+                        $dose = $rows1['dose'];
+                  ?>
+                 <td>
+                      <?php 
+                          $sql1 = "SELECT * FROM child_tbl where child_id='$value'";
+                          $stmt1 = $con->prepare($sql1);
+                          $stmt1->execute();
+                          $result1 = $stmt1->get_result();
+                          while($row1 = $result1->fetch_assoc()){
+                            echo $row1['firstname'];
+                          }
+                      ?>
+                  </td>
+                  <td><?php echo $vaccinename?></td>
+                  <td><?php echo $dose?></td>
+                  <td><?php echo $row['dateofvaccination']?></td>
+                </tr>
+              <?php }}}}?>
+       </tbody>
+      </table>
+
+
+      <br>
+      <br>
+      <br>
+      <br>
+
+
+
+      <!-- Vaccine Information -->
       <center><table class="table" style="width: 50%">
       <thead>
                 <th style="width: 10%">Vaccine</th>
                 <th style="width: 30%">Information</th>
       </thead>
       <tbody>
-           <tbody>
-           <tr>
+          <tr>
                 <?php 
                     $sql = "SELECT *
                     FROM vaccine_information";
@@ -58,11 +134,11 @@ check_login($con);
                         $vaccinename = $row['vaccinename'];
                         $information = $row['information'];
                     ?>        
-                        <tr>
+                      <tr>
                         <td  ><?php echo $vaccinename ?></td>  
                         <td  ><?php echo $information ?></td>          
-                    </tr>
-                    <?php } ?>
+                      </tr>
+            <?php } ?>
           </tbody>
         </table>
         </div>
