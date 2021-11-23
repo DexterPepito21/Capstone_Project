@@ -5,7 +5,7 @@ include("php/connection.php");
 include("php/functions.php");
 
 $child_data = chart($con);
-check_login($con);
+
 
 $id = $_SESSION['parent_id'];
 
@@ -20,7 +20,7 @@ $id = $_SESSION['parent_id'];
     <title>Vaccine Chart | Parent</title>
     <link rel= "stylesheet" href = "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.js"></script>
-    <link rel="stylesheet" href="./css/parent_chart.css">
+    <link rel="stylesheet" href="parent_chart.css">
     <!-- Datatables -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.0/css/dataTables.bootstrap4.min.css">
@@ -50,17 +50,17 @@ $id = $_SESSION['parent_id'];
   </ul>
 </nav>
 
-
-<center><table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:80%">
+<div class="container" style="overflow-x: auto">
+<center><table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
       <thead>
           <tr>
-          <th>child name</th>
-              <th>vaccine</th>
-              <th>doses</th>
-              <th>dateofvaccination</th>
-              <th>vaccinatorname</th>
-              <th>healthcenter</th>
-              <th>vaccinated?</th>
+          <th>Child Name</th>
+              <th>Vaccine</th>
+              <th>Doses</th>
+              <th>Date of Vaccination</th>
+              <th>Vaccinator Name</th>
+              <th>Health Center</th>
+              <th>Vaccinated?</th>
           </tr>
       </thead>
       <tbody>
@@ -106,7 +106,7 @@ while($row=mysqli_fetch_assoc($result)){
 <?php }}?>
 </tbody>
   </table>
-  </center>
+  </center></div>
 
 
 <!-- Datatables -->

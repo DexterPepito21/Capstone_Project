@@ -3,11 +3,9 @@ session_start();
 error_reporting(0);
 include("php/connection.php");
 include("php/functions.php");
-check_login($con);
-$parent_id = $_SESSION['parent_id'];
-//tommrow date
-$date = date("Y/m/d", strtotime("+1 day"));
-$today_date =strftime('%Y-%m-%d', strtotime($date));
+
+$user_data = check_login($con);
+$parent_id=$_SESSION['parent_id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,9 +39,11 @@ $today_date =strftime('%Y-%m-%d', strtotime($date));
           </div>
         </ul>
       </nav>
+      
+
       <br>
       <br>
-      <!-- Next Due vaccines -->
+       <!-- Next Due vaccines -->
       <center>
       <table class="table" style="width: 50%">
       <tbody>
@@ -114,16 +114,14 @@ $today_date =strftime('%Y-%m-%d', strtotime($date));
       <br>
       <br>
 
-
-
-      <!-- Vaccine Information -->
-      <center><table class="table" style="width: 50%">
-      <thead>
+      <center><table class="table" style="width: 60%; margin-bottom: 30px">
+      <thead style="line-height: 40px">
                 <th style="width: 10%">Vaccine</th>
                 <th style="width: 30%">Information</th>
       </thead>
       <tbody>
-          <tr>
+           <tbody>
+           <tr>
                 <?php 
                     $sql = "SELECT *
                     FROM vaccine_information";
@@ -134,11 +132,11 @@ $today_date =strftime('%Y-%m-%d', strtotime($date));
                         $vaccinename = $row['vaccinename'];
                         $information = $row['information'];
                     ?>        
-                      <tr>
+                        <tr>
                         <td  ><?php echo $vaccinename ?></td>  
                         <td  ><?php echo $information ?></td>          
-                      </tr>
-            <?php } ?>
+                    </tr>
+                    <?php } ?>
           </tbody>
         </table>
         </div>

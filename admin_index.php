@@ -1,8 +1,11 @@
 <?php 
 session_start();
+
 include("php/connection.php");
 include("php/functions.php");
+
 check_admin_login($con);
+
 $sql = "SELECT vaccinated FROM chart where vaccinated='yes'";
 $result=mysqli_query($con,$sql);
 $complete=mysqli_num_rows($result);
@@ -96,8 +99,6 @@ $Incomplete=mysqli_num_rows($result2);
             <li><a href="admin_index.php" class="active"><i class="fas fa-home" id="icon"></i>Dashboard</a></li>
             <li><a href="admin_input.php"><i class="fas fa-book"  id="icon"></i>Input</a></li>
             <li><a href="admin_chart.php"><i class="fa fa-chart-bar"  id="icon"></i>Vaccine Chart</a></li>
-            <li><a href="admin_sms.php"><i class="fas fa-comment"  id="icon"></i>SMS Notification</a></li>
-          
             <div class="dropdown">
               <button class="dropbtn"><i class="fa fa-caret-down"></i></button>
               <div class="dropdown-content">
@@ -106,8 +107,28 @@ $Incomplete=mysqli_num_rows($result2);
             </div>
           </ul>
         </nav>
-        <center><div id="columnchart_material" style="width: 50%; height: 500px;" class="container"></div></center>
-       <center><div id="total_of_vaccinated" style="width: 50%; height: 500px;" class="container"></div></center>
-
+        <div style="overflow-x: auto">
+        <center><div id="columnchart_material" class="container"></div></center>
+       <center><div id="total_of_vaccinated" class="container"></div></center>
+       </div>
+<style>
+  .container{
+    height: 500px;
+    width: 50%;
+    padding: 20px;
+    margin: 30px 25%;
+    display: inline-block;
+    border: 1px solid #f1f1f1;
+    box-shadow: 0 10px 30px 0 #ccc;
+  }
+  @media (max-width: 700px){
+    .container{
+      width: auto;
+      margin: 20px 0px;
+      border: 1px solid #f1f1f1;
+      box-shadow: 0 10px 30px 0 #ccc;
+    }
+  }
+</style>
  </body>
 </html>

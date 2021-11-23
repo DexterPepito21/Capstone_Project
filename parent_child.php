@@ -5,10 +5,10 @@ session_start();
 include("php/connection.php");
 include("php/functions.php");
 
-check_login($con);
+$user_data = check_login($con);
 $child_data = child($con);
 
-$parent_id = $_SESSION['parent_id'];
+$parent_id = $user_data['parent_id'];
 
 ?>
 
@@ -23,7 +23,7 @@ $parent_id = $_SESSION['parent_id'];
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.js"></script>
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/parent_child.css">
+    <link rel="stylesheet" href="parent_child.css">
 </head>
 <body>
 
@@ -182,47 +182,36 @@ while($row=mysqli_fetch_assoc($result)){
 ?>
 <form class="form-inline-1" action="/action_page.php"  style="border:1px solid #ccc">
 <div class="container">
-  <div class="row">
     <label class="label">First Name:</label>
-    <input type="text" value="<?php if(isset($row['firstname'])) echo $row['firstname']; ?>">
-  </div>
-  <div class="row">   
+    <input type="text" value=<?php if(isset($row['firstname'])) echo $row['firstname']; ?>>
+<br>
     <label class="label">Middle Name:</label>
-    <input type="text" value="<?php if(isset($row['middlename'])) echo $row['middlename']; ?>">
-  </div>
-  <div class="row">
+    <input type="text" value=<?php if(isset($row['middlename'])) echo $row['middlename']; ?>>
+
     <label class="label">Last Name:</label>
-    <input type="text" value="<?php if(isset($row['lastname'])) echo $row['lastname']; ?>">
-  </div>
-  <div class="row">
+    <input type="text" value=<?php if(isset($row['lastname'])) echo $row['lastname']; ?>>
+<br>
     <label class="label">Date of Birth:</label>
     <input type="text" value=<?php if(isset($row['dateofbirth'])) echo $row['dateofbirth']; ?>>
-  </div>
-  <div class="row">
+
     <label for="pwd" class="label">Place of Birth:</label>
-    <input type="text" value="<?php if(isset($row['placeofbirth'])) echo $row['placeofbirth']; ?>">
-  </div>
-  <div class="row">
+    <input type="text" value=<?php if(isset($row['placeofbirth'])) echo $row['placeofbirth']; ?>>
+<br>
     <label class="label">Address:</label>
-    <input type="text" value="<?php if(isset($row['address'])) echo $row['address']; ?>">
-    </div>
-    <div class="row">
+    <input type="text" value=<?php if(isset($row['address'])) echo $row['address']; ?>>
+<br>
     <label class="label">Mother's Name:</label>
-    <input type="text" value="<?php if(isset($child_data['mothername'])) echo $row['mothername']; ?>">
-    </div>
-    <div class="row">
+    <input type="text" value=<?php if(isset($row['mothername'])) echo $row['mothername']; ?>>
+
     <label for="pwd" class="label">Father's Name:</label>
-    <input type="text" value="<?php if(isset($row['fathername'])) echo $row['fathername']; ?>">
-    </div>
-    <div class="row">
+    <input type="text" value=<?php if(isset($row['fathername'])) echo $row['fathername']; ?>>
+<br>
     <label class="label">Birth Height:</label>
     <input type="text" value=<?php if(isset($row['birthheight'])) echo $row['birthheight']; ?>>
-    </div>
-    <div class="row">
+<br>
     <label for="pwd" class="label"> Birth Weight:</label>
     <input type="text" value=<?php if(isset($row['birthweight'])) echo $row['birthweight']; ?>>
-    </div>
-    <div class="row">
+<br>
     <label  class="label">Sex:</label>
     <input type="text" value=<?php if(isset($row['sex'])) echo $row['sex']; ?>>
     </div>
