@@ -99,8 +99,6 @@ $Incomplete=mysqli_num_rows($result2);
             <li><a href="admin_index.php" class="active"><i class="fas fa-home" id="icon"></i>Dashboard</a></li>
             <li><a href="admin_input.php"><i class="fas fa-book"  id="icon"></i>Input</a></li>
             <li><a href="admin_chart.php"><i class="fa fa-chart-bar"  id="icon"></i>Vaccine Chart</a></li>
-            <li><a href="admin_sms.php"><i class="fas fa-comment"  id="icon"></i>SMS Notification</a></li>
-          
             <div class="dropdown">
               <button class="dropbtn"><i class="fa fa-caret-down"></i></button>
               <div class="dropdown-content">
