@@ -63,8 +63,11 @@ if(date("Y/m/d", strtotime($rows['dateofvaccination'])) == $date){
     $text = "You child will have its vaccine tomorrow at 8 AM Please see more details at childcaresystem.online";
     // $text = $message;
     //error here
-    itexmo($number,$text,$api,$pass);
+    // itexmo($number,$text,$api,$pass);
    
+    $query = "INSERT INTO comments(comment_subject, comment_text,parent_id)
+    VALUES ('putang ina', 'gago','$parent_id')";
+    mysqli_query($con, $query);
     
 
  }
