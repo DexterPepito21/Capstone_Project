@@ -3,7 +3,7 @@
 $parent_id = $_POST['parent_id'];
 if(isset($_POST["view"]))
 {
- include("../php/connection.php");
+ include("connection.php");
  if($_POST["view"] != '')
  {
   $update_query = "UPDATE comments SET comment_status=1 WHERE comment_status=0 AND parent_id = $parent_id";
@@ -20,7 +20,7 @@ if(isset($_POST["view"]))
    $output .= '
    <li>
     <a href="#">
-     <strong>'.$row["comment_subject"].'</strong><br />
+     <strong>'.$row["comment_subject"].'</strong><br/>
      <small><em>'.$row["comment_text"].'</em></small>
     </a>
    </li>

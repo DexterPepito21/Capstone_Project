@@ -1,6 +1,6 @@
 <?php 
 include("../php/connection.php");
-$parent_id = 15;
+$parent_id = $_SESSION['parent_id'];
 echo $parent_id;
 ?>
 <!DOCTYPE html>

@@ -60,13 +60,14 @@ if(date("Y/m/d", strtotime($rows['dateofvaccination'])) == $date){
     $number = $phonenum;
     $api = "TR-DEXTE784273_EGBWI";
     $pass = "rc[c76\$c18";
-    $text = "You child will have its vaccine tomorrow at 8 AM Please see more details at childcaresystem.online";
+    $text = "Your child will have its vaccine tomorrow at 8 AM Please see more details at childcaresystem.online";
     // $text = $message;
     //error here
     // itexmo($number,$text,$api,$pass);
    
+    $notif_message = "Your child will have its vaccine tomorrow: ".$dateofvaccination;
     $query = "INSERT INTO comments(comment_subject, comment_text,parent_id)
-    VALUES ('putang ina', 'gago','$parent_id')";
+    VALUES ('vaccine', '$notif_message','$parent_id')";
     mysqli_query($con, $query);
     
 
