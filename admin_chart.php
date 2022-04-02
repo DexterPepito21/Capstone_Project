@@ -87,7 +87,7 @@ session_start();
 <!-- chart table -->
 <div class="container" style="overflow-x: auto">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#adduserchart">
-              Add Child Chart
+              Add Chart
         </button>
         <br><br>
   <table id="example" class="table table table-hover" style="width:100%">

@@ -53,8 +53,8 @@ $Incomplete=mysqli_num_rows($result2);
      
         var options = {
           chart: {
-            title: 'Child Summary Reports',
-            subtitle: '2021',
+            title: 'Vaccine Chart',
+            subtitle: '2022',
           }
         };
 
@@ -75,8 +75,8 @@ $Incomplete=mysqli_num_rows($result2);
      
         var options = {
           chart: {
-            title: 'Child Summary Reports',
-            subtitle: '2021',
+            title: 'Number of vaccinated children',
+            subtitle: '2022',
           }
         };
 
